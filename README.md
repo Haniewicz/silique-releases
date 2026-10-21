@@ -1,15 +1,17 @@
 # Silique — instalatory i aktualizacje
 
-Oficjalne paczki Silique dla macOS i Androida: **[pobierz najnowsze wydanie](https://github.com/Haniewicz/silique-releases/releases/latest)**.
+Oficjalne paczki Silique dla macOS, Androida, Windows i Linux GTK4: **[pobierz najnowsze wydanie](https://github.com/Haniewicz/silique-releases/releases/latest)**.
 
 To repozytorium zawiera instalatory oraz podpisane informacje o aktualizacjach. Kod aplikacji i serwera jest utrzymywany osobno w prywatnych repozytoriach.
 
-- macOS 12 lub nowszy: pobierz ZIP, rozpakuj i otwórz Silique.app. Obsługiwane są Apple Silicon i Intel. Obecne paczki mają podpis lokalny, bez notaryzacji Apple.
+- macOS 12 lub nowszy, Apple Silicon i Intel: pobierz ZIP, rozpakuj i przenieś Silique.app do Programów, zastępując poprzednią instalację. Obecne paczki mają podpis lokalny, bez notaryzacji Apple.
 - Android 7 lub nowszy: pobierz APK i zainstaluj jako aktualizację dotychczasowej aplikacji.
+- Windows x64: instalator EXE dla bieżącego użytkownika albo ZIP przenośny. ZIP trzeba rozpakować w całości i uruchomić silique.exe. EXE nie ma podpisu Authenticode.
+- Linux x64 na GTK4: DEB dla Ubuntu 24.04+, RPM sprawdzony na Fedorze 44 oraz archiwum tar.gz. Wymagane GTK4 >= 4.14, glibc >= 2.39 i działający Secret Service, np. GNOME Keyring. Wsparcie GTK4 korzysta z niestandardowego silnika Fluttera i jest eksperymentalne. RPM nie ma podpisu OpenPGP.
 - `SHA256SUMS.txt` w wydaniu pozwala sprawdzić zgodność pobranych plików.
 
-Podpisane kanały aktualizacji: `latest.json` (aplikacja) i `appcast.xml` (macOS). Pierwszą wersję z updaterem trzeba zainstalować ręcznie. Informacje o dostępności aktualizacji nie wymagają konta GitHub.
+Podpisane kanały aktualizacji: `latest.json` (aplikacja) i `appcast.xml` (macOS). Pierwsza wersja z updaterem to 0.2.5; przy przejściu z wcześniejszych wersji trzeba zainstalować ją ręcznie. macOS i Android sprawdzają nowe wersje automatycznie, a użytkownik potwierdza instalację. Windows i Linux aktualizuje się ręcznie przez stronę wydań. Pobieranie nie wymaga konta GitHub.
 
 ## Prywatność
 
-Nie umieszczamy tutaj notatek, vaultów, danych kont, kluczy ani kodu źródłowego Silique. Przed aktualizacją zamknij poprzednią wersję aplikacji.
+Nie umieszczamy tutaj notatek, vaultów, danych kont, kluczy ani kodu źródłowego Silique. Przed aktualizacją zamknij poprzednią wersję aplikacji. Aktualizacja zachowuje dane i klucze istniejącej instalacji.
