@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.4</title><pubDate>Tue, 20 Oct 2026 20:57:51 +0000</pubDate><description>Zaznaczanie wielu notatek, akcje grupowe, podfoldery i rozwijane drzewo, przeciąganie notatek i folderów. Wybór lokalizacji vaultów przy pierwszym uruchomieniu. Poprawione wyszukiwanie z podświetleniem oraz rozmiar tekstu tylko dla zaznaczenia. Status synchronizacji w dolnym pasku, wspólne nazwy urządzeń i poprawka położenia menu folderu.
-</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.4/Silique-0.2.4-macOS.zip" sparkle:version="8" sparkle:shortVersionString="0.2.4" sparkle:edSignature="8yIg0fPGkz6DG2CKr2fmAS9a+jCRaxdGLvBUEkfJtFAdlyUiha0L2lIzPlRDYo40jF2iZAXxA7O1Ami/28puDg==" length="22487411" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
-edSignature: b5DyFwMecrDD946rq2VMGzRZqU/AL9HIopGBQjO3UaM0NSwVSdPHm37RT1PvmXFaLPpBXTwmbsjJSO7lZl4FDg==
-length: 1366
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.5</title><pubDate>Wed, 21 Oct 2026 11:01:58 +0000</pubDate><description>Silique 0.2.5
+
+- Pierwsze instalatory Windows x64: instalator EXE oraz wersja przenośna ZIP.
+- Linux GTK4: pakiet DEB dla Ubuntu 24.04+, RPM dla Fedory oraz archiwum przenośne.
+- Powiadomienia o nowych wersjach i instalowanie aktualizacji po potwierdzeniu na macOS i Androidzie.
+- Bezpieczny zapis notatek przed zamknięciem lub aktualizacją aplikacji.
+- Zachowane identyfikatory instalacji, klucze i zgodność istniejących vaultów.
+
+Windows i Linux aktualizuje się przez pobranie nowej paczki ze strony wydań. Wersja GTK4 używa niestandardowego silnika Fluttera i pozostaje eksperymentalna.
+</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.5/Silique-0.2.5-macOS.zip" sparkle:version="10" sparkle:shortVersionString="0.2.5" sparkle:edSignature="NuYtTpKuXPSy2SGbUVmZXK1K9o/tV68DyA7Z3QY40EGX9rcoA9FtB6jottBHW6Xl/WtQAFHKNepgfxG5+lPFBA==" length="23594502" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: BX88SnKw+UEXBWrrsu2wRoljm9zNYaSAPMdPQm2Gj82G75MW/8mXEjKIfEv6PjNONP4QJUMmHsD3UDkRyIJzAQ==
+length: 1617
 -->
