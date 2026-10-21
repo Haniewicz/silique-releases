@@ -1,0 +1,87 @@
+name: Windows installer candidate
+on:
+  workflow_dispatch:
+    inputs:
+      source_ref:
+        description: Full commit SHA in the private application repository
+        required: true
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: windows-installer
+  cancel-in-progress: false
+jobs:
+  windows:
+    runs-on: windows-latest
+    timeout-minutes: 50
+    steps:
+      - name: Validate requested source revision
+        shell: pwsh
+        env:
+          SOURCE_REF: ${{ inputs.source_ref }}
+        run: |
+          if ($env:SOURCE_REF -cnotmatch '^[0-9a-f]{40}$') { throw 'A full commit SHA is required.' }
+      - name: Read private application source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: Haniewicz/silique-app
+          ref: ${{ inputs.source_ref }}
+          ssh-key: ${{ secrets.SILIQUE_SOURCE_READ_KEY }}
+          persist-credentials: false
+          path: source
+      - name: Install pinned Flutter toolchain
+        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2
+        with:
+          flutter-version: '3.47.7'
+          channel: stable
+          cache: false
+      - name: Build and test without exposing private compiler output
+        id: build
+        continue-on-error: true
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Continue'
+          $PSNativeCommandUseErrorActionPreference = $false
+          & pwsh -NoProfile -File source/tool/build_windows.ps1 *> "$env:RUNNER_TEMP/private-build.log"
+          exit $LASTEXITCODE
+      - name: Encrypt diagnostic output for the owner
+        if: always()
+        shell: pwsh
+        env:
+          DIAGNOSTIC_CERT: ${{ vars.SILIQUE_DIAGNOSTIC_CERT }}
+        run: |
+          $log = "$env:RUNNER_TEMP/private-build.log"
+          if (-not (Test-Path $log)) { exit 0 }
+          if (-not $env:DIAGNOSTIC_CERT) { throw 'Owner diagnostic public certificate missing.' }
+          $cert = "$env:RUNNER_TEMP/diagnostics-cert.pem"
+          [IO.File]::WriteAllBytes($cert, [Convert]::FromBase64String($env:DIAGNOSTIC_CERT))
+          $openssl = 'C:/Program Files/Git/usr/bin/openssl.exe'
+          & $openssl cms -encrypt -aes-256-cbc -binary -in $log -outform DER -out "$env:RUNNER_TEMP/private-build.cms" $cert
+          if ($LASTEXITCODE -ne 0) { throw 'Could not encrypt private diagnostics.' }
+      - name: Save encrypted diagnostics only
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: encrypted-windows-diagnostics
+          path: ${{ runner.temp }}/private-build.cms
+          if-no-files-found: ignore
+          retention-days: 1
+          compression-level: 0
+      - name: Save installer candidate
+        if: steps.build.outcome == 'success'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: silique-windows-candidate
+          path: |
+            source/packages/windows/Silique-*-Windows-x64.zip
+            source/packages/windows/Silique-*-Setup-Windows-x64.exe
+            source/packages/windows/windows-build.json
+            source/packages/windows/SHA256SUMS-Windows.txt
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Report build failure
+        if: steps.build.outcome != 'success'
+        shell: pwsh
+        run: throw 'Build failed. Only owner-encrypted diagnostics were saved; no compiler logs or source were published.'
