@@ -1,0 +1,90 @@
+name: Linux GTK4 installer candidate
+on:
+  workflow_dispatch:
+    inputs:
+      source_ref:
+        description: Full commit SHA in the private application repository
+        required: true
+        type: string
+      diagnostic_cert_base64:
+        description: Optional ephemeral PUBLIC diagnostics certificate (base64), never a private key
+        required: false
+        default: ''
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: linux-gtk4-installer
+  cancel-in-progress: false
+jobs:
+  linux:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 350
+    steps:
+      - name: Validate requested source revision
+        env:
+          SOURCE_REF: ${{ inputs.source_ref }}
+        run: |
+          [[ "$SOURCE_REF" =~ ^[0-9a-f]{40}$ ]] || exit 1
+      - name: Read private application source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: Haniewicz/silique-app
+          ref: ${{ inputs.source_ref }}
+          ssh-key: ${{ secrets.SILIQUE_SOURCE_READ_KEY }}
+          persist-credentials: false
+          path: source
+      - name: Build GTK4 engine and verify Linux installers privately
+        id: build
+        continue-on-error: true
+        run: |
+          bash source/tool/ci_linux_gtk4.sh > "$RUNNER_TEMP/private-linux-build.log" 2>&1
+      - name: Encrypt diagnostic output for the owner
+        if: always()
+        env:
+          DIAGNOSTIC_CERT: ${{ vars.SILIQUE_DIAGNOSTIC_CERT }}
+          DIAGNOSTIC_EXTRA_CERT: ${{ inputs.diagnostic_cert_base64 }}
+        run: |
+          log="$RUNNER_TEMP/private-linux-build.log"
+          [[ -f "$log" ]] || exit 0
+          [[ -n "$DIAGNOSTIC_CERT" ]] || { printf 'Owner diagnostic public certificate missing.\n'; exit 1; }
+          printf '%s' "$DIAGNOSTIC_CERT" | base64 --decode > "$RUNNER_TEMP/diagnostics-cert.pem"
+          certificates=("$RUNNER_TEMP/diagnostics-cert.pem")
+          if [[ -n "$DIAGNOSTIC_EXTRA_CERT" ]]; then
+            [[ ${#DIAGNOSTIC_EXTRA_CERT} -le 65536 ]] || exit 1
+            printf '%s' "$DIAGNOSTIC_EXTRA_CERT" | base64 --decode > "$RUNNER_TEMP/diagnostics-extra-cert.pem"
+            openssl x509 -in "$RUNNER_TEMP/diagnostics-extra-cert.pem" -noout
+            certificates+=("$RUNNER_TEMP/diagnostics-extra-cert.pem")
+          fi
+          openssl cms -encrypt -aes-256-cbc -binary -in "$log" -outform DER \
+            -out "$RUNNER_TEMP/private-linux-build.cms" "${certificates[@]}"
+      - name: Save encrypted diagnostics only
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: encrypted-linux-diagnostics
+          path: ${{ runner.temp }}/private-linux-build.cms
+          if-no-files-found: ignore
+          retention-days: 1
+          compression-level: 0
+      - name: Save verified installer candidate
+        if: steps.build.outcome == 'success'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: silique-linux-gtk4-candidate
+          path: |
+            source/packages/linux/Silique-*-Linux-GTK4-x64.tar.gz
+            source/packages/linux/Silique-*-Linux-GTK4-amd64.deb
+            source/packages/linux/Silique-*-Linux-GTK4-x86_64.rpm
+            source/packages/linux/linux-build.json
+            source/packages/linux/SHA256SUMS-Linux.txt
+            source/packages/linux/verification/*.json
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Report build failure
+        if: steps.build.outcome != 'success'
+        run: |
+          python3 -c 'import os,re; from pathlib import Path; p=Path(os.environ["RUNNER_TEMP"])/"silique-linux-builder/stage"; s=p.read_text().strip() if p.exists() else "startup"; print("Failed stage: "+s if re.fullmatch("[a-z-]{1,64}",s) else "Invalid stage marker")'
+          printf 'GTK4 candidate build failed. Only owner-encrypted diagnostics were saved. No source, compiler logs or release were published.\n'
+          exit 1
