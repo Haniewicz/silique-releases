@@ -68,6 +68,13 @@ jobs:
           if-no-files-found: ignore
           retention-days: 1
           compression-level: 0
+      - name: Record installer source provenance
+        if: steps.build.outcome == 'success'
+        shell: pwsh
+        env:
+          SOURCE_REF: ${{ inputs.source_ref }}
+        run: |
+          @{source_commit=$env:SOURCE_REF;run_id=$env:GITHUB_RUN_ID} | ConvertTo-Json | Set-Content -Encoding utf8 source/packages/windows/build-provenance.json
       - name: Save installer candidate
         if: steps.build.outcome == 'success'
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
@@ -77,6 +84,7 @@ jobs:
             source/packages/windows/Silique-*-Windows-x64.zip
             source/packages/windows/Silique-*-Setup-Windows-x64.exe
             source/packages/windows/windows-build.json
+            source/packages/windows/build-provenance.json
             source/packages/windows/SHA256SUMS-Windows.txt
           if-no-files-found: error
           retention-days: 1
