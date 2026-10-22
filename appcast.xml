@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.8</title><pubDate>Thu, 22 Oct 2026 14:06:38 +0000</pubDate><description>Silique 0.2.8
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.9</title><pubDate>Thu, 22 Oct 2026 20:53:45 +0000</pubDate><description>## Silique 0.2.9
 
-- Import vaultów Obsidiana poprawnie obsługuje polskie znaki, emoji i znak procentu w linkach do notatek oraz obrazów.
-- Osadzone CSV, PDF, pliki Bases i inne nieobsługiwane załączniki nie blokują importu. Ich odnośniki pozostają w treści; podgląd wyjaśnia, które pliki nie zostaną skopiowane.
-- Poprawiono wpisywanie checkboxów: po domknięciu znacznika pojawia się spacja, a Enter zachowuje puste zadanie i tworzy kolejne w nowej linii.
-- Dodano ścieżkę vaulta i folderów nad notatką, z przechodzeniem do wybranego folderu.
-- Na telefonie gest przesunięcia treści w prawo otwiera nawigację. Poprawiono wyszukiwanie przy otwartej klawiaturze, widoczność kursora i wstawianie emoji.
-- Synchronizacja reaguje na zapis i zdalne zmiany; nowszy serwer obsługuje oczekiwanie na zmiany, a starsze serwery zachowują zgodność.
-- Poprawiono menu, zaznaczanie widocznych wyników oraz klikanie checkboxów.
+- Poprawiono zapisywanie pustego tytułu notatki: po usunięciu tytułu pozostaje on pusty również po automatycznym zapisie i ponownym otwarciu.
+- Usunięto tekst zastępczy „Bez tytułu” z pola edycji tytułu.
 
-Aktualizacja zachowuje istniejące notatki, vaulty, klucze i identyfikatory instalacji. Linux GTK4 pozostaje wsparciem eksperymentalnym. Windows i przenośny Linux aktualizuje się ręcznie ze strony wydania; macOS, Android oraz Linux RPM/DEB udostępniają aktualizację z aplikacji z potwierdzeniem użytkownika.
-</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.8/Silique-0.2.8-macOS.zip" sparkle:version="17" sparkle:shortVersionString="0.2.8" sparkle:edSignature="NPfK993SpTr0wPRPVQGgwwujuNERXmN2W9t7mPgrxfsGh9UB4YwSV38hNa2KG/tb7BzwlnvIC5hLf2+k96HbAA==" length="23779124" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
-edSignature: qd5Wj7vubQDoe7UhXD23ERZhC0JUT4DHIeHWogJT/RFV8jpvTTf1ZMUn6W4ohtgIS/k/0t3ErMSeaHX3+3AZAg==
-length: 2274
+Instalatory dla macOS, Androida, Windows i Linux (GTK4).
+</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.9/Silique-0.2.9-macOS.zip" sparkle:version="18" sparkle:shortVersionString="0.2.9" sparkle:edSignature="tox4C0UZO7YMfytZV8Oc5MNHSdUEwB6NdcBK3QyGTP3p6yizEr2a+rto0QQacMA+9u30Bnne0IOr5BmZWfsnBQ==" length="23865667" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: D2KlsEeZBdp9OTJQtZJeMnJzGl1iEZOQz4xbqvTrp4kAdbxvOIOCtjEPaTEIxrKN6UsttnjZMyGWUz0epvyMCg==
+length: 1309
 -->
