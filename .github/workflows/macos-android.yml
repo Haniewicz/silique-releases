@@ -40,7 +40,8 @@ jobs:
         continue-on-error: true
         env:
           SOURCE_REF: ${{ inputs.source_ref }}
-          SILIQUE_MACOS_KEYCHAIN: ${{ secrets.SILIQUE_MACOS_KEYCHAIN }}
+          SILIQUE_MACOS_P12: ${{ secrets.SILIQUE_MACOS_P12 }}
+          SILIQUE_MACOS_P12_PASSWORD: ${{ secrets.SILIQUE_MACOS_P12_PASSWORD }}
           SILIQUE_MACOS_CERT: ${{ secrets.SILIQUE_MACOS_CERT }}
           SILIQUE_MACOS_PASSWORD: ${{ secrets.SILIQUE_MACOS_PASSWORD }}
           ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
