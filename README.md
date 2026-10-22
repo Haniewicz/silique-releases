@@ -10,7 +10,7 @@ To repozytorium zawiera instalatory oraz podpisane informacje o aktualizacjach. 
 - Linux x64 na GTK4: DEB dla Ubuntu 24.04+, RPM sprawdzony na Fedorze 44 oraz archiwum tar.gz. Wymagane GTK4 >= 4.14, glibc >= 2.39 i działający Secret Service, np. GNOME Keyring. Wsparcie GTK4 korzysta z niestandardowego silnika Fluttera i jest eksperymentalne. RPM nie ma podpisu OpenPGP.
 - `SHA256SUMS.txt` w wydaniu pozwala sprawdzić zgodność pobranych plików.
 
-Podpisane kanały aktualizacji: `latest.json` (aplikacja) i `appcast.xml` (macOS). Pierwsza wersja z updaterem to 0.2.5; przy przejściu z wcześniejszych wersji trzeba zainstalować ją ręcznie. macOS i Android sprawdzają nowe wersje automatycznie, a użytkownik potwierdza instalację. Windows i Linux aktualizuje się ręcznie przez stronę wydań. Pobieranie nie wymaga konta GitHub.
+Podpisane kanały aktualizacji: `latest.json` (aplikacja) i `appcast.xml` (macOS). Pierwsza wersja z updaterem to 0.2.5; przy przejściu z wcześniejszych wersji trzeba zainstalować ją ręcznie. macOS i Android sprawdzają nowe wersje automatycznie, a użytkownik potwierdza instalację. Od 0.2.7 instalacje Linux zarządzane przez RPM/DEB również sprawdzają aktualizacje i pozwalają na instalację z aplikacji po systemowej autoryzacji (polkit/pkexec). Przejście z Linux 0.2.6 do 0.2.7 wymaga ręcznej instalacji DEB/RPM. Windows i Linux z archiwum tar.gz aktualizuje się ręcznie przez stronę wydań. Pobieranie nie wymaga konta GitHub.
 
 ## Prywatność
 
