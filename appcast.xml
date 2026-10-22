@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.7</title><pubDate>Thu, 22 Oct 2026 11:37:17 +0000</pubDate><description>Silique 0.2.7 (build 12)
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.8</title><pubDate>Thu, 22 Oct 2026 14:06:38 +0000</pubDate><description>Silique 0.2.8
 
-Zmiany:
-- Naprawiono przewijanie ustawień kółkiem myszy w Linux GTK4, w tym na Fedorze. Sekcja aktualizacji jest ponownie dostępna po przewinięciu.
-- Lista połączonych urządzeń pomija urządzenia z cofniętym dostępem. Odłączenie urządzenia usuwa je z listy od razu po potwierdzeniu serwera.
-- Dodano automatyczne sprawdzanie aktualizacji dla instalacji Linux z pakietów RPM i DEB. Pobranie i instalację rozpoczyna użytkownik, a uprawnienia potwierdza w oknie systemowym. Przed instalacją aplikacja weryfikuje podpis informacji o wydaniu, rozmiar i SHA256 paczki oraz zapisuje notatki.
-- Poprawiono niezależność paczek GTK4 od środowiska Java na komputerze kompilującym. Linux nie wymaga teraz biblioteki JVM tylko dlatego, że była dostępna podczas budowania.
+- Import vaultów Obsidiana poprawnie obsługuje polskie znaki, emoji i znak procentu w linkach do notatek oraz obrazów.
+- Osadzone CSV, PDF, pliki Bases i inne nieobsługiwane załączniki nie blokują importu. Ich odnośniki pozostają w treści; podgląd wyjaśnia, które pliki nie zostaną skopiowane.
+- Poprawiono wpisywanie checkboxów: po domknięciu znacznika pojawia się spacja, a Enter zachowuje puste zadanie i tworzy kolejne w nowej linii.
+- Dodano ścieżkę vaulta i folderów nad notatką, z przechodzeniem do wybranego folderu.
+- Na telefonie gest przesunięcia treści w prawo otwiera nawigację. Poprawiono wyszukiwanie przy otwartej klawiaturze, widoczność kursora i wstawianie emoji.
+- Synchronizacja reaguje na zapis i zdalne zmiany; nowszy serwer obsługuje oczekiwanie na zmiany, a starsze serwery zachowują zgodność.
+- Poprawiono menu, zaznaczanie widocznych wyników oraz klikanie checkboxów.
 
-Paczki: macOS ZIP, Android APK, Windows x64 EXE/ZIP oraz Linux GTK4 x64 DEB/RPM/tar.gz. DEB sprawdzono na Ubuntu 24.04, RPM na Fedorze 44, również przez aktualizację z 0.2.6 do 0.2.7.
-
-Przejście z Linux 0.2.6 do 0.2.7 wymaga ręcznej instalacji DEB/RPM. Od 0.2.7 instalacje zarządzane przez te pakiety mogą aktualizować się z aplikacji. Linux z archiwum tar.gz oraz Windows pozostają aktualizowane ręcznie. macOS i Android wykrywają aktualizacje automatycznie; instalację potwierdza użytkownik.
-
-Linux wymaga GTK4 &gt;= 4.14, glibc &gt;= 2.39, Secret Service (np. GNOME Keyring), a do instalacji z aplikacji również działającego polkit/pkexec. Wsparcie GTK4 pozostaje eksperymentalne. RPM jest bez podpisu OpenPGP, EXE bez Authenticode, macOS ma lokalny podpis bez notaryzacji Apple. APK używa dotychczasowego certyfikatu. Aktualizacja zachowuje istniejące vaulty i klucze; macOS może jednorazowo poprosić o dostęp do pęku kluczy.
-</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.7/Silique-0.2.7-macOS.zip" sparkle:version="12" sparkle:shortVersionString="0.2.7" sparkle:edSignature="OKRkDxAcNsaKUDTFvWwBCbtaHpwSRhl0auoY8d9qV/qlRsF3Ljr0zOvhLmXwKRH1KZMawze+bqI7nm7gV6PBAA==" length="23717007" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
-edSignature: oORTQmuf8zTMTnwHo1291AMFUNg5FmCOGO5zkNVvX6YmXBp6EbIT2g2GGsZNbtXk37yfaLlgVMcewECB4VJ4AA==
-length: 2782
+Aktualizacja zachowuje istniejące notatki, vaulty, klucze i identyfikatory instalacji. Linux GTK4 pozostaje wsparciem eksperymentalnym. Windows i przenośny Linux aktualizuje się ręcznie ze strony wydania; macOS, Android oraz Linux RPM/DEB udostępniają aktualizację z aplikacji z potwierdzeniem użytkownika.
+</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.8/Silique-0.2.8-macOS.zip" sparkle:version="17" sparkle:shortVersionString="0.2.8" sparkle:edSignature="NPfK993SpTr0wPRPVQGgwwujuNERXmN2W9t7mPgrxfsGh9UB4YwSV38hNa2KG/tb7BzwlnvIC5hLf2+k96HbAA==" length="23779124" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: qd5Wj7vubQDoe7UhXD23ERZhC0JUT4DHIeHWogJT/RFV8jpvTTf1ZMUn6W4ohtgIS/k/0t3ErMSeaHX3+3AZAg==
+length: 2274
 -->
