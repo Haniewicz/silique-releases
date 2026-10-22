@@ -1,0 +1,100 @@
+name: Signed update preparation and approved publication
+on:
+  workflow_dispatch:
+    inputs:
+      source_ref:
+        description: Full approved SHA in private application repository
+        required: true
+        type: string
+      operation:
+        description: Prepare a candidate or publish after the owner's personal test
+        required: true
+        type: choice
+        options: [prepare, publish]
+        default: prepare
+      candidate_tag:
+        description: Draft candidate-VERSION-BUILD containing seven installers and public notes (prepare)
+        type: string
+      prepared_run:
+        description: Successful preparation run ID (publish)
+        type: string
+      owner_approved:
+        description: Owner personally tested and explicitly approved this release
+        type: boolean
+        default: false
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: signed-silique-release
+  cancel-in-progress: false
+jobs:
+  update:
+    runs-on: macos-15
+    timeout-minutes: 25
+    steps:
+      - name: Validate request
+        env:
+          SOURCE_REF: ${{ inputs.source_ref }}
+          OPERATION: ${{ inputs.operation }}
+          OWNER_APPROVED: ${{ inputs.owner_approved }}
+        run: |
+          [[ "$SOURCE_REF" =~ ^[0-9a-f]{40}$ ]]
+          [[ "$OPERATION" == prepare || "$OWNER_APPROVED" == true ]]
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: Haniewicz/silique-app
+          ref: ${{ inputs.source_ref }}
+          ssh-key: ${{ secrets.SILIQUE_SOURCE_READ_KEY }}
+          persist-credentials: false
+          path: source
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          path: distribution
+      - uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2
+        with:
+          flutter-version: '3.47.7'
+          cache: false
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Sign or publish without exposing private output
+        id: update
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SILIQUE_UPDATER_KEY: ${{ secrets.SILIQUE_UPDATER_KEY }}
+          RELEASE_OPERATION: ${{ inputs.operation }}
+          CANDIDATE_TAG: ${{ inputs.candidate_tag }}
+          PREPARED_RUN: ${{ inputs.prepared_run }}
+          OWNER_APPROVED: ${{ inputs.owner_approved }}
+        run: bash source/tool/ci_update_release.sh > "$RUNNER_TEMP/private-build.log" 2>&1
+      - name: Encrypt diagnostics
+        if: always()
+        env:
+          DIAGNOSTIC_CERT: ${{ vars.SILIQUE_DIAGNOSTIC_CERT }}
+        run: |
+          test -f "$RUNNER_TEMP/private-build.log" || exit 0
+          test -n "$DIAGNOSTIC_CERT"
+          printf '%s' "$DIAGNOSTIC_CERT" | base64 --decode > "$RUNNER_TEMP/diagnostics-cert.pem"
+          openssl cms -encrypt -aes-256-cbc -binary -in "$RUNNER_TEMP/private-build.log" -outform DER -out "$RUNNER_TEMP/private-build.cms" "$RUNNER_TEMP/diagnostics-cert.pem"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: encrypted-update-diagnostics
+          path: ${{ runner.temp }}/private-build.cms
+          if-no-files-found: ignore
+          retention-days: 1
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: inputs.operation == 'prepare' && steps.update.outcome == 'success'
+        with:
+          name: silique-prepared-update
+          path: ${{ runner.temp }}/prepared/*
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 0
+      - name: Report operation failure
+        if: steps.update.outcome != 'success'
+        run: exit 1

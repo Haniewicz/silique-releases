@@ -1,0 +1,76 @@
+name: macOS and Android installer candidate
+on:
+  workflow_dispatch:
+    inputs:
+      source_ref:
+        description: Full approved commit SHA in the private application repository
+        required: true
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: macos-android-installer
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: macos-15
+    timeout-minutes: 60
+    steps:
+      - name: Validate source revision
+        env:
+          SOURCE_REF: ${{ inputs.source_ref }}
+        run: '[[ "$SOURCE_REF" =~ ^[0-9a-f]{40}$ ]]'
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: Haniewicz/silique-app
+          ref: ${{ inputs.source_ref }}
+          ssh-key: ${{ secrets.SILIQUE_SOURCE_READ_KEY }}
+          persist-credentials: false
+          path: source
+      - uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2
+        with:
+          flutter-version: '3.47.7'
+          cache: false
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Build with existing publisher identities and private output
+        id: build
+        continue-on-error: true
+        env:
+          SOURCE_REF: ${{ inputs.source_ref }}
+          SILIQUE_MACOS_KEYCHAIN: ${{ secrets.SILIQUE_MACOS_KEYCHAIN }}
+          SILIQUE_MACOS_CERT: ${{ secrets.SILIQUE_MACOS_CERT }}
+          SILIQUE_MACOS_PASSWORD: ${{ secrets.SILIQUE_MACOS_PASSWORD }}
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          ANDROID_STORE_PASSWORD: ${{ secrets.ANDROID_STORE_PASSWORD }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: bash source/tool/ci_macos_android.sh > "$RUNNER_TEMP/private-build.log" 2>&1
+      - name: Encrypt private diagnostics
+        if: always()
+        env:
+          DIAGNOSTIC_CERT: ${{ vars.SILIQUE_DIAGNOSTIC_CERT }}
+        run: |
+          test -f "$RUNNER_TEMP/private-build.log" || exit 0
+          test -n "$DIAGNOSTIC_CERT"
+          printf '%s' "$DIAGNOSTIC_CERT" | base64 --decode > "$RUNNER_TEMP/diagnostics-cert.pem"
+          openssl cms -encrypt -aes-256-cbc -binary -in "$RUNNER_TEMP/private-build.log" -outform DER -out "$RUNNER_TEMP/private-build.cms" "$RUNNER_TEMP/diagnostics-cert.pem"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: encrypted-macos-android-diagnostics
+          path: ${{ runner.temp }}/private-build.cms
+          if-no-files-found: ignore
+          retention-days: 1
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: steps.build.outcome == 'success'
+        with:
+          name: silique-macos-android-candidate
+          path: source/packages/macos-android/*
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+      - name: Report build result
+        if: steps.build.outcome != 'success'
+        run: exit 1
