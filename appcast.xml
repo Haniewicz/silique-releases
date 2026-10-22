@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.6</title><pubDate>Wed, 21 Oct 2026 20:11:44 +0000</pubDate><description>Silique 0.2.6 (build 11)
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.7</title><pubDate>Thu, 22 Oct 2026 11:37:17 +0000</pubDate><description>Silique 0.2.7 (build 12)
 
 Zmiany:
-- Aplikacja otwiera ostatnio używany vault. Chroniony vault nadal wymaga odblokowania.
-- Usunięto dodatkowy wpis „Ustawienia” spod „Dziennika”. Ustawienia pozostają dostępne przez ikonę przy vaulcie.
-- Dodano import całych folderów z notatkami Markdown i TXT. Można wybrać istniejący lub nowy folder docelowy albo importować do głównego poziomu vaulta. Zachowywane są podfoldery, puste foldery i tytuły z nazw plików.
-- Import odtwarza wewnętrzne linki Markdown i Obsidiana oraz użyte obrazy PNG/JPEG/GIF/WebP/BMP. Osadzone notatki Obsidiana są przenoszone jako linki. Pliki źródłowe pozostają bez zmian; błąd importu nie pozostawia części zapisanych danych.
-- Przyciski okna są natywne dla macOS, Windows i Linux GTK4. W Linux poprawiono również reakcję na kliknięcia po zmianie rozmiaru okna.
+- Naprawiono przewijanie ustawień kółkiem myszy w Linux GTK4, w tym na Fedorze. Sekcja aktualizacji jest ponownie dostępna po przewinięciu.
+- Lista połączonych urządzeń pomija urządzenia z cofniętym dostępem. Odłączenie urządzenia usuwa je z listy od razu po potwierdzeniu serwera.
+- Dodano automatyczne sprawdzanie aktualizacji dla instalacji Linux z pakietów RPM i DEB. Pobranie i instalację rozpoczyna użytkownik, a uprawnienia potwierdza w oknie systemowym. Przed instalacją aplikacja weryfikuje podpis informacji o wydaniu, rozmiar i SHA256 paczki oraz zapisuje notatki.
+- Poprawiono niezależność paczek GTK4 od środowiska Java na komputerze kompilującym. Linux nie wymaga teraz biblioteki JVM tylko dlatego, że była dostępna podczas budowania.
 
-Paczki: macOS ZIP, Android APK, Windows x64 EXE/ZIP oraz Linux GTK4 x64 DEB/RPM/tar.gz. RPM sprawdzono na Fedorze 44, DEB na Ubuntu 24.04.
+Paczki: macOS ZIP, Android APK, Windows x64 EXE/ZIP oraz Linux GTK4 x64 DEB/RPM/tar.gz. DEB sprawdzono na Ubuntu 24.04, RPM na Fedorze 44, również przez aktualizację z 0.2.6 do 0.2.7.
 
-Import obsługuje UTF-8/UTF-16; PDF, inne załączniki i zamknięte bazy danych nie są obsługiwane. Podsumowanie pokazuje pominięte pliki. Limity: 1 MB na notatkę, 256 MB na partię, 20 000 pozycji i 12 poziomów folderów.
+Przejście z Linux 0.2.6 do 0.2.7 wymaga ręcznej instalacji DEB/RPM. Od 0.2.7 instalacje zarządzane przez te pakiety mogą aktualizować się z aplikacji. Linux z archiwum tar.gz oraz Windows pozostają aktualizowane ręcznie. macOS i Android wykrywają aktualizacje automatycznie; instalację potwierdza użytkownik.
 
-Linux wymaga GTK4 &gt;= 4.14, glibc &gt;= 2.39 oraz Secret Service, np. GNOME Keyring. Wsparcie GTK4 korzysta z eksperymentalnego silnika Fluttera. macOS ma lokalny podpis bez notaryzacji Apple, EXE nie ma podpisu Authenticode, RPM nie ma podpisu OpenPGP. APK używa dotychczasowego certyfikatu.
-
-macOS i Android wykrywają aktualizacje automatycznie; instalację potwierdza użytkownik. Windows i Linux aktualizuje się ręcznie przez stronę wydań. Aktualizacja zachowuje vaulty i klucze. macOS może jednorazowo poprosić o dostęp do pęku kluczy.
-</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.6/Silique-0.2.6-macOS.zip" sparkle:version="11" sparkle:shortVersionString="0.2.6" sparkle:edSignature="u+5QlcXPC/zsBBycojDfu6mtMtg+TV+Wezj7W8dr4p08pwdsWYdzYQydrn2cJlNWaX0EhdD41Fvzz9DYQSImDQ==" length="23690172" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
-edSignature: Y+8a6XRpc5j+2TwLThLN86gArt8lgyYreH28i8QmugRmPLouOyAt4/TEaCGcl22iY2eGdDL0W5SxuRryUTwdAQ==
-length: 2808
+Linux wymaga GTK4 &gt;= 4.14, glibc &gt;= 2.39, Secret Service (np. GNOME Keyring), a do instalacji z aplikacji również działającego polkit/pkexec. Wsparcie GTK4 pozostaje eksperymentalne. RPM jest bez podpisu OpenPGP, EXE bez Authenticode, macOS ma lokalny podpis bez notaryzacji Apple. APK używa dotychczasowego certyfikatu. Aktualizacja zachowuje istniejące vaulty i klucze; macOS może jednorazowo poprosić o dostęp do pęku kluczy.
+</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.7/Silique-0.2.7-macOS.zip" sparkle:version="12" sparkle:shortVersionString="0.2.7" sparkle:edSignature="OKRkDxAcNsaKUDTFvWwBCbtaHpwSRhl0auoY8d9qV/qlRsF3Ljr0zOvhLmXwKRH1KZMawze+bqI7nm7gV6PBAA==" length="23717007" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: oORTQmuf8zTMTnwHo1291AMFUNg5FmCOGO5zkNVvX6YmXBp6EbIT2g2GGsZNbtXk37yfaLlgVMcewECB4VJ4AA==
+length: 2782
 -->
