@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.12</title><pubDate>Fri, 23 Oct 2026 08:46:02 +0000</pubDate><description># Silique 0.2.12
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.13</title><pubDate>Fri, 23 Oct 2026 12:37:33 +0000</pubDate><description># Silique 0.2.13
 
-- Podczas gestu zamykania notatki przesunięciem w dół treść pozostaje nieruchoma, również po cofnięciu palca. Blokada obejmuje zagnieżdżone widoki przewijania i jest zwalniana po zakończeniu gestu.
-- Naprawiono zaznaczanie tekstu w górę i ciągłe przewijanie przy nieruchomym palcu przy krawędzi. Edytor nie ściąga już widoku do poprzedniej linii kursora podczas rozszerzania zaznaczenia.
-- Dodano osobne, jednoznaczne daty utworzenia i ostatniej edycji notatki. Edycja nie zmienia daty utworzenia.
-- Naprawiono wyszukiwarkę na telefonie: otwarcie klawiatury nie odtwarza pola wyszukiwania i nie zrywa połączenia z klawiaturą.
+## Poprawki edytora na telefonie
 
-Zachowano format danych, istniejące vaulty, szyfrowanie i dotychczasowe klucze podpisu.
-</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.12/Silique-0.2.12-macOS.zip" sparkle:version="21" sparkle:shortVersionString="0.2.12" sparkle:edSignature="/wZ60a5Yab7mHCn/+AD3j1AFoYEqeAj4R9F8mn/IuaqPq/xnWT8i2wgIQ6Ey3hyhS9p7wzNtl5mw8JEFcStsBA==" length="23954122" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
-edSignature: S6KyqSjERy+cxCHh+zgnMh0tvYNvaNtuhUcaBZZKXP51vrScjJOPnyrFmWgr2fIeIOLxg2PaTw4lcotZeZfLAg==
-length: 1777
+- Usunięto skok przewijania na początek notatki przy rozrastaniu się tekstu w edytorze na żywo. Kursor pozostaje przy wpisywanym tekście, nad klawiaturą.
+- Zachowano połączenie klawiatury, zaznaczenie i treść podczas pisania oraz automatycznego zapisu.
+
+## Ukryte notatki z dodatkowym hasłem
+
+- Sekcja „Ukryte” pozwala tworzyć, otwierać i edytować notatki szyfrowane lokalnie osobnym hasłem. Pierwsze utworzenie lub przeniesienie prosi o ustawienie i potwierdzenie hasła.
+- Otwarcie notatki nie zmienia jej w zwykłą. Jawna akcja „Przenieś do zwykłych” odszyfrowuje ją i przywraca do zwykłego vaulta.
+- W ustawieniach dodano blokowanie po 1, 5 lub 15 minutach bezczynności albo bez limitu bezczynności, opcję blokowania w tle i przycisk blokady ręcznej. Wyjście z sekcji i zamknięcie aplikacji również blokują dostęp.
+- Ukryte notatki pozostają zaszyfrowane na dysku również podczas edycji. Blokada usuwa odszyfrowany tekst z ekranu. Zdjęcia są zachowywane przy przenoszeniu w obie strony.
+
+**Ważne:** ukryte notatki są lokalne dla tego urządzenia i nie są synchronizowane. Przenoszenie notatki już synchronizowanej wymaga połączenia oraz osobnego potwierdzenia usunięcia jej zwykłych kopii i historii z serwera i pozostałych urządzeń po ich synchronizacji. Dotychczasowe eksporty i kopie zapasowe nie są zmieniane. Hasła ukrytych notatek nie można odzyskać.
+
+Zachowano istniejące vaulty, klucze szyfrowania i identyfikatory aplikacji. To wydanie nie wymaga zmiany serwera.
+</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.13/Silique-0.2.13-macOS.zip" sparkle:version="22" sparkle:shortVersionString="0.2.13" sparkle:edSignature="OANFSvtdUFIRtGg53zwaqmBbUIdh3MUDjPheGYxXMPlpPiBmGBnxNuoF8RfPOEhQmF46Wwc2+7ZtiujibzuFBA==" length="24013469" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: KghpdRLFixUBq7xbZApLo/tNWelhm7E7gzeyL82z+I9QqXkeeyo0M17qmGRDLLFrfQrjEF/ZQx6C1ejNaK2WBQ==
+length: 2607
 -->
