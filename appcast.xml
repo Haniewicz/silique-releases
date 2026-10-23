@@ -1,23 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.13</title><pubDate>Fri, 23 Oct 2026 12:37:33 +0000</pubDate><description># Silique 0.2.13
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.14</title><pubDate>Fri, 23 Oct 2026 18:31:03 +0000</pubDate><description># Silique 0.2.14
 
-## Poprawki edytora na telefonie
+- Poprawiono zaznaczanie tekstu uchwytami od dołu w górę i przewijanie przy krawędzi ekranu, także z otwartą klawiaturą.
+- Zaznaczanie przez checkboxy i linki nie przełącza już całych fragmentów na surowy Markdown i nie zmienia układu pod palcem.
+- Usunięto konkurujące przewijanie w edytorze źródłowym; drugi koniec zaznaczenia pozostaje przy swoim znaku.
+- Zachowano zaznaczenie wewnątrz tabel i calloutów. Poprawiono nakładające się pola dotyku uchwytów, także przy tekście RTL.
 
-- Usunięto skok przewijania na początek notatki przy rozrastaniu się tekstu w edytorze na żywo. Kursor pozostaje przy wpisywanym tekście, nad klawiaturą.
-- Zachowano połączenie klawiatury, zaznaczenie i treść podczas pisania oraz automatycznego zapisu.
-
-## Ukryte notatki z dodatkowym hasłem
-
-- Sekcja „Ukryte” pozwala tworzyć, otwierać i edytować notatki szyfrowane lokalnie osobnym hasłem. Pierwsze utworzenie lub przeniesienie prosi o ustawienie i potwierdzenie hasła.
-- Otwarcie notatki nie zmienia jej w zwykłą. Jawna akcja „Przenieś do zwykłych” odszyfrowuje ją i przywraca do zwykłego vaulta.
-- W ustawieniach dodano blokowanie po 1, 5 lub 15 minutach bezczynności albo bez limitu bezczynności, opcję blokowania w tle i przycisk blokady ręcznej. Wyjście z sekcji i zamknięcie aplikacji również blokują dostęp.
-- Ukryte notatki pozostają zaszyfrowane na dysku również podczas edycji. Blokada usuwa odszyfrowany tekst z ekranu. Zdjęcia są zachowywane przy przenoszeniu w obie strony.
-
-**Ważne:** ukryte notatki są lokalne dla tego urządzenia i nie są synchronizowane. Przenoszenie notatki już synchronizowanej wymaga połączenia oraz osobnego potwierdzenia usunięcia jej zwykłych kopii i historii z serwera i pozostałych urządzeń po ich synchronizacji. Dotychczasowe eksporty i kopie zapasowe nie są zmieniane. Hasła ukrytych notatek nie można odzyskać.
-
-Zachowano istniejące vaulty, klucze szyfrowania i identyfikatory aplikacji. To wydanie nie wymaga zmiany serwera.
-</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.13/Silique-0.2.13-macOS.zip" sparkle:version="22" sparkle:shortVersionString="0.2.13" sparkle:edSignature="OANFSvtdUFIRtGg53zwaqmBbUIdh3MUDjPheGYxXMPlpPiBmGBnxNuoF8RfPOEhQmF46Wwc2+7ZtiujibzuFBA==" length="24013469" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
-edSignature: KghpdRLFixUBq7xbZApLo/tNWelhm7E7gzeyL82z+I9QqXkeeyo0M17qmGRDLLFrfQrjEF/ZQx6C1ejNaK2WBQ==
-length: 2607
+Zachowano istniejące vaulty, format danych, szyfrowanie i klucze podpisu. Serwer produkcyjny nie był zmieniany. Ukryte notatki pozostają lokalne, jak w 0.2.13.
+</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.14/Silique-0.2.14-macOS.zip" sparkle:version="23" sparkle:shortVersionString="0.2.14" sparkle:edSignature="rIXU7jPAyjjzdNQmfq7Vjsm9mLGjKXca2F+VmRgczKCIEH5mwDKH8hPpk6SNyMn/HKDgWENphHnhqf4oHB5lAg==" length="24019801" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: 9k2MtEIULgFQulTnw5mB81dq0LpD/n43JzCF10a6KubFaiyCb1wVZLq1Vne35sQW8BS/pz3Xnuc8z+SqW/N+Dw==
+length: 1710
 -->
