@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.9</title><pubDate>Thu, 22 Oct 2026 20:53:45 +0000</pubDate><description>## Silique 0.2.9
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.10</title><pubDate>Thu, 22 Oct 2026 21:55:30 +0000</pubDate><description>## Silique 0.2.10
 
-- Poprawiono zapisywanie pustego tytułu notatki: po usunięciu tytułu pozostaje on pusty również po automatycznym zapisie i ponownym otwarciu.
-- Usunięto tekst zastępczy „Bez tytułu” z pola edycji tytułu.
+- Przywrócono placeholder „Bez tytułu” bez zapisywania go jako treści tytułu. Nowe zwykłe notatki zaczynają z pustym tytułem.
+- Na telefonie przeciągnięcie w dół rozpoczęte na samej górze notatki wraca do listy. Gest nie usuwa notatki i nie przerywa zaznaczania tekstu.
+- Na telefonie wybór vaulta pozostaje wyłącznie w menu, bez powtórzenia na liście notatek.
+- Dodano sortowanie według daty utworzenia: od najstarszych i od najnowszych, z zachowaniem przypiętych ulubionych.
 
-Instalatory dla macOS, Androida, Windows i Linux (GTK4).
-</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.9/Silique-0.2.9-macOS.zip" sparkle:version="18" sparkle:shortVersionString="0.2.9" sparkle:edSignature="tox4C0UZO7YMfytZV8Oc5MNHSdUEwB6NdcBK3QyGTP3p6yizEr2a+rto0QQacMA+9u30Bnne0IOr5BmZWfsnBQ==" length="23865667" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
-edSignature: D2KlsEeZBdp9OTJQtZJeMnJzGl1iEZOQz4xbqvTrp4kAdbxvOIOCtjEPaTEIxrKN6UsttnjZMyGWUz0epvyMCg==
-length: 1309
+Data utworzenia nowych notatek jest zachowywana podczas edycji i synchronizacji. Dla starszych notatek, które nie miały zapisanej daty utworzenia, punktem odniesienia jest dotychczasowa data modyfikacji.
+
+Instalatory: macOS, Android, Windows i Linux GTK4.
+</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.10/Silique-0.2.10-macOS.zip" sparkle:version="19" sparkle:shortVersionString="0.2.10" sparkle:edSignature="/cGz+vYMGkV/GkdFzfoS6qA0kJ4EhCRLpDpYueRboUBS9MNQcMylxMSFX//+kekoRu6NuD/Z3eSsFZ0ycuraDw==" length="23865670" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: ODt6+o9WFPSaMO0/ChFBSAZEVUV7DcV6xW+AH70gMELrPq1odNI8sSFQmbuiheRu11YhCKLoQ86zJCcgnYApDg==
+length: 1799
 -->
