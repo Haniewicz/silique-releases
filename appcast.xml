@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.14</title><pubDate>Fri, 23 Oct 2026 18:31:03 +0000</pubDate><description># Silique 0.2.14
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.15</title><pubDate>Fri, 23 Oct 2026 19:29:08 +0000</pubDate><description># Silique 0.2.15
 
-- Poprawiono zaznaczanie tekstu uchwytami od dołu w górę i przewijanie przy krawędzi ekranu, także z otwartą klawiaturą.
-- Zaznaczanie przez checkboxy i linki nie przełącza już całych fragmentów na surowy Markdown i nie zmienia układu pod palcem.
-- Usunięto konkurujące przewijanie w edytorze źródłowym; drugi koniec zaznaczenia pozostaje przy swoim znaku.
-- Zachowano zaznaczenie wewnątrz tabel i calloutów. Poprawiono nakładające się pola dotyku uchwytów, także przy tekście RTL.
+- Poprawiono układ tworzenia i odblokowywania hasła ukrytych notatek po otwarciu klawiatury. Treść dialogu można przewijać; pola nie nachodzą na przyciski, także przy większej czcionce.
+- Usunięte notatki są dostępne jako „Usunięte” w lewym menu nawigacyjnym, również na telefonie (wcześniejsza nazwa: „Kosz”). Poprzednie wyszukiwanie nie ukrywa już ich po wejściu do tej sekcji ani zwykłych notatek po jej opuszczeniu.
 
-Zachowano istniejące vaulty, format danych, szyfrowanie i klucze podpisu. Serwer produkcyjny nie był zmieniany. Ukryte notatki pozostają lokalne, jak w 0.2.13.
-</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.14/Silique-0.2.14-macOS.zip" sparkle:version="23" sparkle:shortVersionString="0.2.14" sparkle:edSignature="rIXU7jPAyjjzdNQmfq7Vjsm9mLGjKXca2F+VmRgczKCIEH5mwDKH8hPpk6SNyMn/HKDgWENphHnhqf4oHB5lAg==" length="24019801" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
-edSignature: 9k2MtEIULgFQulTnw5mB81dq0LpD/n43JzCF10a6KubFaiyCb1wVZLq1Vne35sQW8BS/pz3Xnuc8z+SqW/N+Dw==
-length: 1710
+Format danych, szyfrowanie, istniejące vaulty i klucze podpisu pozostają bez zmian. Ukryte notatki nadal są lokalne. Serwer produkcyjny nie był zmieniany.
+</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.15/Silique-0.2.15-macOS.zip" sparkle:version="24" sparkle:shortVersionString="0.2.15" sparkle:edSignature="iKg5Kiq/Mv9UcZhmrs8hmyk0sasuFfcR3w6uTLQa9oUb1lxC8E4Rj+ZrBtV7vE84HJFMrsuV3PC4rVivpasfBw==" length="24020334" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: oI/gDAM/wvpW8KOsAfFFEA2G0Jnjg4Qk4OMQsdcFS/XtDNijafLBmR/i8Svoh18pHtSPA4CJdP2T4oQTTUqbDQ==
+length: 1645
 -->
