@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.11</title><pubDate>Fri, 23 Oct 2026 06:55:03 +0000</pubDate><description># Silique 0.2.11
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.12</title><pubDate>Fri, 23 Oct 2026 08:46:02 +0000</pubDate><description># Silique 0.2.12
 
-- Usunięto pętle synchronizacji po jednoczesnej edycji na kilku urządzeniach.
-- Ograniczono liczbę żądań podczas pisania; synchronizacja respektuje czas oczekiwania zwracany przez serwer.
-- Poprawiono przewijanie i rozszerzanie zaznaczenia przy krawędziach edytora na telefonie, w trybie Markdown i źródłowym.
-- Tytuł, tagi i treść przewijają się wspólnie; poprawiono wykorzystanie miejsca nad klawiaturą i paskiem stanu.
-- Gest powrotu do listy podąża za palcem i kończy się animacją, bez przerywania zapisu.
-- Poprawiono zawijanie długich odnośników i wybieranie zdjęć z galerii telefonu.
+- Podczas gestu zamykania notatki przesunięciem w dół treść pozostaje nieruchoma, również po cofnięciu palca. Blokada obejmuje zagnieżdżone widoki przewijania i jest zwalniana po zakończeniu gestu.
+- Naprawiono zaznaczanie tekstu w górę i ciągłe przewijanie przy nieruchomym palcu przy krawędzi. Edytor nie ściąga już widoku do poprzedniej linii kursora podczas rozszerzania zaznaczenia.
+- Dodano osobne, jednoznaczne daty utworzenia i ostatniej edycji notatki. Edycja nie zmienia daty utworzenia.
+- Naprawiono wyszukiwarkę na telefonie: otwarcie klawiatury nie odtwarza pola wyszukiwania i nie zrywa połączenia z klawiaturą.
 
-Zachowano istniejące vaulty, szyfrowanie, identyfikatory aplikacji oraz dotychczasowe klucze podpisu.
-</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.11/Silique-0.2.11-macOS.zip" sparkle:version="20" sparkle:shortVersionString="0.2.11" sparkle:edSignature="apSDpTF0ke++8zwojCT3iybDC9h09NbFIvlVRbLdouv0pOfiHnARP+oiFodrmPIdhE7Yk0M9u6JgvsapI0tJAw==" length="23950965" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
-edSignature: +D8OQ0soGo8zuFBck/0T5nccc+7Rc8P8qbzZ+eUd65DzK+oesA2y16P5Ujo+O9CJozhnacxZxESLqwlsEAl2DQ==
-length: 1761
+Zachowano format danych, istniejące vaulty, szyfrowanie i dotychczasowe klucze podpisu.
+</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.12/Silique-0.2.12-macOS.zip" sparkle:version="21" sparkle:shortVersionString="0.2.12" sparkle:edSignature="/wZ60a5Yab7mHCn/+AD3j1AFoYEqeAj4R9F8mn/IuaqPq/xnWT8i2wgIQ6Ey3hyhS9p7wzNtl5mw8JEFcStsBA==" length="23954122" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: S6KyqSjERy+cxCHh+zgnMh0tvYNvaNtuhUcaBZZKXP51vrScjJOPnyrFmWgr2fIeIOLxg2PaTw4lcotZeZfLAg==
+length: 1777
 -->
