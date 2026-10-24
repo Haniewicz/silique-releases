@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.15</title><pubDate>Fri, 23 Oct 2026 19:29:08 +0000</pubDate><description># Silique 0.2.15
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.16</title><pubDate>Sat, 24 Oct 2026 12:28:02 +0000</pubDate><description># Silique 0.2.16
 
-- Poprawiono układ tworzenia i odblokowywania hasła ukrytych notatek po otwarciu klawiatury. Treść dialogu można przewijać; pola nie nachodzą na przyciski, także przy większej czcionce.
-- Usunięte notatki są dostępne jako „Usunięte” w lewym menu nawigacyjnym, również na telefonie (wcześniejsza nazwa: „Kosz”). Poprzednie wyszukiwanie nie ukrywa już ich po wejściu do tej sekcji ani zwykłych notatek po jej opuszczeniu.
+- Poprawiono scalanie konfliktujących notatek oraz obsługę niepełnej historii synchronizacji, z zachowaniem obu wersji treści.
+- Ograniczono liczbę żądań podczas pisania i odbierania powiadomień, aby zapobiegać HTTP429 wywoływanym przez własną synchronizację.
+- Zachowano lokalne zapisy, szyfrowanie i zgodność istniejących danych.
 
-Format danych, szyfrowanie, istniejące vaulty i klucze podpisu pozostają bez zmian. Ukryte notatki nadal są lokalne. Serwer produkcyjny nie był zmieniany.
-</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.15/Silique-0.2.15-macOS.zip" sparkle:version="24" sparkle:shortVersionString="0.2.15" sparkle:edSignature="iKg5Kiq/Mv9UcZhmrs8hmyk0sasuFfcR3w6uTLQa9oUb1lxC8E4Rj+ZrBtV7vE84HJFMrsuV3PC4rVivpasfBw==" length="24020334" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
-edSignature: oI/gDAM/wvpW8KOsAfFFEA2G0Jnjg4Qk4OMQsdcFS/XtDNijafLBmR/i8Svoh18pHtSPA4CJdP2T4oQTTUqbDQ==
-length: 1645
+Instalatory: macOS, Android, Windows oraz Linux GTK4.
+</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.16/Silique-0.2.16-macOS.zip" sparkle:version="25" sparkle:shortVersionString="0.2.16" sparkle:edSignature="Ch6ZWygK98FVl+dpeqZxLSIP0OPzVQWtpT9ZQ60wommQwREKO5iaJGTJdb3dQybwXObavz3rHDSFAlPXg3qYAA==" length="24033605" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: 5PgwPNGeMHjCF2TmIJivWIp8CAZW4IYFLQbglCWfRtCQIWeQRSxKt4ADvFzO0o25O2olPdmErgblDfgVJa6TDA==
+length: 1443
 -->
