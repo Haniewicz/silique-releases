@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.16</title><pubDate>Sat, 24 Oct 2026 12:28:02 +0000</pubDate><description># Silique 0.2.16
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.17</title><pubDate>Sat, 24 Oct 2026 14:50:37 +0000</pubDate><description>Ukryte notatki działają teraz jak zwykły folder
 
-- Poprawiono scalanie konfliktujących notatek oraz obsługę niepełnej historii synchronizacji, z zachowaniem obu wersji treści.
-- Ograniczono liczbę żądań podczas pisania i odbierania powiadomień, aby zapobiegać HTTP429 wywoływanym przez własną synchronizację.
-- Zachowano lokalne zapisy, szyfrowanie i zgodność istniejących danych.
+- „Ukryte” jest w lewym menu obok „Usunięte” — bez osobnej zakładki i osobnego okna.
+- Nową ukrytą notatkę tworzysz tak samo jak zwykłą: przyciskiem „+” albo skrótem Ctrl/⌘+N.
+- Notatki ukryte korzystają z tego samego edytora Markdown, trybu źródłowego, kart i wyglądu co pozostałe.
+- Zachowane szyfrowanie, osobne hasło oraz blokada po czasie lub po przejściu w tło.
+- Po zablokowaniu usuwane są też pozostałości w historii cofania i podglądzie obrazów.
 
-Instalatory: macOS, Android, Windows oraz Linux GTK4.
-</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.16/Silique-0.2.16-macOS.zip" sparkle:version="25" sparkle:shortVersionString="0.2.16" sparkle:edSignature="Ch6ZWygK98FVl+dpeqZxLSIP0OPzVQWtpT9ZQ60wommQwREKO5iaJGTJdb3dQybwXObavz3rHDSFAlPXg3qYAA==" length="24033605" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
-edSignature: 5PgwPNGeMHjCF2TmIJivWIp8CAZW4IYFLQbglCWfRtCQIWeQRSxKt4ADvFzO0o25O2olPdmErgblDfgVJa6TDA==
-length: 1443
+Wymaga Androida, macOS, Windows lub Linuksa w wersji zgodnej z wcześniejszym wydaniem; istniejące vaulty, hasła i notatki pozostają bez zmian.</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.17/Silique-0.2.17-macOS.zip" sparkle:version="26" sparkle:shortVersionString="0.2.17" sparkle:edSignature="8PRUc2zPewSZX3iy/VUqOylRl76UT7A1kkcTBg3U0I2v9oV0aLSYbggm8uSUmov3OGARQ9EbsONTtKbyPzi+Dg==" length="23968782" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: lqupsrrY4P+w4HJX8FPvfYyIEh3in/5yCmiJuBNKF4OYjqvx6dKzMMi/mg9k/lq7wTdHL5buuAMRsmXmj8/cCQ==
+length: 1713
 -->
