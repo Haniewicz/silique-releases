@@ -1,14 +1,30 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.17</title><pubDate>Sat, 24 Oct 2026 14:50:37 +0000</pubDate><description>Ukryte notatki działają teraz jak zwykły folder
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.18</title><pubDate>Sat, 24 Oct 2026 18:54:53 +0000</pubDate><description>Silique 0.2.18
 
-- „Ukryte” jest w lewym menu obok „Usunięte” — bez osobnej zakładki i osobnego okna.
-- Nową ukrytą notatkę tworzysz tak samo jak zwykłą: przyciskiem „+” albo skrótem Ctrl/⌘+N.
-- Notatki ukryte korzystają z tego samego edytora Markdown, trybu źródłowego, kart i wyglądu co pozostałe.
-- Zachowane szyfrowanie, osobne hasło oraz blokada po czasie lub po przejściu w tło.
-- Po zablokowaniu usuwane są też pozostałości w historii cofania i podglądzie obrazów.
+Ukryte notatki synchronizują się teraz end-to-end szyfrowane między urządzeniami.
+Notatka jest szyfrowana osobnym hasłem ukrytych notatek; klucz vaulta otwiera
+wyłącznie kopertę routingu, więc serwer nie widzi tytułu, treści, folderu, tagów
+ani dat. Wystarczy na nowym urządzeniu wpisać to samo hasło — konfiguracja jest
+przenośna, a niezależne hasła na innych urządzeniach nie są nadpisywane.
 
-Wymaga Androida, macOS, Windows lub Linuksa w wersji zgodnej z wcześniejszym wydaniem; istniejące vaulty, hasła i notatki pozostają bez zmian.</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.17/Silique-0.2.17-macOS.zip" sparkle:version="26" sparkle:shortVersionString="0.2.17" sparkle:edSignature="8PRUc2zPewSZX3iy/VUqOylRl76UT7A1kkcTBg3U0I2v9oV0aLSYbggm8uSUmov3OGARQ9EbsONTtKbyPzi+Dg==" length="23968782" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
-edSignature: lqupsrrY4P+w4HJX8FPvfYyIEh3in/5yCmiJuBNKF4OYjqvx6dKzMMi/mg9k/lq7wTdHL5buuAMRsmXmj8/cCQ==
-length: 1713
+- Usuwanie, konflikty i migracja: kosz jest szyfrowaną częścią notatki, trwałe
+  usunięcie znika także z serwera, a równoległe wersje są zachowywane jako
+  zaszyfrowane kopie konfliktowe z oryginalną datą utworzenia. Istniejące lokalne
+  ukryte notatki migrują automatycznie, bez zmiany szyfrogramu.
+- Wklejanie obrazów ze schowka na Androidzie: PNG, JPEG, GIF, WebP i BMP do 10 MB,
+  w trybie podglądu i źródła; ukryte notatki trzymają obraz w swoim szyfrowanym
+  dokumencie.
+- Nowa notatka ma zapisany tytuł „Bez tytułu”, który można wyczyścić do pustego;
+  tytuł jest jedną linią logiczną, ale zawija się zamiast ucinać. Dotknięcie
+  pustego miejsca dokumentu ustawia kursor na końcu treści.
+- Widgety Androida: lista notatek, nowa notatka, wpis dziennika i pływające
+  wyszukiwanie. Ukryte, usunięte i chronione hasłem notatki są wykluczone, a
+  migawki są szyfrowane kluczem w AndroidKeystore.
+
+Ważne: zaktualizuj wszystkie synchronizujące urządzenia. Starsze wersje nie znają
+nowego formatu i mogą zgłosić błąd synchronizacji (nie ujawniają przy tym ukrytych
+treści).</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.18/Silique-0.2.18-macOS.zip" sparkle:version="27" sparkle:shortVersionString="0.2.18" sparkle:edSignature="k9yF9sWrYhKYgQYuPpkEzItrQUBFZHNeARBg9LhpoM4SaR2jeL6GPRLIIssHG80t1QmMp5qwBoFIg/KtoNNBBA==" length="24083914" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: CcZjrhnCM06wynx1YMF+XReYcWDGJk9QPufeeffQuhQw3pJ1oFW5z/YBFW8eY8inpoElfGzrNHQRXMhCaCCkBw==
+length: 2582
 -->
