@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.21</title><pubDate>Sun, 25 Oct 2026 10:55:06 +0000</pubDate><description>Silique 0.2.21
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.22</title><pubDate>Sun, 25 Oct 2026 18:03:31 +0000</pubDate><description>Silique 0.2.22 (build 31)
 
-- Czytelna obsługa odmowy zapisu podczas wyboru miejsca przechowywania vaultów: komunikat zachowuje szczegóły błędu systemu i wskazuje dalsze kroki.
-- Na Windows dodano warunkową instrukcję sprawdzenia Historii ochrony i zezwolenia zainstalowanemu silique.exe na dostęp do chronionego folderu, bez wyłączania ochrony.
-- Rozszerzono test natywny Windows o wybór folderu, zapis SQLite i Markdown oraz ponowne otwarcie magazynu.
+Menu i wybory
+- Wszystkie menu kontekstowe i rozwijane (folder, notatka, sortowanie, narzędzia edytora, menu tekstowe, zarządzanie vaultami) korzystają z jednego ciemnego panelu z fioletowymi ikonami, zaokrąglonym podświetleniem, separatorami grup i większymi wierszami.
+- Wybór folderu przy przenoszeniu ma tę samą rodzinę wizualną: hierarchię z wcięciem, ikony, wyraźne zaznaczenie, wyszukiwanie, przewijanie i zablokowane cele (folder nadrzędny, własne podfoldery, kolizje nazw).
+- Wybór vaulta w panelu bocznym i w zarządzaniu vaultami używa tych samych wierszy, ikon statusu i blokady.
 
-Ważne: wydanie nie omija uprawnień ani blokad zabezpieczeń Windows. Jeżeli zapis do Dokumentów blokuje Kontrolowany dostęp do folderów, konieczna jest zgoda użytkownika w Zabezpieczeniach Windows. Przyczyna błędu na zgłoszonym komputerze nie została potwierdzona; zmiana poprawia diagnostykę i obsługę błędu, nie jest potwierdzoną naprawą dostępu do Dokumentów.
-
-Publikacja na polecenie właściciela bez oczekiwania na test ręczny.
-</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.21/Silique-0.2.21-macOS.zip" sparkle:version="30" sparkle:shortVersionString="0.2.21" sparkle:edSignature="EUe9Bx3KEUZdeIQ8cbN1VtIKpBn02LVXBmrKx9hS+Wxv4p3F1cUBIP3STVxnQaFwkSTOqXGDhqD6+ewRR1N+AA==" length="24084886" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
-edSignature: 7LEkr4CcjJdZ6+agJMnXrg/F5kPI99U8hEgtIRw1Buc6EHXIanT5VA9OYWjX1cUl4bv1anxzIiHw7i4bRWOKAw==
-length: 1930
+Usuwanie vaulta wraz z zawartością
+- W „Zarządzaj vaultami" jest teraz rzeczywiste usunięcie vaulta, nie tylko wiersza w interfejsie.
+- Potwierdzenie pokazuje nazwę i identyfikator, jasno mówi o nieodwracalności i o zakresie (tylko to urządzenie albo konto, serwer i zgodne urządzenia) oraz wymaga wpisania dokładnej nazwy vaulta. Anulowanie nic nie zmienia.
+- Usuwanie obejmuje notatki, także ukryte i z kosza, foldery, historię, oczekujące zmiany, załączniki, lokalny indeks, klucze sesji tego vaulta, kopię lustrzaną Markdown oraz widżety i podglądy. Inne vaulty, klucz konta i wspólne hasło ukrytych notatek pozostają nietknięte.
+- Vault synchronizowany jest usuwany najpierw na koncie właściciela przez serwer; dopiero potwierdzenie serwera uruchamia lokalne czyszczenie. Przy niepewnej odpowiedzi zapisy pozostają zablokowane, dopóki ponowienie nie ustali wyniku — usunięty vault nie wraca przez synchronizację.
+- Usunięcie nie obejmuje eksportów, kopii zapasowych, poprzednich miejsc zapisu ani kopii na odłączonych urządzeniach i nie jest fizycznym wymazaniem nośnika.</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.22/Silique-0.2.22-macOS.zip" sparkle:version="31" sparkle:shortVersionString="0.2.22" sparkle:edSignature="cWG0mj9NYkaxtASeekR0aI4vrTh5eLFN6u4N6Cb2QgPsY9XedGg6w3Lxuw4v34+NDGsPyu1NcHMt14GHYBK5CQ==" length="24060400" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: vooYxjyfmQumu5i4FONZWE9hiWFk2wrigiX3WgLomBYL0AuPTEyuMrMoK6zQ710Tp8rrbUoDmfqYB06K/sH2BA==
+length: 2773
 -->
