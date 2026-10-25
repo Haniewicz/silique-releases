@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.22</title><pubDate>Sun, 25 Oct 2026 18:03:31 +0000</pubDate><description>Silique 0.2.22 (build 31)
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.23</title><pubDate>Sun, 25 Oct 2026 19:34:13 +0000</pubDate><description>Silique 0.2.23 (build 32)
 
-Menu i wybory
-- Wszystkie menu kontekstowe i rozwijane (folder, notatka, sortowanie, narzędzia edytora, menu tekstowe, zarządzanie vaultami) korzystają z jednego ciemnego panelu z fioletowymi ikonami, zaokrąglonym podświetleniem, separatorami grup i większymi wierszami.
-- Wybór folderu przy przenoszeniu ma tę samą rodzinę wizualną: hierarchię z wcięciem, ikony, wyraźne zaznaczenie, wyszukiwanie, przewijanie i zablokowane cele (folder nadrzędny, własne podfoldery, kolizje nazw).
-- Wybór vaulta w panelu bocznym i w zarządzaniu vaultami używa tych samych wierszy, ikon statusu i blokady.
-
-Usuwanie vaulta wraz z zawartością
-- W „Zarządzaj vaultami" jest teraz rzeczywiste usunięcie vaulta, nie tylko wiersza w interfejsie.
-- Potwierdzenie pokazuje nazwę i identyfikator, jasno mówi o nieodwracalności i o zakresie (tylko to urządzenie albo konto, serwer i zgodne urządzenia) oraz wymaga wpisania dokładnej nazwy vaulta. Anulowanie nic nie zmienia.
-- Usuwanie obejmuje notatki, także ukryte i z kosza, foldery, historię, oczekujące zmiany, załączniki, lokalny indeks, klucze sesji tego vaulta, kopię lustrzaną Markdown oraz widżety i podglądy. Inne vaulty, klucz konta i wspólne hasło ukrytych notatek pozostają nietknięte.
-- Vault synchronizowany jest usuwany najpierw na koncie właściciela przez serwer; dopiero potwierdzenie serwera uruchamia lokalne czyszczenie. Przy niepewnej odpowiedzi zapisy pozostają zablokowane, dopóki ponowienie nie ustali wyniku — usunięty vault nie wraca przez synchronizację.
-- Usunięcie nie obejmuje eksportów, kopii zapasowych, poprzednich miejsc zapisu ani kopii na odłączonych urządzeniach i nie jest fizycznym wymazaniem nośnika.</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.22/Silique-0.2.22-macOS.zip" sparkle:version="31" sparkle:shortVersionString="0.2.22" sparkle:edSignature="cWG0mj9NYkaxtASeekR0aI4vrTh5eLFN6u4N6Cb2QgPsY9XedGg6w3Lxuw4v34+NDGsPyu1NcHMt14GHYBK5CQ==" length="24060400" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
-edSignature: vooYxjyfmQumu5i4FONZWE9hiWFk2wrigiX3WgLomBYL0AuPTEyuMrMoK6zQ710Tp8rrbUoDmfqYB06K/sH2BA==
-length: 2773
+- Windows: aplikacja nie kończy się już ekranem błędu przy każdym uruchomieniu po pierwszym. Gdy folder notatek odmówi plików dziennika WAL (np. folder synchronizowany z chmurą albo chroniony przez Zabezpieczenia Windows), Silique przechodzi na dziennik wycofywania z pełnym zapisem synchronicznym: notatki zostają, zapis i odczyt działają, a kolejne uruchomienie znów próbuje WAL.
+- Krótkotrwała blokada pliku bazy (antywirus, klient synchronizacji) jest ponawiana, zamiast kończyć start błędem.
+- Przed pokazaniem notatek aplikacja sprawdza rzeczywistym zapisem, że baza przyjmuje zmiany — brak zapisu kończy się czytelnym komunikatem z prawdziwą ścieżką i kodem błędu systemu, zamiast tekstu o pęku kluczy.
+- Nowe przyciski na ekranie błędu startu: „Spróbuj ponownie”, „Wskaż inny folder” i „Kopiuj diagnostykę” (pełny wpis z logu diagnostycznego).
+- Log diagnostyczny startu trafia do katalogu aplikacji (nie do folderu notatek) i jest przycinany, więc nie rośnie bez ograniczenia.
+- Zamknięcie okna domyka dziennik bazy (checkpoint), żeby następne uruchomienie nie odtwarzało stron po nagłym zakończeniu procesu.</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.23/Silique-0.2.23-macOS.zip" sparkle:version="32" sparkle:shortVersionString="0.2.23" sparkle:edSignature="iZswKt4NpaH4vghhdNaGcD/NpaFGiLR7TxHqbAxQDY2qCEBxoC+Mos6rYWAK2PvN+6pOMrFAz8x9XY2a1VUoCQ==" length="24081359" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: X+0azN5V/IW1bjf6Gj9OxjYb+mnOwEwDIL5Cw+HPXEd5zCV5xVOyboSCqn3AVfV3FU20I3SbejyoVQHhdOclCQ==
+length: 2223
 -->
