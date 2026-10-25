@@ -1,44 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.19</title><pubDate>Sat, 24 Oct 2026 20:42:53 +0000</pubDate><description># Silique 0.2.19+28
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.20</title><pubDate>Sun, 25 Oct 2026 05:00:58 +0000</pubDate><description>Silique 0.2.20
 
-## Zakres
+- Ukryte notatki pozostają odblokowane przez czas ustawiony w ustawieniach, niezależnie od miejsca odblokowania. Tryb blokowania przy opuszczeniu sekcji nadal działa.
+- Wyszukiwarka otwierana z widgetu Androida zasłania poprzedni ekran, chroniąc zawartość edytora, i od razu ustawia kursor w polu wyszukiwania. Lista wyników dopasowuje się do dostępnej wysokości.
+- Przenoszenie notatek używa listy istniejących folderów z hierarchią, wyszukiwaniem i potwierdzeniem wyboru. „Wszystkie notatki” są domyślnym miejscem docelowym.
+- Zwykłe notatki można przenieść do ukrytych. Ukryte można usunąć po potwierdzeniu lub przenieść do wybranego folderu.
 
-**Ukryte notatki nie są już opisywane jako lokalne.** Aplikacja i dokumentacja
-mówią teraz wprost, że notatki ukryte synchronizują się w dodatkowo zaszyfrowanej
-kopercie: osobne hasło szyfruje całą notatkę, a serwer widzi tylko zaszyfrowane
-rewizje. Zmieniono etykiety stanu („Zaszyfrowane • ukryte”, „Zaszyfrowane
-end-to-end”), teksty dialogów hasła, potwierdzenie przenoszenia do ukrytych oraz
-`docs/HIDDEN_SYNC.md`. Historyczna notatka 0.2.17 została uzupełniona, że
-lokalność dotyczyła wyłącznie tamtej wersji.
-
-**Auto-blokada przy wejściu do folderu.** Otworzenie folderu „Ukryte” — zarówno
-gdy sekcja jest już odblokowana, jak i przy odblokowaniu hasłem z tego miejsca —
-korzysta z tej samej reguły bezczynności co ustawienia: po upływie wybranego
-czasu klucz jest zapominany, a lista i edytor tracą treść. Reguła jest teraz
-przypięta testami dla obu ścieżek, wraz z asercją, że po wygaśnięciu folder nie
-wyświetla już tytułów.
-
-**Widgety w stylu aplikacji.** Powierzchnie launcherów korzystają z palety
-`lib/ui/theme.dart`: tło `#131925`, karty `#181f2f`, linie `#2c3548`, tekst
-`#eeefff`, wyciszony `#a5aec8`, akcent `#8275ff`. Notatki są kartami z
-zaokrągleniem 12 dp i ripple, nagłówek ma akcentowany chevron, a okno
-wyszukiwania jest ciemne zamiast systemowego jasnego. Kolory i typografia są
-wspólne dla wszystkich czterech widgetów i przypięte testem Robolectric.
-
-**Lista notatek bez odblokowywania aplikacji.** Widget nie czyści już swojej
-zawartości, gdy vault jest zamknięty: ostatnia zaszyfrowana migawka zostaje w
-magazynie chronionym AndroidKeystore i jest pokazywana po restarcie procesu.
-Notatki ukryte nadal nigdy nie trafiają do migawki — są dostępne wyłącznie w
-aplikacji. Wyczyszczenie listy następuje tylko wtedy, gdy w odblokowanym koncie
-naprawdę nie ma już notatek (albo przed operacją prywatyzującą).
-
-## Weryfikacja
-
-Zestaw testów Flutter i testy natywne Kotlina (Robolectric) — wyniki w sekcji
-publikacji w `docs/HANDOFF.md`. Wydanie zbudowane dla czterech platform i
-opublikowane bez oczekiwania na test właściciela, na jego wyraźne polecenie.
-</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.19/Silique-0.2.19-macOS.zip" sparkle:version="28" sparkle:shortVersionString="0.2.19" sparkle:edSignature="YeiA4IzIkYowl83TjKpi1hNGZ+4TIMyEVJgfWakkGl5MlprYkXWNQGDl9BKNMi3Ub65e/yS2t41cA3iNquCOBg==" length="24084080" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
-edSignature: ZyePG+QG2Ud0aqHX+P7G5QkRXqvt2WI5AYIL+xVejuMcE8WAU0KCeXtmBRmZtNbpSOEiXG3ErGoIjbzIKktaDQ==
-length: 3225
+Kandydat przygotowano bez osobistego testu właściciela; wydanie pozostaje nieopublikowane do spełnienia warunków AGENTS.md.
+</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.20/Silique-0.2.20-macOS.zip" sparkle:version="29" sparkle:shortVersionString="0.2.20" sparkle:edSignature="AOko0jqjz6gwhmxtiUU7n8oOIqywuQWWTbw7IscN4fbGnYbHG13dvh4rVDkKP4l6oyCYZaI3tW69c3p+nYFqCw==" length="24084367" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: WiSSRjuoDuNjLQiQMPxX76tgtsMdsEuZgEftzuC86HbQXftpc0z9wAVvUhAu6rUw5JszUVnpTwyl7F+DpQoSBg==
+length: 1841
 -->
