@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.23</title><pubDate>Sun, 25 Oct 2026 19:34:13 +0000</pubDate><description>Silique 0.2.23 (build 32)
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.26</title><pubDate>Mon, 26 Oct 2026 13:55:08 +0000</pubDate><description>Silique 0.2.26 (build 35)
 
-- Windows: aplikacja nie kończy się już ekranem błędu przy każdym uruchomieniu po pierwszym. Gdy folder notatek odmówi plików dziennika WAL (np. folder synchronizowany z chmurą albo chroniony przez Zabezpieczenia Windows), Silique przechodzi na dziennik wycofywania z pełnym zapisem synchronicznym: notatki zostają, zapis i odczyt działają, a kolejne uruchomienie znów próbuje WAL.
-- Krótkotrwała blokada pliku bazy (antywirus, klient synchronizacji) jest ponawiana, zamiast kończyć start błędem.
-- Przed pokazaniem notatek aplikacja sprawdza rzeczywistym zapisem, że baza przyjmuje zmiany — brak zapisu kończy się czytelnym komunikatem z prawdziwą ścieżką i kodem błędu systemu, zamiast tekstu o pęku kluczy.
-- Nowe przyciski na ekranie błędu startu: „Spróbuj ponownie”, „Wskaż inny folder” i „Kopiuj diagnostykę” (pełny wpis z logu diagnostycznego).
-- Log diagnostyczny startu trafia do katalogu aplikacji (nie do folderu notatek) i jest przycinany, więc nie rośnie bez ograniczenia.
-- Zamknięcie okna domyka dziennik bazy (checkpoint), żeby następne uruchomienie nie odtwarzało stron po nagłym zakończeniu procesu.</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.23/Silique-0.2.23-macOS.zip" sparkle:version="32" sparkle:shortVersionString="0.2.23" sparkle:edSignature="iZswKt4NpaH4vghhdNaGcD/NpaFGiLR7TxHqbAxQDY2qCEBxoC+Mos6rYWAK2PvN+6pOMrFAz8x9XY2a1VUoCQ==" length="24081359" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
-edSignature: X+0azN5V/IW1bjf6Gj9OxjYb+mnOwEwDIL5Cw+HPXEd5zCV5xVOyboSCqn3AVfV3FU20I3SbejyoVQHhdOclCQ==
-length: 2223
+Windows — dostęp do folderu notatek
+- Przed otwarciem bazy aplikacja sprawdza możliwość zapisu. Zablokowany folder daje czytelny komunikat i diagnostykę zamiast mylącego błędu pęku kluczy.
+- Po potwierdzonym, świeżym zdarzeniu blokady Defendera 1123 aplikacja oferuje jawne zezwolenie na Kontrolowany dostęp do folderów. Wymaga ono zgody w systemowym oknie UAC i dotyczy konkretnej aplikacji, nie tylko jednego folderu. Nie wyłącza Defendera ani skanowania.
+- Zezwolenie jest dostępne wyłącznie dla chronionej instalacji w Program Files. Kopie per-user i portable otrzymują diagnozę i instrukcję, bez trwałego wyjątku.
+- Instalator Windows używa Program Files i wymaga administratora. Nie usuwa starej instalacji ani danych i nie uruchamia aplikacji z podniesionymi uprawnieniami po instalacji. Po instalacji uruchom Silique ze skrótu.
+- Poprawiono obsługę ścieżek ze znakami spoza ASCII oraz diagnozę zablokowanego folderu przy pierwszej konfiguracji.
+
+Odzyskiwanie i zachowanie danych
+- Można jawnie przenieść notatki z folderu blokującego zapis do innego miejsca; kopia jest sprawdzana przed przełączeniem lokalizacji, a oryginał pozostaje nietknięty.
+- Zachowane są istniejące klucze, vaulty i format szyfrowania. Ta wersja nie wprowadza jeszcze wyboru przechowywania klucza poza systemowym pękiem.
+
+Ograniczenia
+- Instalator Windows i pomocnik UAC nie mają podpisu Authenticode; system może pokazać nieznanego wydawcę.
+- Nie wykonano interaktywnego testu dodatniego CFA → UAC → zezwolenie na komputerze właściciela ani jego osobistego testu instalacji. Publikacja następuje na aktualne polecenie właściciela, bez oczekiwania na te testy.
+- Usuwanie starych kopii, skrótów, eksportów i kopii zapasowych pozostaje osobną decyzją użytkownika.
+
+Instalatory: macOS, Android, Windows oraz Linux GTK4.
+</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.26/Silique-0.2.26-macOS.zip" sparkle:version="35" sparkle:shortVersionString="0.2.26" sparkle:edSignature="VMnWGpqyXWP2egoxJ/yAS1fmDG5+E+1sOoCqhZnsoFzkht2IbdtbNzo9vD9MtSbnhvTvCuhElCJKm1dVKWf1Aw==" length="24124946" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: ZA8fB8wnNjtlyRiEj42Qo1dwczU1sZGv05Jqigu02qePg5GB813hGKNtPLwHRbg01ckAMkpXpzEAvKmk3UNdAQ==
+length: 2909
 -->
