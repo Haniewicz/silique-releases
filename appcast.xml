@@ -1,25 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.26</title><pubDate>Mon, 26 Oct 2026 13:55:08 +0000</pubDate><description>Silique 0.2.26 (build 35)
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.27</title><pubDate>Mon, 26 Oct 2026 20:59:26 +0000</pubDate><description># Silique 0.2.27+36 — wybór miejsca przechowywania poświadczeń
 
-Windows — dostęp do folderu notatek
-- Przed otwarciem bazy aplikacja sprawdza możliwość zapisu. Zablokowany folder daje czytelny komunikat i diagnostykę zamiast mylącego błędu pęku kluczy.
-- Po potwierdzonym, świeżym zdarzeniu blokady Defendera 1123 aplikacja oferuje jawne zezwolenie na Kontrolowany dostęp do folderów. Wymaga ono zgody w systemowym oknie UAC i dotyczy konkretnej aplikacji, nie tylko jednego folderu. Nie wyłącza Defendera ani skanowania.
-- Zezwolenie jest dostępne wyłącznie dla chronionej instalacji w Program Files. Kopie per-user i portable otrzymują diagnozę i instrukcję, bez trwałego wyjątku.
-- Instalator Windows używa Program Files i wymaga administratora. Nie usuwa starej instalacji ani danych i nie uruchamia aplikacji z podniesionymi uprawnieniami po instalacji. Po instalacji uruchom Silique ze skrótu.
-- Poprawiono obsługę ścieżek ze znakami spoza ASCII oraz diagnozę zablokowanego folderu przy pierwszej konfiguracji.
+- Nowe ustawienie: poświadczenia mogą leżeć w pliku lokalnym na urządzeniu albo w systemowym magazynie kluczy.
+- Wybór jest jawny przy pierwszej konfiguracji; wstępnie zaznaczony wariant lokalny, z widocznym ostrzeżeniem o słabszej ochronie niż systemowy magazyn.
+- Przełączanie w obu kierunkach z Ustawień, z odtwarzalną migracją: istniejące notatki, hasło do ukrytych notatek i klucze pozostają nietknięte.
+- Poprzednie poświadczenia są zachowywane do chwili potwierdzonego zapisu nowych; stan jest odczytywany zwrotnie, nie z pamięci procesu.
+- Instalacje bez znacznika trybu traktowane są jako odzyskanie lokalizacji, nie jako zgoda na reset magazynu.
 
-Odzyskiwanie i zachowanie danych
-- Można jawnie przenieść notatki z folderu blokującego zapis do innego miejsca; kopia jest sprawdzana przed przełączeniem lokalizacji, a oryginał pozostaje nietknięty.
-- Zachowane są istniejące klucze, vaulty i format szyfrowania. Ta wersja nie wprowadza jeszcze wyboru przechowywania klucza poza systemowym pękiem.
+Poprawki wykryte przez budowanie wydania:
 
-Ograniczenia
-- Instalator Windows i pomocnik UAC nie mają podpisu Authenticode; system może pokazać nieznanego wydawcę.
-- Nie wykonano interaktywnego testu dodatniego CFA → UAC → zezwolenie na komputerze właściciela ani jego osobistego testu instalacji. Publikacja następuje na aktualne polecenie właściciela, bez oczekiwania na te testy.
-- Usuwanie starych kopii, skrótów, eksportów i kopii zapasowych pozostaje osobną decyzją użytkownika.
+- macOS: fixture testowy startuje z kanonicznej ścieżki (na macOS `/var` jest symlinkiem, a natywny walidator odmawia symlinkowanych komponentów).
+- Testy natywnych sond działają także tam, gdzie `dart` nie jest w `PATH` (kontenery budujące), a brak kompilatora `cc` daje pominięcie z powodem, nie fałszywą awarię.
 
-Instalatory: macOS, Android, Windows oraz Linux GTK4.
-</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.26/Silique-0.2.26-macOS.zip" sparkle:version="35" sparkle:shortVersionString="0.2.26" sparkle:edSignature="VMnWGpqyXWP2egoxJ/yAS1fmDG5+E+1sOoCqhZnsoFzkht2IbdtbNzo9vD9MtSbnhvTvCuhElCJKm1dVKWf1Aw==" length="24124946" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
-edSignature: ZA8fB8wnNjtlyRiEj42Qo1dwczU1sZGv05Jqigu02qePg5GB813hGKNtPLwHRbg01ckAMkpXpzEAvKmk3UNdAQ==
-length: 2909
+Weryfikacja: 686 testów zaliczonych, Robolectric 37/37, analizator i formatowanie czyste. Wszystkie instalatory z jednego źródła `6c9b147`.</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.27/Silique-0.2.27-macOS.zip" sparkle:version="36" sparkle:shortVersionString="0.2.27" sparkle:edSignature="E8jq6V8Jue2bcxHcyor0SxftTv7wwlDmMhLPXWUH7LfoTKGsh3Ni3gxNWpxMebUHa4kYm4E25jxTk1ty/Z8BDw==" length="24201471" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: ACCGNSu69Xb/kVDIdiS4puGWYpv4C6Su+zY+V3qKt0O1GXfjEwkauSw3C9Vg/KrvhNiLfT9dWP5w8d+eRZYrAQ==
+length: 2282
 -->
