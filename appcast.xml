@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.27</title><pubDate>Mon, 26 Oct 2026 20:59:26 +0000</pubDate><description># Silique 0.2.27+36 — wybór miejsca przechowywania poświadczeń
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.28</title><pubDate>Mon, 26 Oct 2026 22:28:47 +0000</pubDate><description># Silique 0.2.28+37 — naprawa startu na Androidzie po 0.2.27
 
-- Nowe ustawienie: poświadczenia mogą leżeć w pliku lokalnym na urządzeniu albo w systemowym magazynie kluczy.
-- Wybór jest jawny przy pierwszej konfiguracji; wstępnie zaznaczony wariant lokalny, z widocznym ostrzeżeniem o słabszej ochronie niż systemowy magazyn.
-- Przełączanie w obu kierunkach z Ustawień, z odtwarzalną migracją: istniejące notatki, hasło do ukrytych notatek i klucze pozostają nietknięte.
-- Poprzednie poświadczenia są zachowywane do chwili potwierdzonego zapisu nowych; stan jest odczytywany zwrotnie, nie z pamięci procesu.
-- Instalacje bez znacznika trybu traktowane są jako odzyskanie lokalizacji, nie jako zgoda na reset magazynu.
+W 0.2.27 aplikacja na Androidzie nie mogła się otworzyć i pokazywała:
 
-Poprawki wykryte przez budowanie wydania:
+`FileSystemException: open private credential file, path = '' (OS Error: Native credential operation failed, errno = 13)`
 
-- macOS: fixture testowy startuje z kanonicznej ścieżki (na macOS `/var` jest symlinkiem, a natywny walidator odmawia symlinkowanych komponentów).
-- Testy natywnych sond działają także tam, gdzie `dart` nie jest w `PATH` (kontenery budujące), a brak kompilatora `cc` daje pominięcie z powodem, nie fałszywą awarię.
+Przyczyna: przy odczycie poświadczeń kod szedł ścieżką od katalogu głównego i otwierał każdy katalog nadrzędny **do czytania**. Android montuje `/data` z prawami `0771`, więc aplikacja może przez niego przejść, ale nie może go wylistować — jądro zwracało `EACCES` (13) jeszcze przed dotarciem do katalogu poświadczeń.
 
-Weryfikacja: 686 testów zaliczonych, Robolectric 37/37, analizator i formatowanie czyste. Wszystkie instalatory z jednego źródła `6c9b147`.</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.27/Silique-0.2.27-macOS.zip" sparkle:version="36" sparkle:shortVersionString="0.2.27" sparkle:edSignature="E8jq6V8Jue2bcxHcyor0SxftTv7wwlDmMhLPXWUH7LfoTKGsh3Ni3gxNWpxMebUHa4kYm4E25jxTk1ty/Z8BDw==" length="24201471" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
-edSignature: ACCGNSu69Xb/kVDIdiS4puGWYpv4C6Su+zY+V3qKt0O1GXfjEwkauSw3C9Vg/KrvhNiLfT9dWP5w8d+eRZYrAQ==
-length: 2282
+Poprawka: katalogi nadrzędne są otwierane z `O_PATH` (wymaga tylko prawa przejścia), a pełny, czytelny uchwyt dostaje wyłącznie sam katalog poświadczeń — on jeden musi obsługiwać `fsync` i tworzenie plików. Ochrona przed symlinkami (`O_NOFOLLOW`) i walidacja właściciela, typu i praw `0700`/`0600` pozostają bez zmian.
+
+Zakres: dotyczy wyłącznie ścieżki startowej na Androidzie i Linuksie; macOS i Windows korzystają z innych implementacji. Nie zmieniono formatu danych, kluczy ani sposobu migracji — istniejące instalacje i notatki działają bez zmian.
+
+Weryfikacja: nowy test regresyjny (katalog nadrzędny z prawem tylko przejścia) wcześniej kończył się `EACCES`, teraz przechodzi; pełny zestaw testów aplikacji zielony, analizator i formatowanie czyste. Wszystkie instalatory z jednego źródła.</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.28/Silique-0.2.28-macOS.zip" sparkle:version="37" sparkle:shortVersionString="0.2.28" sparkle:edSignature="l4fthnp8YHESvvkVaErYf9UaxFyIdoqiiCLax6YPpMPkPl0oLE/32lvBRD64Jc8x1ujbF57uwBVLcaioaJmGBA==" length="24199745" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: EQcTDTHbvIvzIMV1p88J8hFgBOKxzyrTq1NSmvTwE+/kJRyQzIsuuXgSt9j7WY+7MCT4x7NB2ddBQq0m7vf2CA==
+length: 2456
 -->
