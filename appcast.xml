@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.30</title><pubDate>Tue, 27 Oct 2026 12:56:49 +0000</pubDate><description>Silique 0.2.30
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.31</title><pubDate>Tue, 27 Oct 2026 19:41:36 +0000</pubDate><description>Silique 0.2.31
 
-- macOS: instalator DMG zamiast ZIP. Otwórz obraz i przeciągnij Silique do folderu Applications (Programy), zastępując poprzednią instalację.
-- Od tej wersji aktualizator macOS korzysta z tego samego podpisanego DMG, który jest dostępny do ręcznego pobrania.
-- Ważne: macOS 0.2.29 lub starszy wymaga jednorazowej ręcznej instalacji DMG. Kolejne aktualizacje są dostępne z aplikacji. Zachowaj dotychczasowy notatnik i poświadczenia; nie usuwaj folderów danych ani wpisów pęku kluczy.
-- Zgodność manifestu zachowuje aktualizacje dotychczasowych instalacji Androida i Linuksa.
-- Podpis lokalny macOS pozostaje bez notaryzacji Apple. DMG nie usuwa ostrzeżenia Gatekeepera; przy pierwszym uruchomieniu może być potrzebne „Otwórz mimo to” w Prywatność i ochrona.
-</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.30/Silique-0.2.30-macOS.dmg" sparkle:version="39" sparkle:shortVersionString="0.2.30" sparkle:edSignature="qwzTvxeBUxRMM45KtPj5pQZntpLcwLWl9Tg9kTQh7sRALuz8g/gkQfmzoJkF3Dn4Ao0uMxnrAA4NSPJeCHE0BQ==" length="27340289" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
-edSignature: dxmgeAK6ISbyA8KPaOYcajHgM07JRjwlawYXcUEVBiisa2r3LsbKtQNlSrAtp/OAJI2q6hKmwUeP85+O0lREBA==
-length: 1822
+- macOS: naprawiony błąd -50 przy starcie aplikacji. Lista kluczy w pęku
+  kluczy jest teraz odczytywana bez żądania danych dla wszystkich wpisów
+  naraz, więc odczyt, migracja i zapis poświadczeń działają poprawnie.
+- Istniejące notatki i poświadczenia pozostają bez zmian — nie trzeba
+  logować się ponownie ani odtwarzać danych.
+- Bez zmian w formacie danych, serwerze i na pozostałych platformach.</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.31/Silique-0.2.31-macOS.dmg" sparkle:version="40" sparkle:shortVersionString="0.2.31" sparkle:edSignature="2cUXVIcARaBuO1Jp1s+Ra5+hIN+w4QRYyQMXE+YvhZBcJ37FwT4XsJnQHT6/l5OS0/l2O/ak4BUk71dNEUwUCQ==" length="27324554" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: au2yUCE5+MyUO/xGYO5Xd+Knp9TAjPo+nrZMWXql+9SOUqzMmNsweLtIZqP7CjWx415RvSW/U5pHyCkANVW9Aw==
+length: 1457
 -->
