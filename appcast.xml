@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.29</title><pubDate>Tue, 27 Oct 2026 10:04:42 +0000</pubDate><description>Silique 0.2.29
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.30</title><pubDate>Tue, 27 Oct 2026 12:56:49 +0000</pubDate><description>Silique 0.2.30
 
-- macOS: poprawiono otwieranie magazynu poświadczeń przy starcie aplikacji w sandboxie. Dotychczasowe klucze i notatki pozostają zachowane; nie trzeba usuwać magazynu ani zmieniać jego trybu.
-- Android: nowe instalacje używają systemowego Keystore bez wyboru słabszego lokalnego pliku.
-- Android: instalacje z lokalnym magazynem otrzymują jednorazową propozycję przeniesienia tych samych poświadczeń do Keystore; bez zgody nie zmieniamy trybu ani danych.
-</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.29/Silique-0.2.29-macOS.zip" sparkle:version="38" sparkle:shortVersionString="0.2.29" sparkle:edSignature="pmBVlFolhn8xfT5OoVaFeCpL0+euS3akM0xfLxntf1zg5Z3EwEbjVjCupj3z1Bid4JrqTyX6MIDj/HWwiJsVBQ==" length="24207410" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
-edSignature: 1Uv6gPX6ChFXMEWPmDLmOJxDrFPhii3sKj+Yu8+YiehBe1GGd7Jp9IpfC4HBkP9mFep8pm741LI3o9Mv814bDQ==
-length: 1504
+- macOS: instalator DMG zamiast ZIP. Otwórz obraz i przeciągnij Silique do folderu Applications (Programy), zastępując poprzednią instalację.
+- Od tej wersji aktualizator macOS korzysta z tego samego podpisanego DMG, który jest dostępny do ręcznego pobrania.
+- Ważne: macOS 0.2.29 lub starszy wymaga jednorazowej ręcznej instalacji DMG. Kolejne aktualizacje są dostępne z aplikacji. Zachowaj dotychczasowy notatnik i poświadczenia; nie usuwaj folderów danych ani wpisów pęku kluczy.
+- Zgodność manifestu zachowuje aktualizacje dotychczasowych instalacji Androida i Linuksa.
+- Podpis lokalny macOS pozostaje bez notaryzacji Apple. DMG nie usuwa ostrzeżenia Gatekeepera; przy pierwszym uruchomieniu może być potrzebne „Otwórz mimo to” w Prywatność i ochrona.
+</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.30/Silique-0.2.30-macOS.dmg" sparkle:version="39" sparkle:shortVersionString="0.2.30" sparkle:edSignature="qwzTvxeBUxRMM45KtPj5pQZntpLcwLWl9Tg9kTQh7sRALuz8g/gkQfmzoJkF3Dn4Ao0uMxnrAA4NSPJeCHE0BQ==" length="27340289" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: dxmgeAK6ISbyA8KPaOYcajHgM07JRjwlawYXcUEVBiisa2r3LsbKtQNlSrAtp/OAJI2q6hKmwUeP85+O0lREBA==
+length: 1822
 -->
