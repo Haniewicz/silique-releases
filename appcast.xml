@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.28</title><pubDate>Mon, 26 Oct 2026 22:28:47 +0000</pubDate><description># Silique 0.2.28+37 — naprawa startu na Androidzie po 0.2.27
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.29</title><pubDate>Tue, 27 Oct 2026 10:04:42 +0000</pubDate><description>Silique 0.2.29
 
-W 0.2.27 aplikacja na Androidzie nie mogła się otworzyć i pokazywała:
-
-`FileSystemException: open private credential file, path = '' (OS Error: Native credential operation failed, errno = 13)`
-
-Przyczyna: przy odczycie poświadczeń kod szedł ścieżką od katalogu głównego i otwierał każdy katalog nadrzędny **do czytania**. Android montuje `/data` z prawami `0771`, więc aplikacja może przez niego przejść, ale nie może go wylistować — jądro zwracało `EACCES` (13) jeszcze przed dotarciem do katalogu poświadczeń.
-
-Poprawka: katalogi nadrzędne są otwierane z `O_PATH` (wymaga tylko prawa przejścia), a pełny, czytelny uchwyt dostaje wyłącznie sam katalog poświadczeń — on jeden musi obsługiwać `fsync` i tworzenie plików. Ochrona przed symlinkami (`O_NOFOLLOW`) i walidacja właściciela, typu i praw `0700`/`0600` pozostają bez zmian.
-
-Zakres: dotyczy wyłącznie ścieżki startowej na Androidzie i Linuksie; macOS i Windows korzystają z innych implementacji. Nie zmieniono formatu danych, kluczy ani sposobu migracji — istniejące instalacje i notatki działają bez zmian.
-
-Weryfikacja: nowy test regresyjny (katalog nadrzędny z prawem tylko przejścia) wcześniej kończył się `EACCES`, teraz przechodzi; pełny zestaw testów aplikacji zielony, analizator i formatowanie czyste. Wszystkie instalatory z jednego źródła.</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.28/Silique-0.2.28-macOS.zip" sparkle:version="37" sparkle:shortVersionString="0.2.28" sparkle:edSignature="l4fthnp8YHESvvkVaErYf9UaxFyIdoqiiCLax6YPpMPkPl0oLE/32lvBRD64Jc8x1ujbF57uwBVLcaioaJmGBA==" length="24199745" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
-edSignature: EQcTDTHbvIvzIMV1p88J8hFgBOKxzyrTq1NSmvTwE+/kJRyQzIsuuXgSt9j7WY+7MCT4x7NB2ddBQq0m7vf2CA==
-length: 2456
+- macOS: poprawiono otwieranie magazynu poświadczeń przy starcie aplikacji w sandboxie. Dotychczasowe klucze i notatki pozostają zachowane; nie trzeba usuwać magazynu ani zmieniać jego trybu.
+- Android: nowe instalacje używają systemowego Keystore bez wyboru słabszego lokalnego pliku.
+- Android: instalacje z lokalnym magazynem otrzymują jednorazową propozycję przeniesienia tych samych poświadczeń do Keystore; bez zgody nie zmieniamy trybu ani danych.
+</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.29/Silique-0.2.29-macOS.zip" sparkle:version="38" sparkle:shortVersionString="0.2.29" sparkle:edSignature="pmBVlFolhn8xfT5OoVaFeCpL0+euS3akM0xfLxntf1zg5Z3EwEbjVjCupj3z1Bid4JrqTyX6MIDj/HWwiJsVBQ==" length="24207410" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: 1Uv6gPX6ChFXMEWPmDLmOJxDrFPhii3sKj+Yu8+YiehBe1GGd7Jp9IpfC4HBkP9mFep8pm741LI3o9Mv814bDQ==
+length: 1504
 -->
