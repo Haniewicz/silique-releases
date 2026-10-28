@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.31</title><pubDate>Tue, 27 Oct 2026 19:41:36 +0000</pubDate><description>Silique 0.2.31
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.32</title><pubDate>Wed, 28 Oct 2026 07:39:35 +0000</pubDate><description>Silique 0.2.32 — aktualizator Windows
 
-- macOS: naprawiony błąd -50 przy starcie aplikacji. Lista kluczy w pęku
-  kluczy jest teraz odczytywana bez żądania danych dla wszystkich wpisów
-  naraz, więc odczyt, migracja i zapis poświadczeń działają poprawnie.
-- Istniejące notatki i poświadczenia pozostają bez zmian — nie trzeba
-  logować się ponownie ani odtwarzać danych.
-- Bez zmian w formacie danych, serwerze i na pozostałych platformach.</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.31/Silique-0.2.31-macOS.dmg" sparkle:version="40" sparkle:shortVersionString="0.2.31" sparkle:edSignature="2cUXVIcARaBuO1Jp1s+Ra5+hIN+w4QRYyQMXE+YvhZBcJ37FwT4XsJnQHT6/l5OS0/l2O/ak4BUk71dNEUwUCQ==" length="27324554" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
-edSignature: au2yUCE5+MyUO/xGYO5Xd+Knp9TAjPo+nrZMWXql+9SOUqzMmNsweLtIZqP7CjWx415RvSW/U5pHyCkANVW9Aw==
-length: 1457
+Windows: w Ustawieniach zainstalowanej aplikacji można jawnie pobrać i uruchomić aktualizację. Podpis manifestu, rozmiar, SHA256 i tożsamość instalacji są weryfikowane; zapis notatek jest kończony przed przekazaniem sterowania instalatorowi. Aktualizacja zachowuje dotychczasowy chroniony katalog, także niestandardowy.
+
+Windows ZIP portable oraz stare lub nierozpoznane instalacje pozostają aktualizowane ręcznie. Instalator nie zamyka aplikacji siłowo i nie uruchamia jej z uprawnieniami administratora: po instalacji otwórz Silique ze zwykłego skrótu. Setup pozostaje bez Authenticode; systemowy UAC może pokazać nieznanego wydawcę. Odmowa UAC przywraca aplikację, a anulowanie już uruchomionego Setup nie oznacza, że nic się nie zmieniło.
+
+macOS: tylko DMG, ten sam pakiet do ręcznej instalacji i Sparkle. Brak Developer ID/notaryzacji pozostaje; podpis pakietu nie jest potwierdzeniem akceptacji Gatekeeper. Dla zaufanego pakietu system może wymagać wyjątku tylko dla tej aplikacji w Prywatność i ochrona → Otwórz mimo to. Nie wyłączaj ochrony globalnie. Klienci macOS do 0.2.29 wymagają jednorazowej ręcznej instalacji DMG.
+
+Wydanie obejmuje siedem instalatorów dla czterech platform. Nie wykonano osobistego testu właściciela, interaktywnego UAC ani UAC z innym administratorem; podwyższony runner CI nie potwierdza tych scenariuszy. Publikacja na jednorazowe polecenie właściciela: „Kiedy wszystko będzie zrobione. Opublikuj wydanie bez mojej akceptacji”. Dane, klucze i identyfikatory pozostają zachowane; serwer i urządzenia właściciela nie były zmieniane.
+</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.32/Silique-0.2.32-macOS.dmg" sparkle:version="41" sparkle:shortVersionString="0.2.32" sparkle:edSignature="kVCUif7A4eTm0GQsbzlUg6eBi8XsDABEAFp7MTJcplh3Dijl/ZJmO9mNvBzU6jmQ57hWXZUZ0ApcnQI2HvZEBA==" length="27309584" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: qMVRzt/oX6t5kcYb9kF0yAjOEB+Wc7QhppIuYfRZ7vgKfLD5VkF3DNFLCQ11gQvnzivpThA7iDueZKVCY7MIBA==
+length: 2681
 -->
