@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.33</title><pubDate>Wed, 28 Oct 2026 23:45:16 +0000</pubDate><description>English is now the default Silique interface language. Choose English or Polski during first-run setup or in Settings; the choice is remembered and applies immediately, including app-owned dialogs, update messages and Android widgets/search.
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.34</title><pubDate>Thu, 29 Oct 2026 18:41:07 +0000</pubDate><description>Silique 0.2.34 — kandydat do testów / testing candidate
 
-Existing notes, folders, tags, vaults and keys remain unchanged. New default titles and sample content use the selected language. Mixed-language clients retain identical synchronization/conflict data.
+• Częściowe zaznaczanie i kopiowanie linków na komputerze, z zachowaniem otwierania linków.
+• Pełne menu edycji tekstu: Cofnij, Ponów, Wytnij, Kopiuj, Wklej, Usuń, Zaznacz wszystko.
+• Przestawianie folderów upuszczeniem przy górnej/dolnej krawędzi; środek nadal służy do zagnieżdżania. Kolejność jest zapisywana i synchronizowana.
+• Ochrona przed przechwytywaniem polskich znaków przez skróty Alt/AltGr; dotychczasowe Ctrl/Meta pozostają.
+• Wspólny import pliku Markdown/TXT lub całego folderu z podglądem i potwierdzeniem.
+• Poziome przyciski Usunięte / Ukryte / Importuj nad informacją o vaulcie, również w szufladzie telefonu.
+• Ograniczenie zbędnych odczytów pęku kluczy w jednej operacji, bez zmiany kluczy i systemowych zabezpieczeń.
+• Porządkowanie dawnej nazwy produktu; wymagane identyfikatory zgodności danych, instalacji, protokołów i podpisu pozostają bez zmian.
+• Pojedyncza ścieżka zapisu/zamykania i nieblokujący checkpoint zwykłego zamknięcia; rygorystyczne bariery aktualizatora pozostają.
 
-Operating-system/security/installer dialogs may use their own language. macOS remains a signed preview without Developer ID notarization; Windows has no Authenticode signature. No owner-device installation, personal test or interactive/alternate-administrator UAC test is claimed. Publication of this release was explicitly authorized without another owner approval; this is not a standing waiver for future releases.
+Szkic jest NIEOPUBLIKOWANY. Nie wykonano osobistego testu na urządzeniach właściciela. Testy natywnego runnera nie potwierdzają przyczyny zgłoszonego opóźnienia 3–4 sekund na konkretnym Windows, fizycznego polskiego układu klawiatury ani monitów Keychain po aktualizacji istniejącej instalacji. Lewy Alt nadal zależy od układu systemowego. Pojedynczy import zachowuje literalne odnośniki; import folderu przenosi również obsługiwane zdjęcia.
 
-Polski: dodano angielski jako język domyślny oraz zapamiętywany wybór English / Polski przy pierwszym uruchomieniu i w Ustawieniach. Zmiana działa na bieżąco. Istniejące notatki, dane i klucze pozostają bez zmian.
-</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.33/Silique-0.2.33-macOS.dmg" sparkle:version="42" sparkle:shortVersionString="0.2.33" sparkle:edSignature="CyBUqx4x8JHiVuFcwzm4/pT0eQ4wJpuhFplMkZO82Vhir5GvC2vqaNYcqm8DoW7L80lEy2DshwDWuetHQ1kWDQ==" length="27962326" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
-edSignature: tO2MA6Jencnhox4RuKiVQZyqUT66c3MrYOwsmFd6AjP2o7H3z0+m91dihFati4rbosII8+cxs9iphNk562AuDQ==
-length: 2107
+macOS zachowuje dotychczasowy podpis preview, bez Developer ID/notaryzacji; Windows nie ma Authenticode. Ochrona Gatekeeper/UAC nadal obowiązuje. Nie wyłączaj globalnie zabezpieczeń systemu. Dane, klucze i tożsamość instalacji mają pozostać zachowane.
+</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.34/Silique-0.2.34-macOS.dmg" sparkle:version="43" sparkle:shortVersionString="0.2.34" sparkle:edSignature="RH0eKJrl825utxzU2bZbE5NhP2PZmG+ylTRAM8toU2ZwpADZBiJKJu9ul1Lz8CzNYkPvS/ea6gVxnvJRYmH4Aw==" length="28010602" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: /DCaaN9KuiUObRU8GGmUhWG3BffNvq7zbFy7I1y8G/NaCv3wHRvr3M1lnwghn07uFmJOvQoJ2BEhjjSyb1zlAA==
+length: 2871
 -->
