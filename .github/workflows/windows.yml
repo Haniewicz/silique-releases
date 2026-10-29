@@ -29,6 +29,9 @@ jobs:
           ref: ${{ inputs.source_ref }}
           ssh-key: ${{ secrets.SILIQUE_SOURCE_READ_KEY }}
           persist-credentials: false
+          # Private builder compares a pinned historical close path on the same
+          # runner. Credentials are still removed before private tests execute.
+          fetch-depth: 0
           path: source
       - name: Install pinned Flutter toolchain
         uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2
