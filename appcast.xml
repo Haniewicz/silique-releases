@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.34</title><pubDate>Thu, 29 Oct 2026 18:41:07 +0000</pubDate><description>Silique 0.2.34 — kandydat do testów / testing candidate
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.35</title><pubDate>Wed, 04 Nov 2026 06:51:32 +0000</pubDate><description>Silique 0.2.35 — poprawki UX z partii 12 zgłoszeń właściciela
 
-• Częściowe zaznaczanie i kopiowanie linków na komputerze, z zachowaniem otwierania linków.
-• Pełne menu edycji tekstu: Cofnij, Ponów, Wytnij, Kopiuj, Wklej, Usuń, Zaznacz wszystko.
-• Przestawianie folderów upuszczeniem przy górnej/dolnej krawędzi; środek nadal służy do zagnieżdżania. Kolejność jest zapisywana i synchronizowana.
-• Ochrona przed przechwytywaniem polskich znaków przez skróty Alt/AltGr; dotychczasowe Ctrl/Meta pozostają.
-• Wspólny import pliku Markdown/TXT lub całego folderu z podglądem i potwierdzeniem.
-• Poziome przyciski Usunięte / Ukryte / Importuj nad informacją o vaulcie, również w szufladzie telefonu.
-• Ograniczenie zbędnych odczytów pęku kluczy w jednej operacji, bez zmiany kluczy i systemowych zabezpieczeń.
-• Porządkowanie dawnej nazwy produktu; wymagane identyfikatory zgodności danych, instalacji, protokołów i podpisu pozostają bez zmian.
-• Pojedyncza ścieżka zapisu/zamykania i nieblokujący checkpoint zwykłego zamknięcia; rygorystyczne bariery aktualizatora pozostają.
+• Naprawione tworzenie folderu w katalogu głównym przyciskiem „Nowy folder" — dotychczas po podaniu nazwy nic się nie działo (podfoldery działały).
+• Podpowiedzi linków do notatek ([[...]]) wyświetlają się jako pływająca lista przy kursorze — nie przesuwają już tekstu ani elementów interfejsu.
+• Kolory folderów: paleta w menu kontekstowym folderu, kolorowe ikony na listach i w oknach przenoszenia. Kolory są synchronizowane między urządzeniami i przeżywają restart; ukryte/usunięte foldery nigdy nie są przez nie odtwarzane.
+• Pełne menu edycji po zaznaczeniu tekstu na każdej platformie: Wytnij, Kopiuj, Wklej, Usuń, Zaznacz wszystko, Cofnij, Ponów.
+• Zwijanie listy notatek na komputerze: przełącznik w pasku kart edytora i w wierszu filtrów; edytor zajmuje zwolnione miejsce.
+• Tytuł i tagi przewijają się razem z treścią notatki zamiast wisieć stale na górze.
+• Enter w polu tytułu przenosi kursor do treści notatki.
+• Kliknięcie powiadomienia o dostępnej aktualizacji otwiera Ustawienia bezpośrednio na sekcji „Aktualizacje".
+• Formatowanie bloków kodu w edytorze Markdown.
+• Obsługa systemowej autokorekty na Androidzie (sugestie IME w polach edytora).
+• Hover przycisków Usunięte / Ukryte / Importuj: zaokrąglone tło w kolorze tła folderów, spójnie z resztą paska bocznego.
+• Android — świeża instalacja: jeśli po pobraniu APK przeglądarką pojawi się „Aplikacja nie została zainstalowana", pobierz plik ponownie i porównaj jego rozmiar oraz sumę SHA-256 z SHA256SUMS.txt. Pakiety 0.2.33–0.2.35 są podpisane dotychczasowym certyfikatem i poprawne (zweryfikowano apksigner/zipalign/manifesty); te same bajty instalują się przez wbudowany aktualizator. Przyczyną jest uszkodzone lub niedokończone pobranie albo stan urządzenia, nie błąd aplikacji.
 
-Szkic jest NIEOPUBLIKOWANY. Nie wykonano osobistego testu na urządzeniach właściciela. Testy natywnego runnera nie potwierdzają przyczyny zgłoszonego opóźnienia 3–4 sekund na konkretnym Windows, fizycznego polskiego układu klawiatury ani monitów Keychain po aktualizacji istniejącej instalacji. Lewy Alt nadal zależy od układu systemowego. Pojedynczy import zachowuje literalne odnośniki; import folderu przenosi również obsługiwane zdjęcia.
+Weryfikacja: pełny pakiet testów źródła tego wydania przeszedł na Linux (963 testy, 0 nieudanych) oraz w natywnych workflow CI wszystkich platform. Właściciel zwolnił to wydanie z osobistego testu przed publikacją (zgoda z 2026-11-02); test na urządzeniach właściciela NIE został wykonany. Zachowania zależne od konkretnego urządzenia (autokorekta IME na danym Androidzie, gesty, Gatekeeper/UAC) pozostają do potwierdzenia w codziennym użyciu.
 
-macOS zachowuje dotychczasowy podpis preview, bez Developer ID/notaryzacji; Windows nie ma Authenticode. Ochrona Gatekeeper/UAC nadal obowiązuje. Nie wyłączaj globalnie zabezpieczeń systemu. Dane, klucze i tożsamość instalacji mają pozostać zachowane.
-</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.34/Silique-0.2.34-macOS.dmg" sparkle:version="43" sparkle:shortVersionString="0.2.34" sparkle:edSignature="RH0eKJrl825utxzU2bZbE5NhP2PZmG+ylTRAM8toU2ZwpADZBiJKJu9ul1Lz8CzNYkPvS/ea6gVxnvJRYmH4Aw==" length="28010602" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
-edSignature: /DCaaN9KuiUObRU8GGmUhWG3BffNvq7zbFy7I1y8G/NaCv3wHRvr3M1lnwghn07uFmJOvQoJ2BEhjjSyb1zlAA==
-length: 2871
+macOS zachowuje dotychczasowy podpis preview, bez Developer ID/notaryzacji — przy pierwszym uruchomieniu użyj Otwórz mimo to (Ustawienia systemowe → Prywatność i bezpieczeństwo) dla tej jednej aplikacji; nie wyłączaj globalnie Gatekeepera. Windows nie ma podpisu Authenticode — UAC pokaże nieznanego wydawcę. Dane, klucze i tożsamości instalacji pozostają zachowane; przed aktualizacją zamknij poprzednią wersję aplikacji.
+</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.35/Silique-0.2.35-macOS.dmg" sparkle:version="44" sparkle:shortVersionString="0.2.35" sparkle:edSignature="sVn00El6k19ANRAutSj0GeYIF+p9G9gS59vC2HwOQ0/PA3M0WnS/gLWRT1F3uO8Ge+HG2ynUXWmHXVrCFMh6DQ==" length="28037761" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: /6zG5PQuhklZxk9OHg75Cg97LT1EdrkuVVG6Y4A63WsQDKuuvpcOrR2cjCcfeZt6ID7vudAtjSvzSF8h1So/AA==
+length: 3859
 -->
