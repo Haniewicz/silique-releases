@@ -1,33 +1,45 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.36</title><pubDate>Wed, 04 Nov 2026 12:01:44 +0000</pubDate><description>Silique 0.2.36
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.37</title><pubDate>Thu, 05 Nov 2026 03:30:00 +0000</pubDate><description>Silique 0.2.37+46
 
-• Linux: naprawione renderowanie bloków kodu — zamiast prostokątów widoczny jest
-  właściwy tekst. Aplikacja używa teraz dołączonego fontu Roboto Mono (licencja
-  OFL), więc bloki i wstawki kodu wyglądają identycznie na Linuksie, Androidzie,
-  macOS i Windows, niezależnie od fontów zainstalowanych w systemie.
-• Bloki kodu: większy odstęp tekstu od lewej krawędzi bloku (czytelniejsze
-  wcięcie każdej linii kodu, bez zmian w zapisie notatki).
-• Przycisk zwijania listy notatek przeniesiony do nagłówka panelu bocznego, przy
-  prawej krawędzi obok logo SILIQUE; dotychczasowe przyciski na pasku listy i na
-  pasku kart zostały usunięte (desktop).
-• Kolor folderu: nowa opcja „Kolor własny" (RGB) — pole na kod koloru w formacie
-  #RRGGBB lub RRGGBB, suwaki R/G/B z podglądem na żywo i walidacją błędnych
-  kodów; własny kolor zapisuje się i synchronizuje tak jak kolory z palety.
+Zmiany widoczne dla użytkownika:
+• Ustawienia podzielone na zakładki (Ogólne, Konto i synchronizacja, Pamięć i bezpieczeństwo,
+  Aktualizacje) zamiast jednej długiej przewijanej listy; skrót z powiadomienia o aktualizacji
+  otwiera od razu zakładkę Aktualizacje.
+• Nowa opcja „Tryb kompaktowy" (Ustawienia → Ogólne): łączy listę folderów i listę notatek
+  w jedną hierarchiczną listę — notatki widoczne bezpośrednio w swoich folderach i podfolderach;
+  wybór zachowany trwale dla każdego sejfu i synchronizowany między urządzeniami.
+• W trybie kompaktowym pasek wyszukiwania znajduje się nad połączoną listą.
+• Wybranie folderu otwiera z powrotem listę notatek, gdy była zwinięta (przycisk przy logo).
+• Naprawione menu zaznaczonego tekstu: zamiast pojedynczego „Cofnij" pełny zestaw poleceń —
+  Wytnij, Kopiuj, Wklej, Usuń, Zaznacz wszystko, Cofnij, Ponów — w obu trybach edytora
+  (podgląd na żywo i kod źródłowy); niedostępne polecenia widoczne jako nieaktywne.
+• Pasek stanu: liczba słów i czas ostatniej zmiany przypięte do prawego dolnego rogu; stan
+  synchronizacji bez tekstu jako ikona — zielona chmurka (zsynchronizowano), zielone kręcące się
+  kółko (synchronizacja w toku), pomarańczowa przekreślona chmurka (brak synchronizacji);
+  opis stanu po najechaniu kursorem. Ikona synchronizacji widoczna także bez otwartej notatki.
 
-Weryfikacja: lokalnie pełny zestaw testów 966 zaliczonych / 46 pominiętych /
-0 nieudanych (rc=0) oraz surowy analizator bez uwag na dokładnej rewizji
-wydania; obie karty zmian z niezależnym review APPROVE (drugi model, profil
-read-only). Bramki CI/CT104 dla wszystkich platform zostaną odnotowane w
-dokumentacji wydania. Zgoda właściciela na publikację bez osobistego testu
-przedpublikacyjnego: udzielona 2026-11-04 („Po zmianach, zbuduj projekt i zrób
-release"); test na urządzeniach właściciela po publikacji (aktualizator).
+Weryfikacja:
+• Pełny pakiet testów automatycznych na SHA wydania: 996 testów przeszło, 46 pominiętych,
+  0 porażek (flutter test --reporter compact --concurrency=2, host AiBrain, SHA 9d30237).
+• Cztery niezależne recenzje kodu (architektura zmian, testy, regresje) — wszystkie zatwierdzone.
+• Właściciel zrezygnował z osobistego testu na urządzeniach dla tego wydania (zwolnienie
+  odnotowane w dokumentacji wydania); wydanie opublikowane bez testu właściciela na sprzęcie.
 
-Podpisy: macOS — podpis podglądowy bez notaryzacji Apple, przy pierwszym
-uruchomieniu wymagane „Otwórz mimo to" w Prywatność i ochrona (per aplikacja);
-Windows — bez podpisu Authenticode, instalator zgłasza „nieznany wydawca"
-w monicie UAC. Pozostałe platformy bez zmian podpisów.
-</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.36/Silique-0.2.36-macOS.dmg" sparkle:version="45" sparkle:shortVersionString="0.2.36" sparkle:edSignature="VR+mWAGnRfbm2Av5NnGGjw1AGegoq1IQ6Xcs65LOotyquZq6r9Og7Ztj7viYWySmV2mbajPIArzz7trrqleGDA==" length="28354201" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
-edSignature: j/m5b8/bOicCArdfV2jvKLEc0+isH0gdPx1bJ5nWRUbrIgQXb2S+aa5sBwsXJuLHOrp2vIZC4sa7ZBW382BSAw==
-length: 2803
+Podpisy platform i instalacja:
+• macOS: podpis zapoznawczy (certyfikat „Nova Notes Local Preview"), BEZ notaryzacji Developer ID —
+  przy pierwszym uruchomieniu pobranego DMG zezwól per aplikacja: Prywatność i ochrona →
+  „Otwórz mimo to" (nie jest to globalne wyłączenie Gatekeeper).
+• Windows: instalator bez podpisu Authenticode — SmartScreen/UAC pokażą nieznanego wydawcę;
+  aktualizacje w aplikacji weryfikują podpisane kanały i sumy jak dotąd.
+• Android/Linux: bez zmian w mechanizmie podpisu/aktualizacji.
+
+Do sprawdzenia na urządzeniach (poza zasięgiem testów automatycznych):
+• Menu zaznaczonego tekstu prawym przyciskiem na realnym pulpicie (testy widgetowe dowodzą
+  geometrii i zawartości menu, nie natywnego schowka każdego OS).
+• Tryb kompaktowy na dużych sejfach (płynność przewijania długiej listy hierarchicznej).
+• Zachowanie wskaźnika synchronizacji przy realnych przejściach online/offline.
+</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.37/Silique-0.2.37-macOS.dmg" sparkle:version="46" sparkle:shortVersionString="0.2.37" sparkle:edSignature="KixLaFdFMGru4GUPaKS5roXGbTGu0ky3pPlgufTTaKjEDDVOBAXEuAx70TOoRBaMFDhFZK2h4o55wfxCg/SnCA==" length="28486978" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: BFesQfxKEZRKr+N5pBDKE+dL+RlwRwbkL+avah8z6mMvP52xTLhMl+yuPp0rfnkvM/yCQtESu+kDT4ffwTKZDw==
+length: 3912
 -->
