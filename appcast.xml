@@ -1,45 +1,52 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.37</title><pubDate>Thu, 05 Nov 2026 03:30:00 +0000</pubDate><description>Silique 0.2.37+46
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.38</title><pubDate>Fri, 06 Nov 2026 00:35:49 +0000</pubDate><description>Silique 0.2.38+47
 
 Zmiany widoczne dla użytkownika:
-• Ustawienia podzielone na zakładki (Ogólne, Konto i synchronizacja, Pamięć i bezpieczeństwo,
-  Aktualizacje) zamiast jednej długiej przewijanej listy; skrót z powiadomienia o aktualizacji
-  otwiera od razu zakładkę Aktualizacje.
-• Nowa opcja „Tryb kompaktowy" (Ustawienia → Ogólne): łączy listę folderów i listę notatek
-  w jedną hierarchiczną listę — notatki widoczne bezpośrednio w swoich folderach i podfolderach;
-  wybór zachowany trwale dla każdego sejfu i synchronizowany między urządzeniami.
-• W trybie kompaktowym pasek wyszukiwania znajduje się nad połączoną listą.
-• Wybranie folderu otwiera z powrotem listę notatek, gdy była zwinięta (przycisk przy logo).
-• Naprawione menu zaznaczonego tekstu: zamiast pojedynczego „Cofnij" pełny zestaw poleceń —
-  Wytnij, Kopiuj, Wklej, Usuń, Zaznacz wszystko, Cofnij, Ponów — w obu trybach edytora
-  (podgląd na żywo i kod źródłowy); niedostępne polecenia widoczne jako nieaktywne.
-• Pasek stanu: liczba słów i czas ostatniej zmiany przypięte do prawego dolnego rogu; stan
-  synchronizacji bez tekstu jako ikona — zielona chmurka (zsynchronizowano), zielone kręcące się
-  kółko (synchronizacja w toku), pomarańczowa przekreślona chmurka (brak synchronizacji);
-  opis stanu po najechaniu kursorem. Ikona synchronizacji widoczna także bez otwartej notatki.
+• Menu akcji na zaznaczonym tekście jest zawsze widoczne w całości: karta wybiera stronę nad lub
+  pod zaznaczeniem i mieści się w widocznym obszarze, więc nie chowa się pod klawiaturą ani nie
+  jest ucinana od dołu przy zaznaczaniu na końcu notatki.
+• Tryb kompaktowy: ikony i tytuły notatek mają teraz ten sam rozmiar co ikony i nazwy folderów —
+  lista czyta się jak jedna hierarchia, bez „cięższych” wierszy notatek.
+• Tryb kompaktowy: wiersz „Wszystkie notatki” zachowuje się jak folder — można go zwinąć i
+  rozwinąć strzałką. Domyślnie zwinięte są zarówno wszystkie foldery, jak i lista wszystkich
+  notatek, więc pierwszy widok pokazuje tylko strukturę.
+• Tryb kompaktowy: całe menu boczne przewija się jako jedna całość (nagłówek, wybór sejfu, filtry,
+  drzewo, stopka) — przy małym oknie nic nie wypada poza ekran. Pasek wyszukiwania przykleja się
+  do góry w momencie, gdy przewijanie do niego dojedzie.
+• Tryb zwykły: przycisk ukrywania listy notatek przeniesiony obok paska wyszukiwania po prawej
+  stronie; dotychczasowa pozycja w nagłówku menu bocznego nie jest już potrzebna.
+• Tryb kompaktowy: ten sam przycisk ukrywa teraz całe menu boczne (nie tylko listę notatek),
+  a wąski pasek z przyciskiem przywracania zostaje na krawędzi.
+• Linux — rozmiar okna: przyczyna zlokalizowana. Minimalny rozmiar okna jest wyliczany z rozmiaru
+  tekstury w patchowanym silniku Fluttera (funkcja pomiaru GTK4), więc okno daje się powiększać, ale
+  nie można go zmniejszyć poniżej rozmiaru startowego. Poprawka wymaga przebudowy silnika i NIE
+  wchodzi w tym wydaniu — zamiast obietnicy: opis stanu i dalszy krok.
 
 Weryfikacja:
-• Pełny pakiet testów automatycznych na SHA wydania: 996 testów przeszło, 46 pominiętych,
-  0 porażek (flutter test --reporter compact --concurrency=2, host AiBrain, SHA 9d30237).
-• Cztery niezależne recenzje kodu (architektura zmian, testy, regresje) — wszystkie zatwierdzone.
-• Właściciel zrezygnował z osobistego testu na urządzeniach dla tego wydania (zwolnienie
-  odnotowane w dokumentacji wydania); wydanie opublikowane bez testu właściciela na sprzęcie.
+• Pełny pakiet testów automatycznych na SHA wydania: 1014 testów przeszło, 46 pominiętych,
+  0 porażek (flutter test --reporter compact --concurrency=2, host AiBrain).
+• Cztery recenzje kodu (menu zaznaczenia, drzewo kompaktowe, sidebar kompaktowy, Linux resize) —
+  wszystkie z werdyktem „approve”; warunki recenzji Linux resize opisane niżej.
+• Właściciel zrezygnował z osobistego testu na urządzeniach dla tego wydania (zgoda z 2026-11-05:
+  „Idę spać. Masz moją zgodę na wypuszczenie release”); wydanie opublikowane bez testu właściciela
+  na sprzęcie.
 
 Podpisy platform i instalacja:
-• macOS: podpis zapoznawczy (certyfikat „Nova Notes Local Preview"), BEZ notaryzacji Developer ID —
+• macOS: podpis zapoznawczy (certyfikat „Nova Notes Local Preview”), BEZ notaryzacji Developer ID —
   przy pierwszym uruchomieniu pobranego DMG zezwól per aplikacja: Prywatność i ochrona →
-  „Otwórz mimo to" (nie jest to globalne wyłączenie Gatekeeper).
+  „Otwórz mimo to” (nie jest to globalne wyłączenie Gatekeeper).
 • Windows: instalator bez podpisu Authenticode — SmartScreen/UAC pokażą nieznanego wydawcę;
   aktualizacje w aplikacji weryfikują podpisane kanały i sumy jak dotąd.
 • Android/Linux: bez zmian w mechanizmie podpisu/aktualizacji.
 
 Do sprawdzenia na urządzeniach (poza zasięgiem testów automatycznych):
-• Menu zaznaczonego tekstu prawym przyciskiem na realnym pulpicie (testy widgetowe dowodzą
-  geometrii i zawartości menu, nie natywnego schowka każdego OS).
-• Tryb kompaktowy na dużych sejfach (płynność przewijania długiej listy hierarchicznej).
-• Zachowanie wskaźnika synchronizacji przy realnych przejściach online/offline.
-</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.37/Silique-0.2.37-macOS.dmg" sparkle:version="46" sparkle:shortVersionString="0.2.37" sparkle:edSignature="KixLaFdFMGru4GUPaKS5roXGbTGu0ky3pPlgufTTaKjEDDVOBAXEuAx70TOoRBaMFDhFZK2h4o55wfxCg/SnCA==" length="28486978" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
-edSignature: BFesQfxKEZRKr+N5pBDKE+dL+RlwRwbkL+avah8z6mMvP52xTLhMl+yuPp0rfnkvM/yCQtESu+kDT4ffwTKZDw==
-length: 3912
+• Linux: nadal nie można zmniejszyć okna poniżej rozmiaru startowego (powyżej: przyczyna i dalszy
+  krok). Powiększanie okna działa i zostało potwierdzone pomiarem na builderze GTK4
+  (xvfb + openbox + xdotool).
+• Menu zaznaczenia prawym przyciskiem na realnym pulpicie (testy widgetowe dowodzą geometrii i
+  zawartości menu, nie natywnego schowka każdego systemu).
+• Tryb kompaktowy na dużych sejfach (płynność przewijania długiej listy hierarchicznej).</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.38/Silique-0.2.38-macOS.dmg" sparkle:version="47" sparkle:shortVersionString="0.2.38" sparkle:edSignature="fhP4qzM5PqBI0NiSTFKAtW/5py/cSMaEaVNQPGwutzD8P6C/C9zTYY2nlBNJAkkHtnYMqSgACy6WOBmDy6YuAw==" length="28524531" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: +OuIuSuT07g/TanhSq8BK0g+9wleVzihG+MypFmXMuUP4DzsQ+/Uth5EUEMd/Nf/5lt4Sn3sk+4LmfPLsTTsCg==
+length: 4478
 -->
