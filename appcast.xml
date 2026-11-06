@@ -1,36 +1,35 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.38</title><pubDate>Fri, 06 Nov 2026 00:35:49 +0000</pubDate><description>Silique 0.2.38+47
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.39</title><pubDate>Fri, 06 Nov 2026 09:08:56 +0000</pubDate><description>Silique 0.2.39+48
 
 Zmiany widoczne dla użytkownika:
-• Menu akcji na zaznaczonym tekście jest zawsze widoczne w całości: karta wybiera stronę nad lub
-  pod zaznaczeniem i mieści się w widocznym obszarze, więc nie chowa się pod klawiaturą ani nie
-  jest ucinana od dołu przy zaznaczaniu na końcu notatki.
-• Tryb kompaktowy: ikony i tytuły notatek mają teraz ten sam rozmiar co ikony i nazwy folderów —
-  lista czyta się jak jedna hierarchia, bez „cięższych” wierszy notatek.
-• Tryb kompaktowy: wiersz „Wszystkie notatki” zachowuje się jak folder — można go zwinąć i
-  rozwinąć strzałką. Domyślnie zwinięte są zarówno wszystkie foldery, jak i lista wszystkich
-  notatek, więc pierwszy widok pokazuje tylko strukturę.
-• Tryb kompaktowy: całe menu boczne przewija się jako jedna całość (nagłówek, wybór sejfu, filtry,
-  drzewo, stopka) — przy małym oknie nic nie wypada poza ekran. Pasek wyszukiwania przykleja się
-  do góry w momencie, gdy przewijanie do niego dojedzie.
-• Tryb zwykły: przycisk ukrywania listy notatek przeniesiony obok paska wyszukiwania po prawej
-  stronie; dotychczasowa pozycja w nagłówku menu bocznego nie jest już potrzebna.
-• Tryb kompaktowy: ten sam przycisk ukrywa teraz całe menu boczne (nie tylko listę notatek),
-  a wąski pasek z przyciskiem przywracania zostaje na krawędzi.
-• Linux — rozmiar okna: przyczyna zlokalizowana. Minimalny rozmiar okna jest wyliczany z rozmiaru
-  tekstury w patchowanym silniku Fluttera (funkcja pomiaru GTK4), więc okno daje się powiększać, ale
-  nie można go zmniejszyć poniżej rozmiaru startowego. Poprawka wymaga przebudowy silnika i NIE
-  wchodzi w tym wydaniu — zamiast obietnicy: opis stanu i dalszy krok.
+• Tryb kompaktowy: notatki w folderach są wcięte dokładnie tak jak podfoldery tego folderu — lista
+  czyta się jako jedna hierarchia, a wiersz notatki nie wystaje już w lewo poza wiersze folderów.
+• Tryb kompaktowy: wiersz notatki pokazuje wyłącznie ikonę i tytuł, bez skrótu treści i bez godziny
+  modyfikacji. Lista jest krótsza i gęstsza, a nazwy nie konkurują z podglądem tekstu.
+• Tryb kompaktowy: foldery zawierające same notatki (bez podfolderów) mają teraz strzałkę rozwinięcia,
+  tak samo jak foldery z podfolderami. Wiersz „Wszystkie notatki” pokazuje strzałkę także wtedy, gdy
+  w sejfie są tylko podfoldery.
+• Tryb kompaktowy: aktywna notatka ma ten sam wygląd co aktywny folder (delikatne podświetlenie,
+  bez ramki), a najechanie kursorem daje ten sam efekt co na wierszu folderu. Zaznaczenie wielokrotne
+  (Ctrl/Cmd/Shift+klik) jest znowu wyraźnie widoczne — również wtedy, gdy notatka jest jednocześnie
+  aktywna.
+• Zwinięte panele zachowują szarą linię separatora: po zwinięciu menu bocznego w trybie kompaktowym
+  i po zwinięciu listy notatek w trybie zwykłym granica z edytorem nadal jest widoczna.
 
 Weryfikacja:
-• Pełny pakiet testów automatycznych na SHA wydania: 1014 testów przeszło, 46 pominiętych,
-  0 porażek (flutter test --reporter compact --concurrency=2, host AiBrain).
-• Cztery recenzje kodu (menu zaznaczenia, drzewo kompaktowe, sidebar kompaktowy, Linux resize) —
-  wszystkie z werdyktem „approve”; warunki recenzji Linux resize opisane niżej.
-• Właściciel zrezygnował z osobistego testu na urządzeniach dla tego wydania (zgoda z 2026-11-05:
-  „Idę spać. Masz moją zgodę na wypuszczenie release”); wydanie opublikowane bez testu właściciela
-  na sprzęcie.
+• Pełny pakiet testów automatycznych na SHA wydania 546fdff: 1023 testy przeszły, 46 pominiętych,
+  0 porażek (flutter test --reporter compact, builder GTK4 i host AiBrain z --concurrency=2).
+• Nowe testy w test/compact_mode_sidebar_test.dart (9 przypadków): wcięcie notatki mierzone
+  geometrycznie względem wiersza podfolderu, brak skrótu i czasu w wierszu, strzałka dla folderu
+  z samymi notatkami oraz dla wiersza „Wszystkie notatki”, widoczność zaznaczenia wielokrotnego,
+  zachowanie separatora przy zwiniętych panelach.
+• Dwie recenzje kodu (implementacja + poprawka akcentu zaznaczenia) — werdykty „approve z
+  zastrzeżeniem” i „approve”; zastrzeżenie dotyczyło właśnie akcentu zaznaczenia wielokrotnego
+  i zostało poprawione osobnym commitem przed tym wydaniem.
+• Jedna próba builda na builderze GTK4 padła na teście zależnym od czasu (zawieszenie
+  pumpAndSettle w testach dialogów językowych, test nietknięty przez tę zmianę); ten sam SHA
+  przebudowany ponownie — 1023/1023 przeszło. Lokalnie ten plik przeszedł 3/3 w izolacji.
 
 Podpisy platform i instalacja:
 • macOS: podpis zapoznawczy (certyfikat „Nova Notes Local Preview”), BEZ notaryzacji Developer ID —
@@ -41,12 +40,12 @@ Podpisy platform i instalacja:
 • Android/Linux: bez zmian w mechanizmie podpisu/aktualizacji.
 
 Do sprawdzenia na urządzeniach (poza zasięgiem testów automatycznych):
-• Linux: nadal nie można zmniejszyć okna poniżej rozmiaru startowego (powyżej: przyczyna i dalszy
-  krok). Powiększanie okna działa i zostało potwierdzone pomiarem na builderze GTK4
-  (xvfb + openbox + xdotool).
-• Menu zaznaczenia prawym przyciskiem na realnym pulpicie (testy widgetowe dowodzą geometrii i
-  zawartości menu, nie natywnego schowka każdego systemu).
-• Tryb kompaktowy na dużych sejfach (płynność przewijania długiej listy hierarchicznej).</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.38/Silique-0.2.38-macOS.dmg" sparkle:version="47" sparkle:shortVersionString="0.2.38" sparkle:edSignature="fhP4qzM5PqBI0NiSTFKAtW/5py/cSMaEaVNQPGwutzD8P6C/C9zTYY2nlBNJAkkHtnYMqSgACy6WOBmDy6YuAw==" length="28524531" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
-edSignature: +OuIuSuT07g/TanhSq8BK0g+9wleVzihG+MypFmXMuUP4DzsQ+/Uth5EUEMd/Nf/5lt4Sn3sk+4LmfPLsTTsCg==
-length: 4478
+• Tryb kompaktowy na własnym sejfie: czy wcięcie notatek i chevrony zgadzają się z oczekiwaniem przy
+  głęboko zagnieżdżonych folderach (testy mierzą geometrię, nie estetykę).
+• Efekt hover na realnym pulpicie (testy widgetowe sprawdzają brak własnego hoverColor i wspólną
+  powierzchnię Material, nie natywne zachowanie kursora każdego systemu).
+• Płynność przewijania długiej listy hierarchicznej w trybie kompaktowym na dużym sejfie.
+</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.39/Silique-0.2.39-macOS.dmg" sparkle:version="48" sparkle:shortVersionString="0.2.39" sparkle:edSignature="YgAlvBKR5cdediI/DczYJNEAsONYNi083jRyxdwSv8KVWrNQwkthsOLAukmMLGJDJ4QyiTGXgaHWNAwkKFigAA==" length="28523913" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: knxUcLhWDCzan1GmAJHeUqRPsNHO1KW+0VCEIUE2WfXwExC9Stna0iAEsJ0EGm5sbQLw2280bPzReMZfnxL9Cg==
+length: 4444
 -->
