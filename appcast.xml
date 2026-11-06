@@ -1,35 +1,33 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.39</title><pubDate>Fri, 06 Nov 2026 09:08:56 +0000</pubDate><description>Silique 0.2.39+48
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.40</title><pubDate>Fri, 06 Nov 2026 11:05:24 +0000</pubDate><description>Silique 0.2.40+49
 
 Zmiany widoczne dla użytkownika:
-• Tryb kompaktowy: notatki w folderach są wcięte dokładnie tak jak podfoldery tego folderu — lista
-  czyta się jako jedna hierarchia, a wiersz notatki nie wystaje już w lewo poza wiersze folderów.
-• Tryb kompaktowy: wiersz notatki pokazuje wyłącznie ikonę i tytuł, bez skrótu treści i bez godziny
-  modyfikacji. Lista jest krótsza i gęstsza, a nazwy nie konkurują z podglądem tekstu.
-• Tryb kompaktowy: foldery zawierające same notatki (bez podfolderów) mają teraz strzałkę rozwinięcia,
-  tak samo jak foldery z podfolderami. Wiersz „Wszystkie notatki” pokazuje strzałkę także wtedy, gdy
-  w sejfie są tylko podfoldery.
-• Tryb kompaktowy: aktywna notatka ma ten sam wygląd co aktywny folder (delikatne podświetlenie,
-  bez ramki), a najechanie kursorem daje ten sam efekt co na wierszu folderu. Zaznaczenie wielokrotne
-  (Ctrl/Cmd/Shift+klik) jest znowu wyraźnie widoczne — również wtedy, gdy notatka jest jednocześnie
-  aktywna.
-• Zwinięte panele zachowują szarą linię separatora: po zwinięciu menu bocznego w trybie kompaktowym
-  i po zwinięciu listy notatek w trybie zwykłym granica z edytorem nadal jest widoczna.
+• Tryb kompaktowy: wiersze notatek leżą teraz dokładnie w kolumnach podfolderów swojego folderu —
+  ikona notatki w kolumnie ikony folderu, tytuł w kolumnie tytułu. Wcześniej ikona stała o 20 px
+  w lewo, na wysokości strzałki rozwinięcia, więc drzewo czytało się jako dwie różne siatki.
+• Tryb kompaktowy: utworzenie nowego folderu albo podfolderu nie wyłącza już widoku kompaktowego
+  i nie ukrywa notatek. Wcześniej po utworzeniu folderu panel przełączał się na zwykłą listę
+  i filtrował notatki do nowego, pustego folderu — listę notatek odzyskiwało się dopiero po
+  restarcie aplikacji (zgłoszenie z Androida).
+• Nowy folder lub podfolder jest od razu widoczny w drzewie: jego przodkowie rozwijają się same.
 
 Weryfikacja:
-• Pełny pakiet testów automatycznych na SHA wydania 546fdff: 1023 testy przeszły, 46 pominiętych,
-  0 porażek (flutter test --reporter compact, builder GTK4 i host AiBrain z --concurrency=2).
-• Nowe testy w test/compact_mode_sidebar_test.dart (9 przypadków): wcięcie notatki mierzone
-  geometrycznie względem wiersza podfolderu, brak skrótu i czasu w wierszu, strzałka dla folderu
-  z samymi notatkami oraz dla wiersza „Wszystkie notatki”, widoczność zaznaczenia wielokrotnego,
-  zachowanie separatora przy zwiniętych panelach.
-• Dwie recenzje kodu (implementacja + poprawka akcentu zaznaczenia) — werdykty „approve z
-  zastrzeżeniem” i „approve”; zastrzeżenie dotyczyło właśnie akcentu zaznaczenia wielokrotnego
-  i zostało poprawione osobnym commitem przed tym wydaniem.
-• Jedna próba builda na builderze GTK4 padła na teście zależnym od czasu (zawieszenie
-  pumpAndSettle w testach dialogów językowych, test nietknięty przez tę zmianę); ten sam SHA
-  przebudowany ponownie — 1023/1023 przeszło. Lokalnie ten plik przeszedł 3/3 w izolacji.
+• Pełny pakiet testów automatycznych na SHA wydania 7995fcc: 1026 testów przeszło, 46 pominiętych,
+  0 porażek — przebieg na builderze GTK4 (CT 104), w tym samym przebiegu, który zbudował pakiety.
+• CI na tym samym SHA: „macOS and Android installer candidate” (run 42202947314) i „Windows installer
+  candidate” (run 42202951162) — zielone.
+• Testy zmienione i dodane w test/compact_mode_sidebar_test.dart (32 przypadki): geometria mierzona
+  przez tester.getTopLeft — ikona notatki względem ikony podfolderu, tytuł notatki względem tytułu
+  podfolderu (tolerancja 1 px), w obu ścieżkach kodu (panel desktopowy i szuflada mobilna), plus trzy
+  testy tworzenia folderu i podfolderu w trybie kompaktowym.
+• Kontrola negatywna: na kodzie bez poprawki te same asercje geometrii dają 21 px różnicy (czerwone),
+  po poprawce mieszczą się w 1 px.
+• Dwa lokalne przebiegi pełnego pakietu na hoście AiBrain miały po jednym flake'u z klasy „bounded
+  test pump” (editor_input_test, home_language_test) — oba pliki przeszły 3/3 w izolacji, a przebieg
+  na builderze GTK4 i oba przebiegi CI na tym samym SHA są zielone.
+• Jedna próba builda Linux padła na tym samym flake'u klasy bounded pump
+  (editor_live_selection_menu_owner_test); powtórzona na tym samym SHA, bez zmiany kodu — 1026/1026.
 
 Podpisy platform i instalacja:
 • macOS: podpis zapoznawczy (certyfikat „Nova Notes Local Preview”), BEZ notaryzacji Developer ID —
@@ -37,15 +35,17 @@ Podpisy platform i instalacja:
   „Otwórz mimo to” (nie jest to globalne wyłączenie Gatekeeper).
 • Windows: instalator bez podpisu Authenticode — SmartScreen/UAC pokażą nieznanego wydawcę;
   aktualizacje w aplikacji weryfikują podpisane kanały i sumy jak dotąd.
-• Android/Linux: bez zmian w mechanizmie podpisu/aktualizacji.
+• Android/Linux: bez zmian w mechanizmie podpisu i aktualizacji.
 
 Do sprawdzenia na urządzeniach (poza zasięgiem testów automatycznych):
-• Tryb kompaktowy na własnym sejfie: czy wcięcie notatek i chevrony zgadzają się z oczekiwaniem przy
-  głęboko zagnieżdżonych folderach (testy mierzą geometrię, nie estetykę).
-• Efekt hover na realnym pulpicie (testy widgetowe sprawdzają brak własnego hoverColor i wspólną
-  powierzchnię Material, nie natywne zachowanie kursora każdego systemu).
-• Płynność przewijania długiej listy hierarchicznej w trybie kompaktowym na dużym sejfie.
-</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.39/Silique-0.2.39-macOS.dmg" sparkle:version="48" sparkle:shortVersionString="0.2.39" sparkle:edSignature="YgAlvBKR5cdediI/DczYJNEAsONYNi083jRyxdwSv8KVWrNQwkthsOLAukmMLGJDJ4QyiTGXgaHWNAwkKFigAA==" length="28523913" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
-edSignature: knxUcLhWDCzan1GmAJHeUqRPsNHO1KW+0VCEIUE2WfXwExC9Stna0iAEsJ0EGm5sbQLw2280bPzReMZfnxL9Cg==
-length: 4444
+• Wyrównanie w trybie kompaktowym na realnym ekranie telefonu: gęstość pikseli, długie nazwy notatek
+  i głęboko zagnieżdżone foldery (testy mierzą geometrię w pikselach logicznych, nie estetykę).
+• Utworzenie folderu w szufladzie na Androidzie przy otwartej klawiaturze.
+
+Uwaga o zakresie weryfikacji: właściciel zrzekł się testu na urządzeniu dla tego wydania (decyzja
+z 2026-11-06). Poprawka nie została sprawdzona na fizycznym telefonie — powyższe punkty pozostają
+do sprawdzenia przy najbliższej okazji.
+</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.40/Silique-0.2.40-macOS.dmg" sparkle:version="49" sparkle:shortVersionString="0.2.40" sparkle:edSignature="yHkfz+tOUNc6smQUDu3j35Cpj/tbdtYg6agEgM9B5V4eXc/LprY2qHAn0rF+Pf4wVooF821d98FfN5I5h9dbCg==" length="28524181" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: nLW23sTqpo7UW0OsJY30h9lWKBWbGSv6AfA9lteqP1z9luOYdJxsCfHDH4Rn0K066o8MOuANnXwfFcD32nn9BQ==
+length: 4347
 -->
