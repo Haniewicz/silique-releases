@@ -1,38 +1,45 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.42</title><pubDate>Sat, 07 Nov 2026 01:52:02 +0000</pubDate><description>Silique 0.2.42+51
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.43</title><pubDate>Sat, 07 Nov 2026 10:23:12 +0000</pubDate><description>Silique 0.2.43+52
 
 Zmiany widoczne dla użytkownika:
-• Tryb kompaktowy pokazuje teraz WSZYSTKO w jednym menu bocznym: lista usuniętych notatek,
-  notatki ukryte oraz zakładki „Ostatnie” i „Ulubione” wyświetlają się w sidebarze, zamiast wysuwać
-  osobną kolumnę z listą notatek. Powrót do normalnych notatek jest jednoznaczny: na górze listy
-  jest wiersz „← Wszystkie notatki”, a aktywny filtr (Usunięte / Ukryte / Ostatnie / Ulubione)
-  jest podświetlony.
-• Notatki w drzewie kompaktowym mają teraz 4 px odstępu między sobą — tyle samo, ile między notatką
-  a folderem nadrzędnym. Wiersze przestały się sklejać.
-• Przycisk „Nowy wpis w dzienniku” ma zaokrąglone rogi (promień 8) i te same wcięcia co
-  „Nowa notatka”.
-• Zamknięcie karty notatki przenosi do ostatnio używanej karty; jeśli aplikacja nie ma zapisanej
-  historii, otwiera najbliższą kartę obok zamykanej (najpierw z prawej, potem z lewej). Ta sama
-  reguła obowiązuje, gdy karta znika wskutek usunięcia notatki.
-• Linux: okno da się teraz ZMNIEJSZYĆ, nie tylko powiększyć. Minimum to nadal 760×560, a powiększanie
-  działa jak wcześniej.
-• Poprawki stabilności listy notatek w trybie kompaktowym (m.in. brak przepełnienia wiersza powrotu
-  w wąskim menu na telefonie).
+• Linux: przyciski i wiersze listy trafiają teraz dokładnie tam, gdzie je widać. Po zmianie
+  rozmiaru okna (a także od pierwszego uruchomienia) kliknięcia lądowały 10 px w prawo i 10 px
+  w dół od kursora — małe przyciski nie reagowały, a notatkę trzeba było trafiać kursorem nieco
+  wyżej. Poprawka: szerokość obramowania okna i wysokość paska tytułu są doliczane do pozycji
+  treści (wcześniej obramowanie było odejmowane), więc trafienie zgadza się z rysunkiem.
+• Linux: zakładki w Ustawieniach przewijają się kółkiem myszy (pionowe kółko przewija pasek
+  w poziomie) oraz przeciąganiem myszą. Wcześniej ostatnich zakładek nie dało się dosięgnąć
+  na wąskim oknie.
+• Linux: po instalacji aktualizacji aplikacja uruchamia się ponownie sama. Komunikat mówi już
+  tylko „nowa wersja uruchamia się ponownie”; jeśli restart się nie uda, nadal prosi o ręczne
+  uruchomienie.
+• Tryb kompaktowy: przełącznik „zaznacz wiele notatek” jest w wierszu filtrów, maksymalnie
+  po prawej (ten sam przycisk i te same skróty co w zwykłym trybie). Po włączeniu w sidebarze
+  pojawia się pasek zaznaczenia z licznikiem, akcjami grupowymi i „Zaznacz wszystko”.
+• Tryb kompaktowy: jedno kliknięcie w folder rozwija go także wtedy, gdy kursor jest w edytorze
+  notatki. Wcześniej pierwsze kliknięcie tylko przenosiło fokus, a dopiero drugie rozwijało
+  folder — natychmiastowe przeciąganie przechwytywało kliknięcie, gdy mysz drgnęła o ułamek
+  piksela. Teraz przeciąganie zaczyna się po 150 ms przytrzymania (dotyk bez zmian).
 
 Weryfikacja:
 • Pełny pakiet testów automatycznych na SHA wydania: wynik wklejony w docs/HANDOFF.md.
-• Nowe i zmienione pliki testowe: compact_mode_filtered_test, compact_tree_spacing_test,
-  sidebar_new_buttons_test, close_tab_on_delete_test, compact_mode_sidebar_test.
-• Linux: pomiar natywny na builderze GTK4 (xvfb + openbox + xdotool) — okno zmniejszone
-  1280×720 → 800×600, powiększone → 1400×900; kontrola negatywna na silniku bez poprawki pokazała
-  brak możliwości zmniejszenia.
+• Nowe i zmienione pliki testowe: settings_tabs_scroll_test, compact_mode_sidebar_test,
+  updater_test, tool/test_gtk4_pointer_position.py, folder_drop_indicator_test,
+  folder_reorder_ui_regression_test, workspace_ui_test.
+• Linux, pomiar natywny na builderze GTK4 (xvfb + openbox + xdotool): nowy test regresyjny
+  buduje prawdziwe okno z paskiem tytułu, zmienia jego rozmiar i klika wyliczony środek celu
+  10×10 px. Wynik na kodzie bez poprawki: trafienie (147, 221) zamiast (137, 211) — 10 px w prawo
+  i w dół; po poprawce dokładnie (137, 211).
+• Jednoklikowe rozwijanie folderu: test symuluje realne kliknięcie z drgnięciem 1,5 px —
+  czerwony bez poprawki, zielony z poprawką.
 
 Uwagi:
-• Poprawka okna wymagała przebudowy silnika GTK4 (patch `fl_render_texture_gtk4_measure`).
-  Paczki Linuksa używają tego silnika; macOS, Android i Windows bez zmian w silniku.
+• Poprawka trafiania wymagała przebudowy silnika GTK4 (nowy helper liczenia przesunięcia treści
+  w patchu `fl_gtk.h`, wywoływany z `fl_view.cc`). Paczki Linuksa używają tego silnika; macOS,
+  Android i Windows bez zmian w silniku aplikacji.
 • Serwera produkcyjnego nie zmieniano przy tym wydaniu.
-</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.42/Silique-0.2.42-macOS.dmg" sparkle:version="51" sparkle:shortVersionString="0.2.42" sparkle:edSignature="B6dEOKYea96AqdRsbKG70VyO4P8CNDC8LmzMiP8Yox8y97kMYrEoh/wbI1p5+3e3M6WVr9xIUy/q4rn44whdCw==" length="28380543" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
-edSignature: uIPddF6u4TXF9/ks2KQaPHo4J9YNQo1PDlNNgbcnaI6NJ68GztycmWkAwRDw6sY0cAmU0o30sbMadpfGSmEmBw==
-length: 3092
+</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.43/Silique-0.2.43-macOS.dmg" sparkle:version="52" sparkle:shortVersionString="0.2.43" sparkle:edSignature="FU7B63Puoa6QMkhWupTvH94sTbIU7cMZ491e9tgjOfCUiiu1WX4BAsGW+MStB2NJqmLdeXQu460NlQCTE/ENCQ==" length="28386641" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: YlBvcqYn5rfkDjQzixgMbI4Vo9kmJSqakI8FyUsqE2OJAIebPrXV1sst9H9PMO5EQnto6p6cT5UqGQkFIsTYAw==
+length: 3805
 -->
