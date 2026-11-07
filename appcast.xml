@@ -1,46 +1,38 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.41</title><pubDate>Fri, 06 Nov 2026 18:05:57 +0000</pubDate><description>Silique 0.2.41+50
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.42</title><pubDate>Sat, 07 Nov 2026 01:52:02 +0000</pubDate><description>Silique 0.2.42+51
 
 Zmiany widoczne dla użytkownika:
-• Nowy wybór kolorów: picker z pełną paletą w formie wizualnej — klikasz dowolne miejsce na
-  kwadracie nasycenia/jasności i suwaku odcienia, zamiast wybierać z dziewięciu gotowych kolorów
-  albo wpisywać kod. Działa dla folderów i dla notatek.
-• Notatki mają teraz własne kolory (menu notatki → „Kolor notatki”). Wszystkie ikony notatek mają
-  domyślnie JEDEN kolor — wcześniej każda notatka dostawała losowy kolor z czterech.
-• Ustawienia → „Wygląd”: domyślny kolor nowych notatek i osobny domyślny kolor folderów.
-  Po zmianie aplikacja pyta, czy przemalować także istniejące notatki/foldery.
-• Ustawienia → „Wygląd”: przeniesiony tam przełącznik trybu kompaktowego (z zakładki „Ogólne”).
-• Zmiana kolejności folderów jest widoczna: w miejscu upuszczenia pojawia się pasek wstawienia
-  i realna przerwa między wierszami, a nie cienka kreska na krawędzi wiersza.
-• Status synchronizacji mówi prawdę: po edycji tekstu widać kółko ładowania (zmiana czeka na
-  wysłanie), zielony check po udanej synchronizacji, a pomarańczowa chmurka pojawia się WYŁĄCZNIE
-  wtedy, gdy ostatnia próba synchronizacji naprawdę się nie udała. Vault lokalny (bez synchronizacji)
-  nie pokazuje już pomarańczowej chmurki.
-• Sidebar: usunięty przycisk „Szukaj” (pasek wyszukiwania zostaje bez zmian), a „Dziennik” nazywa się
-  teraz „Nowy wpis w dzienniku”.
-• Usunięcie aktualnie otwartej notatki zamyka jej kartę — edytor nie zostaje z usuniętą notatką.
+• Tryb kompaktowy pokazuje teraz WSZYSTKO w jednym menu bocznym: lista usuniętych notatek,
+  notatki ukryte oraz zakładki „Ostatnie” i „Ulubione” wyświetlają się w sidebarze, zamiast wysuwać
+  osobną kolumnę z listą notatek. Powrót do normalnych notatek jest jednoznaczny: na górze listy
+  jest wiersz „← Wszystkie notatki”, a aktywny filtr (Usunięte / Ukryte / Ostatnie / Ulubione)
+  jest podświetlony.
+• Notatki w drzewie kompaktowym mają teraz 4 px odstępu między sobą — tyle samo, ile między notatką
+  a folderem nadrzędnym. Wiersze przestały się sklejać.
+• Przycisk „Nowy wpis w dzienniku” ma zaokrąglone rogi (promień 8) i te same wcięcia co
+  „Nowa notatka”.
+• Zamknięcie karty notatki przenosi do ostatnio używanej karty; jeśli aplikacja nie ma zapisanej
+  historii, otwiera najbliższą kartę obok zamykanej (najpierw z prawej, potem z lewej). Ta sama
+  reguła obowiązuje, gdy karta znika wskutek usunięcia notatki.
+• Linux: okno da się teraz ZMNIEJSZYĆ, nie tylko powiększyć. Minimum to nadal 760×560, a powiększanie
+  działa jak wcześniej.
+• Poprawki stabilności listy notatek w trybie kompaktowym (m.in. brak przepełnienia wiersza powrotu
+  w wąskim menu na telefonie).
 
 Weryfikacja:
-• Pełny pakiet testów automatycznych na SHA wydania 9e32a5a: 1052 testy przeszły, 46 pominiętych,
-  0 porażek (`flutter test --concurrency=2`).
-• Nowe i zmienione pliki testowe: color_picker_test, note_colors_test, folder_color_picker_test,
-  settings_appearance_test, folder_drop_indicator_test, sync_badge_test, sidebar_nav_test,
-  close_tab_on_delete_test oraz dostosowane folder_colors_ui_test, settings_tabs_test,
-  settings_updates_section_test, compact_mode_sidebar_test, dialog_language_test,
-  sync_status_badge_test.
-• Kontrola negatywna: test „dwie notatki mają ikony w identycznym kolorze” był CZERWONY na kodzie
-  przed poprawką (hash koloru z id notatki) i jest zielony po niej — paleta nie jest już losowa.
-• Kolory są wyłącznie preferencją prezentacji: zapis w metadanych vaulta (`noteColors`,
-  `defaultNoteColor`, `defaultFolderColor`), bez zmian treści notatek, schematu bazy, kopert E2EE
-  i bez wpływu na datę modyfikacji notatki. Te same metadane przechodzą tę samą ścieżkę zapisu
-  i trójdrożnego merge'a synchronizacji co dotychczasowe kolory folderów.
-• Niezależna recenzja kodu (profil read-only, osobny model): werdykt APPROVE — 9/9 wymagań
-  właściciela spełnionych w kodzie, zero blokerów wydania.
+• Pełny pakiet testów automatycznych na SHA wydania: wynik wklejony w docs/HANDOFF.md.
+• Nowe i zmienione pliki testowe: compact_mode_filtered_test, compact_tree_spacing_test,
+  sidebar_new_buttons_test, close_tab_on_delete_test, compact_mode_sidebar_test.
+• Linux: pomiar natywny na builderze GTK4 (xvfb + openbox + xdotool) — okno zmniejszone
+  1280×720 → 800×600, powiększone → 1400×900; kontrola negatywna na silniku bez poprawki pokazała
+  brak możliwości zmniejszenia.
 
-Uwaga o zakresie testów: build wydania i testy instalacyjne na urządzeniach nie były wykonane
-przed publikacją — właściciel zrezygnował z ręcznego testu tego wydania.
-</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.41/Silique-0.2.41-macOS.dmg" sparkle:version="50" sparkle:shortVersionString="0.2.41" sparkle:edSignature="NDhEgoIuxX6w5R+TiCjbYPY8cIYBW+Rv1M9ywdJ7X2AIEJdeBCWapvEEH2rJCyP4t9OVz+Jl8m+IqCW4EvVgCA==" length="28383358" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
-edSignature: LHBrpdrf2AgfPhAGLQlosqLYLxDWQETOFYC+tPDkOMPzsPHh9kClc/I3k9VM3Ja/J0wf+Vt9tpRDw4d5vcGuDw==
-length: 4089
+Uwagi:
+• Poprawka okna wymagała przebudowy silnika GTK4 (patch `fl_render_texture_gtk4_measure`).
+  Paczki Linuksa używają tego silnika; macOS, Android i Windows bez zmian w silniku.
+• Serwera produkcyjnego nie zmieniano przy tym wydaniu.
+</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.42/Silique-0.2.42-macOS.dmg" sparkle:version="51" sparkle:shortVersionString="0.2.42" sparkle:edSignature="B6dEOKYea96AqdRsbKG70VyO4P8CNDC8LmzMiP8Yox8y97kMYrEoh/wbI1p5+3e3M6WVr9xIUy/q4rn44whdCw==" length="28380543" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: uIPddF6u4TXF9/ks2KQaPHo4J9YNQo1PDlNNgbcnaI6NJ68GztycmWkAwRDw6sY0cAmU0o30sbMadpfGSmEmBw==
+length: 3092
 -->
