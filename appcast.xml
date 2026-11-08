@@ -1,39 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.44</title><pubDate>Sat, 07 Nov 2026 13:13:08 +0000</pubDate><description># Silique 0.2.44+53
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.45</title><pubDate>Sun, 08 Nov 2026 11:41:35 +0000</pubDate><description>Silique 0.2.45
 
-Zmiany widoczne dla użytkownika:
-• macOS: systemowy dialog pęku kluczy pokazuje już „Silique — klucze lokalne” także na
-  instalacjach z przed zmiany nazwy. Wcześniej nowa etykieta trafiała wyłącznie na wpisy
-  tworzone od zera, więc przy każdym starcie widniała nazwa historyczna. Teraz etykieta
-  istniejącego wpisu jest aktualizowana w miejscu — wpis nie jest usuwany ani odtwarzany,
-  więc klucze, sesje, konta i dostęp do vaultów pozostają te same.
-• macOS: aktualizacja etykiety jest jednorazowa. Po pierwszym udanym dostępie do kluczy
-  aplikacja zapisuje znacznik i nie dotyka już pęku kluczy w tym celu, więc nie pojawia się
-  dodatkowe okno autoryzacji przy kolejnych startach ani przy każdym odczycie kluczy.
-
-Weryfikacja:
-• Pełny pakiet testów automatycznych i analiza statyczna na SHA wydania — wynik wklejony
-  w docs/HANDOFF.md.
-• Nowy test `tool/test_keychain_label_migration.py` (7 przypadków, bez macOS): pilnuje, że
-  ścieżka zapisu i odczytu ustawia etykietę przez `SecItemUpdate`, że wpis nie jest usuwany
-  ani odtwarzany, że identyfikatory usługi i konta pęku kluczy oraz tryb keychain plikowego
-  są niezmienione oraz że migracja jest jednorazowa (znacznik `silique.keychainLabelMigrated`
-  + jedna próba na proces w Dart).
-• Kontrola negatywna: ten sam test na kodzie sprzed poprawki — 2 przypadki czerwone
-  (`test_relabel_is_one_shot_per_install`, `test_dart_relabel_is_once_per_process`);
-  po poprawce 7/7 zielone.
-• Testy brandingu i natywnych komunikatów pozostają zielone; analiza bez uwag.
-
-Uwagi:
-• Sam dialog systemowy wymaga sprawdzenia na urządzeniu: po aktualizacji macOS pokaże
-  nową etykietę przy pierwszym odczycie kluczy. To jedyny element, którego nie da się
-  zweryfikować poza macOS.
-• macOS pozostaje podpisany lokalnym certyfikatem podglądu bez notaryzacji Apple — przy
-  pierwszym uruchomieniu obrazu DMG może być potrzebne „Otwórz mimo to” w Prywatność
-  i ochrona. Windows bez podpisu Authenticode pokaże UAC „nieznany wydawca”.
-• Serwera produkcyjnego nie zmieniano przy tym wydaniu.
-</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.44/Silique-0.2.44-macOS.dmg" sparkle:version="53" sparkle:shortVersionString="0.2.44" sparkle:edSignature="58xwe22Kn3Q/khHG6s4FwurddUYomnKFAtScsWssyL+JoudESykqe6oPnAK0WyW4ywy4KyDN781uYT5OYAgzCg==" length="28393427" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
-edSignature: RFSW0AKdHeUwVETPdW7ahPDgwpqheIYEl7FyqDu/sMzfwy/rdfX1vZebaKJnWovnYjlVMqr2l+Xa49nkEd7sDg==
-length: 3169
+- Nowe dane — notatki, klucze vaultów, metadane, foldery i wpisy lokalne — są
+  zapisywane pod nowym namespace szyfrowania `silique:2`. Starsze dane zapisane
+  pod `nova:1` nadal się odczytują i konwertują się przy pierwszym zapisie danej
+  notatki. Historia pozostaje czytelna, nic nie jest przepisywane z góry.
+- Pęk kluczy jest przenoszony do `silique.keys.v2` dopiero po potwierdzonym
+  zapisie; stary wpis jest usuwany wyłącznie po weryfikacji odczytu. Klucze
+  lokalne i tożsamość urządzenia przenoszone są na końcu.
+- Baza danych przenoszona jest do `silique.sqlite`. Jeśli zmiana nazwy nie jest
+  możliwa (uprawnienia), aplikacja startuje na starej nazwie i ponawia próbę przy
+  następnym uruchomieniu — start nigdy nie jest blokowany.
+- Koperta klucza konta i parowanie urządzeń pozostają bez zmian, podobnie jak
+  identyfikatory aplikacji, certyfikaty i kanał aktualizacji. Aktualizacja
+  przebiega jak dotychczas, bez ponownego logowania.
+- Obsługa starego namespace `nova` zostaje jako fallback odczytu i zostanie
+  usunięta w kolejnym wydaniu — po potwierdzeniu, że dane są już zapisywane
+  wyłącznie w `silique`.
+</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.45/Silique-0.2.45-macOS.dmg" sparkle:version="54" sparkle:shortVersionString="0.2.45" sparkle:edSignature="0ivLlCnzm3pPUI2MfRW5SQUTUwOtO7RNdVikPVR5C2nuZxGcbXpgX6+h/JEF1BT2UqnoeT2LPmluUV1jViw5Bg==" length="28400926" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: 5B3cB5WvhurbMbg05dQCrcyjCB5yNRUYNcA6eDbl2uwwrFK2+6CpHKeyeHuFsKDeXbd2Ao8BLMB0O99LEFDfAw==
+length: 2203
 -->
