@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.45</title><pubDate>Sun, 08 Nov 2026 11:41:35 +0000</pubDate><description>Silique 0.2.45
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.46</title><pubDate>Tue, 10 Nov 2026 17:26:30 +0000</pubDate><description>Silique 0.2.46
 
-- Nowe dane — notatki, klucze vaultów, metadane, foldery i wpisy lokalne — są
-  zapisywane pod nowym namespace szyfrowania `silique:2`. Starsze dane zapisane
-  pod `nova:1` nadal się odczytują i konwertują się przy pierwszym zapisie danej
-  notatki. Historia pozostaje czytelna, nic nie jest przepisywane z góry.
-- Pęk kluczy jest przenoszony do `silique.keys.v2` dopiero po potwierdzonym
-  zapisie; stary wpis jest usuwany wyłącznie po weryfikacji odczytu. Klucze
-  lokalne i tożsamość urządzenia przenoszone są na końcu.
-- Baza danych przenoszona jest do `silique.sqlite`. Jeśli zmiana nazwy nie jest
-  możliwa (uprawnienia), aplikacja startuje na starej nazwie i ponawia próbę przy
-  następnym uruchomieniu — start nigdy nie jest blokowany.
-- Koperta klucza konta i parowanie urządzeń pozostają bez zmian, podobnie jak
-  identyfikatory aplikacji, certyfikaty i kanał aktualizacji. Aktualizacja
-  przebiega jak dotychczas, bez ponownego logowania.
-- Obsługa starego namespace `nova` zostaje jako fallback odczytu i zostanie
-  usunięta w kolejnym wydaniu — po potwierdzeniu, że dane są już zapisywane
-  wyłącznie w `silique`.
-</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.45/Silique-0.2.45-macOS.dmg" sparkle:version="54" sparkle:shortVersionString="0.2.45" sparkle:edSignature="0ivLlCnzm3pPUI2MfRW5SQUTUwOtO7RNdVikPVR5C2nuZxGcbXpgX6+h/JEF1BT2UqnoeT2LPmluUV1jViw5Bg==" length="28400926" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
-edSignature: 5B3cB5WvhurbMbg05dQCrcyjCB5yNRUYNcA6eDbl2uwwrFK2+6CpHKeyeHuFsKDeXbd2Ao8BLMB0O99LEFDfAw==
-length: 2203
+- Świeża konfiguracja: jeśli wskażesz folder, w którym już leżą vaulty (bezpośrednio,
+  w podfolderze „Silique Vaults" albo w starym katalogu „Nova Notes"), aplikacja je
+  otwiera i pokazuje notatniki. Nowy, pusty vault powstaje tylko w katalogu bez danych.
+  Wcześniej wybór takiego folderu tworzył obok pusty vault i wyglądało to jak utrata notatek.
+- Uszkodzona baza w wybranym folderze jest zgłaszana komunikatem, a nie zastępowana
+  nowym pustym vaultem obok danych.
+- macOS: zmieniona tożsamość podpisu na `Silique` (self-signed, ten sam mechanizm co dotąd).
+  **To wymaga jednej ręcznej instalacji**: pobierz DMG i przeciągnij aplikację do Aplikacji,
+  wybierając „Zamień". Automatyczna aktualizacja ze starszej wersji nie zadziała, bo system
+  widzi innego wydawcę. Twoje notatki, preferencje i klucze zostają — podmieniana jest tylko aplikacja.
+- macOS nadal nie jest notaryzowane (brak Apple Developer ID), więc przy pierwszym uruchomieniu
+  Gatekeeper może ostrzec: otwórz przez kliknięcie prawym przyciskiem → „Otwórz".
+- Android bez zmian: ten sam klucz podpisu, instalacja nad obecną wersją działa normalnie.
+- Warstwa danych i szyfrowania bez zmian: brak migracji, brak ponownego logowania,
+  identyfikatory aplikacji i kanał aktualizacji bez modyfikacji.
+</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.46/Silique-0.2.46-macOS.dmg" sparkle:version="55" sparkle:shortVersionString="0.2.46" sparkle:edSignature="aTokvb0t4QC6tNGFjpv8wvXmpzsB4rEH0U7tSf5NUuD6V4DbMEwX0aKNJVGOwlYGEsCYRrM0L/wjWLGsMkRdBA==" length="28397173" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: vgNjbdTcaS/trRN75sUjUrQhEHlGDWjWNBO8v5ZbvadrI5gKZp4lFoTbcgUpsewTO3M3zdOuJvVLhdeNhyiLAA==
+length: 2356
 -->
