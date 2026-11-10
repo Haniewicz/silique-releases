@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       source_ref:
-        description: Full approved commit SHA in the private application repository
+        description: Full approved commit SHA in the public application repository
         required: true
         type: string
 permissions:
@@ -22,9 +22,8 @@ jobs:
         run: '[[ "$SOURCE_REF" =~ ^[0-9a-f]{40}$ ]]'
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          repository: Haniewicz/silique-app
+          repository: Haniewicz/silique
           ref: ${{ inputs.source_ref }}
-          ssh-key: ${{ secrets.SILIQUE_SOURCE_READ_KEY }}
           persist-credentials: false
           path: source
       - uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2

@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       source_ref:
-        description: Full approved SHA in private application repository
+        description: Full approved SHA in public application repository
         required: true
         type: string
       operation:
@@ -43,9 +43,8 @@ jobs:
           [[ "$OPERATION" == prepare || "$OWNER_APPROVED" == true ]]
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          repository: Haniewicz/silique-app
+          repository: Haniewicz/silique
           ref: ${{ inputs.source_ref }}
-          ssh-key: ${{ secrets.SILIQUE_SOURCE_READ_KEY }}
           persist-credentials: false
           path: source
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262

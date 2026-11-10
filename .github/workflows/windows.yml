@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       source_ref:
-        description: Full commit SHA in the private application repository
+        description: Full commit SHA in the public application repository
         required: true
         type: string
 permissions:
@@ -22,12 +22,11 @@ jobs:
           SOURCE_REF: ${{ inputs.source_ref }}
         run: |
           if ($env:SOURCE_REF -cnotmatch '^[0-9a-f]{40}$') { throw 'A full commit SHA is required.' }
-      - name: Read private application source
+      - name: Read application source
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          repository: Haniewicz/silique-app
+          repository: Haniewicz/silique
           ref: ${{ inputs.source_ref }}
-          ssh-key: ${{ secrets.SILIQUE_SOURCE_READ_KEY }}
           persist-credentials: false
           # Private builder compares a pinned historical close path on the same
           # runner. Credentials are still removed before private tests execute.
