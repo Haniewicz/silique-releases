@@ -1,24 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.47</title><pubDate>Wed, 11 Nov 2026 02:12:48 +0000</pubDate><description>Silique 0.2.47
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.48</title><pubDate>Wed, 11 Nov 2026 10:30:30 +0000</pubDate><description>Silique 0.2.48
 
-- Naprawione: serwer z certyfikatem self-signed jest teraz osiągalny. Przy pierwszym
-  połączeniu aplikacja pokazuje odcisk klucza publicznego (SHA-256, hex w grupach po 4),
-  nazwę i datę ważności certyfikatu, a potwierdzenie zapisuje pin i ponawia połączenie
-  dokładnie raz. Wcześniej połączenie kończyło się błędem
-  `CERTIFICATE_VERIFY_FAILED: self signed certificate` bez żadnej możliwości potwierdzenia.
-- Pin jest zapisywany obok plików aplikacji (`server-trust.json`), nie w bazie notatek,
-  więc jest czytelny przed odblokowaniem i przeżywa restart.
-- Odnowienie certyfikatu z zachowanym `key.pem` nie wymaga ponownego potwierdzania;
-  zmiana pary kluczy jest wykrywana i zgłaszana jako niezgodność pinu, zamiast cichego
-  zaakceptowania nowego serwera.
-- Certyfikat wystawiony przez zaufane CA (Tailscale, Cloudflare) przechodzi normalną
-  walidacją systemową — pin jest wyłącznie fallbackiem dla certyfikatów nieufnych.
-- macOS: bez zmian względem 0.2.46 — nadal wymagana jednorazowa ręczna instalacja z DMG
-  (nowa tożsamość podpisu), Gatekeeper ostrzega, notaryzacji brak.
+- Naprawione: zakładanie konta kończyło się komunikatem „Invalid request". Aplikacja
+  wysyłała do serwera klucz `invite` z pustą wartością, a serwer waliduje dane logowania
+  schematem, który odrzuca każdy nieznany klucz. Pole „Zaproszenie" zostało usunięte,
+  bo serwer nie obsługuje zaproszeń (nie ma ich w `/.well-known/silique`).
+- Komunikaty błędów z serwera pokazują teraz nazwę odrzuconego pola, np.
+  `Invalid request (email: Invalid email address)`, zamiast samego „Invalid request".
+- Certyfikaty self-signed: bez zmian względem 0.2.47 — potwierdzenie odcisku przy pierwszym
+  połączeniu, pin klucza publicznego (SPKI) w `server-trust.json`, odnowienie certyfikatu
+  z zachowanym kluczem nie wymaga ponownego potwierdzania.
+- macOS: nadal wymagana jednorazowa ręczna instalacja z DMG (nowa tożsamość podpisu od 0.2.46).
 - Android: ten sam klucz podpisu, instalacja nad poprzednią wersją działa normalnie.
 - Warstwa danych i szyfrowania bez zmian: brak migracji, brak ponownego logowania.
-</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.47/Silique-0.2.47-macOS.dmg" sparkle:version="56" sparkle:shortVersionString="0.2.47" sparkle:edSignature="EK4ozRE3mjr6DyqkDcYTbBRNr20s3IEzAKG/9ylTUhpMZm+ZnQbhZGBlMw/bpX76h8YkbNK6EPWw3N/jtOvcBg==" length="28431423" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
-edSignature: 56WhIi2jguqjpxGq9psxMxfv4UJ0FhQuPQnxWgFNbmklHi3lu+Y9LVoT4mh0wnk47634H9uy9s1scDCCuaxrAg==
-length: 2336
+</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.48/Silique-0.2.48-macOS.dmg" sparkle:version="57" sparkle:shortVersionString="0.2.48" sparkle:edSignature="bjBqEWrgDiESq5g8pnxgJbaAZZUhnPAp6F8t/dU6VAbu2448So0Ckf0vB1JNhu8iBUBGaOdQ8GZWeV7TFtOsCQ==" length="28438754" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: I3r2113DU3At8RxVEzlILIfHJ3/N4KudMdPEhz3LGKVsArBzwKsXlU87s0OPqL0uhhExw8FVdrO1MYwd8B9fDw==
+length: 2073
 -->
