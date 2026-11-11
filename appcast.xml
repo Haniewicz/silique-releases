@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.48</title><pubDate>Wed, 11 Nov 2026 10:30:30 +0000</pubDate><description>Silique 0.2.48
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.49</title><pubDate>Wed, 11 Nov 2026 17:07:57 +0000</pubDate><description>Silique 0.2.49 (build 58)
+=========================
 
-- Naprawione: zakładanie konta kończyło się komunikatem „Invalid request". Aplikacja
-  wysyłała do serwera klucz `invite` z pustą wartością, a serwer waliduje dane logowania
-  schematem, który odrzuca każdy nieznany klucz. Pole „Zaproszenie" zostało usunięte,
-  bo serwer nie obsługuje zaproszeń (nie ma ich w `/.well-known/silique`).
-- Komunikaty błędów z serwera pokazują teraz nazwę odrzuconego pola, np.
-  `Invalid request (email: Invalid email address)`, zamiast samego „Invalid request".
-- Certyfikaty self-signed: bez zmian względem 0.2.47 — potwierdzenie odcisku przy pierwszym
-  połączeniu, pin klucza publicznego (SPKI) w `server-trust.json`, odnowienie certyfikatu
-  z zachowanym kluczem nie wymaga ponownego potwierdzania.
-- macOS: nadal wymagana jednorazowa ręczna instalacja z DMG (nowa tożsamość podpisu od 0.2.46).
-- Android: ten sam klucz podpisu, instalacja nad poprzednią wersją działa normalnie.
-- Warstwa danych i szyfrowania bez zmian: brak migracji, brak ponownego logowania.
-</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.48/Silique-0.2.48-macOS.dmg" sparkle:version="57" sparkle:shortVersionString="0.2.48" sparkle:edSignature="bjBqEWrgDiESq5g8pnxgJbaAZZUhnPAp6F8t/dU6VAbu2448So0Ckf0vB1JNhu8iBUBGaOdQ8GZWeV7TFtOsCQ==" length="28438754" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
-edSignature: I3r2113DU3At8RxVEzlILIfHJ3/N4KudMdPEhz3LGKVsArBzwKsXlU87s0OPqL0uhhExw8FVdrO1MYwd8B9fDw==
-length: 2073
+• Zaufanie certyfikatowi serwera działa teraz z każdego miejsca w Ustawieniach, nie tylko przy logowaniu. Po restarcie aplikacji lista urządzeń i parowanie znów odpowiadają, a gdy certyfikatu nie ma jeszcze w zaufanych, Ustawienia pokazują odcisk klucza (SPKI) z przyciskiem „Zaufaj temu serwerowi” zamiast surowego błędu.
+• Parowanie urządzeń nie wymaga już ręcznych odświeżeń: nowe urządzenie samo pokazuje kod do porównania, po zatwierdzeniu na drugim urządzeniu dokańcza parowanie i odblokowuje notatki automatycznie. Lista urządzeń i stan parowania odświeżają się w tle co 2 sekundy.
+• Potwierdzenie na urządzeniu, które ma klucz konta, nadal jest ręczne — to zabezpieczenie, nie tarcie.
+
+Weryfikacja: `flutter analyze` bez uwag; pełny zestaw testów na commicie 512c421 — 1134 testy zaliczone, 46 pominiętych, 0 błędów (preflight, `--concurrency=2`). Nowe testy obejmują: potwierdzenie certu z karty konta (z kontrolą negatywną), jedno ponowienie po zaufaniu, automatyczne pokazanie kodu parowania, dokładnie jedno dokończenie parowania, brak żądania zatwierdzenia wychodzącego z odświeżania w tle, zatrzymanie odświeżania po zamknięciu okna oraz ciszę w tle (błąd pokazywany dopiero po trzech kolejnych porażkach — oba testy mają sprawdzone kontrole negatywne).
+
+Uwaga o podpisach: macOS jest podpisany tożsamością zapoznawczą (self-signed, bez notaryzacji) — przy pierwszym uruchomieniu Gatekeeper wymaga „Otwórz mimo to” (System Settings → Privacy &amp; Security). Windows nie ma podpisu Authenticode, więc instalator pokaże „nieznanego wydawcę” w UAC.
+
+Czego testy nie rozstrzygają: poprawka dotyczy zachowania aplikacji na Twoim Macu (zaufanie certu, parowanie). Została wydana na Twoje polecenie bez Twojego testu na urządzeniu — jeśli po instalacji lista urządzeń nadal jest pusta, wyślij zrzut ekranu Ustawień → Konto i synchronizacja oraz informację, czy przycisk „Zaufaj temu serwerowi” się pojawił.
+</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.49/Silique-0.2.49-macOS.dmg" sparkle:version="58" sparkle:shortVersionString="0.2.49" sparkle:edSignature="E4Im9rgmoQeZeMLiA3rGnm8zq9Qvf7S7Xj+hxtSVDHorBJvxlJH/qHq0oF68oLdMzyJITyzq4G8ANuO2bw7KDA==" length="28437922" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: 4Zswt9gnBQdDCtc4JhYrE72dshzsR7be6AQTpdBkZAWA1weJjXacoVCYzuCUDw6n59AVIH2cn2ZFpZq2TjthCg==
+length: 3096
 -->
