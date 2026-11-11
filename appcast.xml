@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.46</title><pubDate>Tue, 10 Nov 2026 17:26:30 +0000</pubDate><description>Silique 0.2.46
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.47</title><pubDate>Wed, 11 Nov 2026 02:12:48 +0000</pubDate><description>Silique 0.2.47
 
-- Świeża konfiguracja: jeśli wskażesz folder, w którym już leżą vaulty (bezpośrednio,
-  w podfolderze „Silique Vaults" albo w starym katalogu „Nova Notes"), aplikacja je
-  otwiera i pokazuje notatniki. Nowy, pusty vault powstaje tylko w katalogu bez danych.
-  Wcześniej wybór takiego folderu tworzył obok pusty vault i wyglądało to jak utrata notatek.
-- Uszkodzona baza w wybranym folderze jest zgłaszana komunikatem, a nie zastępowana
-  nowym pustym vaultem obok danych.
-- macOS: zmieniona tożsamość podpisu na `Silique` (self-signed, ten sam mechanizm co dotąd).
-  **To wymaga jednej ręcznej instalacji**: pobierz DMG i przeciągnij aplikację do Aplikacji,
-  wybierając „Zamień". Automatyczna aktualizacja ze starszej wersji nie zadziała, bo system
-  widzi innego wydawcę. Twoje notatki, preferencje i klucze zostają — podmieniana jest tylko aplikacja.
-- macOS nadal nie jest notaryzowane (brak Apple Developer ID), więc przy pierwszym uruchomieniu
-  Gatekeeper może ostrzec: otwórz przez kliknięcie prawym przyciskiem → „Otwórz".
-- Android bez zmian: ten sam klucz podpisu, instalacja nad obecną wersją działa normalnie.
-- Warstwa danych i szyfrowania bez zmian: brak migracji, brak ponownego logowania,
-  identyfikatory aplikacji i kanał aktualizacji bez modyfikacji.
-</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.46/Silique-0.2.46-macOS.dmg" sparkle:version="55" sparkle:shortVersionString="0.2.46" sparkle:edSignature="aTokvb0t4QC6tNGFjpv8wvXmpzsB4rEH0U7tSf5NUuD6V4DbMEwX0aKNJVGOwlYGEsCYRrM0L/wjWLGsMkRdBA==" length="28397173" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
-edSignature: vgNjbdTcaS/trRN75sUjUrQhEHlGDWjWNBO8v5ZbvadrI5gKZp4lFoTbcgUpsewTO3M3zdOuJvVLhdeNhyiLAA==
-length: 2356
+- Naprawione: serwer z certyfikatem self-signed jest teraz osiągalny. Przy pierwszym
+  połączeniu aplikacja pokazuje odcisk klucza publicznego (SHA-256, hex w grupach po 4),
+  nazwę i datę ważności certyfikatu, a potwierdzenie zapisuje pin i ponawia połączenie
+  dokładnie raz. Wcześniej połączenie kończyło się błędem
+  `CERTIFICATE_VERIFY_FAILED: self signed certificate` bez żadnej możliwości potwierdzenia.
+- Pin jest zapisywany obok plików aplikacji (`server-trust.json`), nie w bazie notatek,
+  więc jest czytelny przed odblokowaniem i przeżywa restart.
+- Odnowienie certyfikatu z zachowanym `key.pem` nie wymaga ponownego potwierdzania;
+  zmiana pary kluczy jest wykrywana i zgłaszana jako niezgodność pinu, zamiast cichego
+  zaakceptowania nowego serwera.
+- Certyfikat wystawiony przez zaufane CA (Tailscale, Cloudflare) przechodzi normalną
+  walidacją systemową — pin jest wyłącznie fallbackiem dla certyfikatów nieufnych.
+- macOS: bez zmian względem 0.2.46 — nadal wymagana jednorazowa ręczna instalacja z DMG
+  (nowa tożsamość podpisu), Gatekeeper ostrzega, notaryzacji brak.
+- Android: ten sam klucz podpisu, instalacja nad poprzednią wersją działa normalnie.
+- Warstwa danych i szyfrowania bez zmian: brak migracji, brak ponownego logowania.
+</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.47/Silique-0.2.47-macOS.dmg" sparkle:version="56" sparkle:shortVersionString="0.2.47" sparkle:edSignature="EK4ozRE3mjr6DyqkDcYTbBRNr20s3IEzAKG/9ylTUhpMZm+ZnQbhZGBlMw/bpX76h8YkbNK6EPWw3N/jtOvcBg==" length="28431423" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: 56WhIi2jguqjpxGq9psxMxfv4UJ0FhQuPQnxWgFNbmklHi3lu+Y9LVoT4mh0wnk47634H9uy9s1scDCCuaxrAg==
+length: 2336
 -->
