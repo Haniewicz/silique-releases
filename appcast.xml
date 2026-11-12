@@ -1,18 +1,28 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.49</title><pubDate>Wed, 11 Nov 2026 17:07:57 +0000</pubDate><description>Silique 0.2.49 (build 58)
-=========================
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.50</title><pubDate>Thu, 12 Nov 2026 13:04:37 +0000</pubDate><description>Silique 0.2.50
 
-• Zaufanie certyfikatowi serwera działa teraz z każdego miejsca w Ustawieniach, nie tylko przy logowaniu. Po restarcie aplikacji lista urządzeń i parowanie znów odpowiadają, a gdy certyfikatu nie ma jeszcze w zaufanych, Ustawienia pokazują odcisk klucza (SPKI) z przyciskiem „Zaufaj temu serwerowi” zamiast surowego błędu.
-• Parowanie urządzeń nie wymaga już ręcznych odświeżeń: nowe urządzenie samo pokazuje kod do porównania, po zatwierdzeniu na drugim urządzeniu dokańcza parowanie i odblokowuje notatki automatycznie. Lista urządzeń i stan parowania odświeżają się w tle co 2 sekundy.
-• Potwierdzenie na urządzeniu, które ma klucz konta, nadal jest ręczne — to zabezpieczenie, nie tarcie.
-
-Weryfikacja: `flutter analyze` bez uwag; pełny zestaw testów na commicie 512c421 — 1134 testy zaliczone, 46 pominiętych, 0 błędów (preflight, `--concurrency=2`). Nowe testy obejmują: potwierdzenie certu z karty konta (z kontrolą negatywną), jedno ponowienie po zaufaniu, automatyczne pokazanie kodu parowania, dokładnie jedno dokończenie parowania, brak żądania zatwierdzenia wychodzącego z odświeżania w tle, zatrzymanie odświeżania po zamknięciu okna oraz ciszę w tle (błąd pokazywany dopiero po trzech kolejnych porażkach — oba testy mają sprawdzone kontrole negatywne).
-
-Uwaga o podpisach: macOS jest podpisany tożsamością zapoznawczą (self-signed, bez notaryzacji) — przy pierwszym uruchomieniu Gatekeeper wymaga „Otwórz mimo to” (System Settings → Privacy &amp; Security). Windows nie ma podpisu Authenticode, więc instalator pokaże „nieznanego wydawcę” w UAC.
-
-Czego testy nie rozstrzygają: poprawka dotyczy zachowania aplikacji na Twoim Macu (zaufanie certu, parowanie). Została wydana na Twoje polecenie bez Twojego testu na urządzeniu — jeśli po instalacji lista urządzeń nadal jest pusta, wyślij zrzut ekranu Ustawień → Konto i synchronizacja oraz informację, czy przycisk „Zaufaj temu serwerowi” się pojawił.
-</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.49/Silique-0.2.49-macOS.dmg" sparkle:version="58" sparkle:shortVersionString="0.2.49" sparkle:edSignature="E4Im9rgmoQeZeMLiA3rGnm8zq9Qvf7S7Xj+hxtSVDHorBJvxlJH/qHq0oF68oLdMzyJITyzq4G8ANuO2bw7KDA==" length="28437922" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
-edSignature: 4Zswt9gnBQdDCtc4JhYrE72dshzsR7be6AQTpdBkZAWA1weJjXacoVCYzuCUDw6n59AVIH2cn2ZFpZq2TjthCg==
-length: 3096
+- Naprawione (Android): widgety na pulpicie działały dopiero po otwarciu aplikacji — puste
+  „Brak notatek" do pierwszego uruchomienia. Widget renderuje teraz z zimnego procesu po
+  restarcie telefonu (`BOOT_COMPLETED`) i przemalowuje się po odblokowaniu ekranu, jeśli
+  pierwszy render wypadł przy zamkniętym keyguardzie (ograniczony, niebudzący alarm).
+- Naprawione (Android): zapisany, zaszyfrowany obraz notatek dla widgetów nie jest już
+  kasowany przy przejściowej niedostępności klucza Keystore (np. przed pierwszym
+  odblokowaniem po restarcie). Kasowane są wyłącznie realnie uszkodzone dane.
+- Naprawione (macOS i Android): potwierdzony odcisk serwera (pin SPKI) przeżywa restart
+  aplikacji. Wcześniej część ścieżek startu zapisywała zaufanie tylko w pamięci, więc po
+  każdym zamknięciu i otwarciu aplikacji trzeba było ponownie klikać „Zaufaj temu
+  serwerowi", zanim synchronizacja i lista urządzeń zaczęły działać.
+- Bez zmian w bezpieczeństwie zaufania: brak potwierdzonego pinu nadal nigdy nie jest
+  przyjmowany po cichu, inny klucz serwera jest twardo blokowany, wygasły certyfikat
+  wymaga `renew-cert`. Format `server-trust.json` zgodny wstecz.
+- Maskowanie notatek na zablokowanym ekranie (widgety) bez zmian.
+- Warstwa danych i szyfrowania bez zmian: brak migracji, brak ponownego logowania.
+- Android: ten sam klucz podpisu, instalacja nad poprzednią wersją działa normalnie.
+- macOS: nadal wymagana jednorazowa ręczna instalacja z DMG.
+- Uwaga o dowodach: to wydanie powstało bez testu na fizycznym urządzeniu właściciela
+  (świadoma decyzja); poprawność potwierdzają bramki automatyczne — pełny zestaw testów
+  klienta, testy Kotlin/Robolectric widgetów oraz kontrole negatywne nowych testów.</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.50/Silique-0.2.50-macOS.dmg" sparkle:version="59" sparkle:shortVersionString="0.2.50" sparkle:edSignature="uLyQf+L1jWw5Ef7p0a6eZGjN2koA3H8wqIz+G3CX4R4AUOcBnSmb9dXOzy1I/EL+ddgPMBRK+NFg+HZ50dNAAA==" length="28440089" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: lsAq9JkH/lv3bTg/Ui+YOASTIZc2hkX6rfAINeln64km9K8SOreFsNdffUqPNDoh4EthKgPPuHXIOSfeZJk/Ag==
+length: 2814
 -->
