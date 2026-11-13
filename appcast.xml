@@ -1,28 +1,55 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.50</title><pubDate>Thu, 12 Nov 2026 13:04:37 +0000</pubDate><description>Silique 0.2.50
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.51</title><pubDate>Fri, 13 Nov 2026 13:05:02 +0000</pubDate><description># Silique 0.2.51
 
-- Naprawione (Android): widgety na pulpicie działały dopiero po otwarciu aplikacji — puste
-  „Brak notatek" do pierwszego uruchomienia. Widget renderuje teraz z zimnego procesu po
-  restarcie telefonu (`BOOT_COMPLETED`) i przemalowuje się po odblokowaniu ekranu, jeśli
-  pierwszy render wypadł przy zamkniętym keyguardzie (ograniczony, niebudzący alarm).
-- Naprawione (Android): zapisany, zaszyfrowany obraz notatek dla widgetów nie jest już
-  kasowany przy przejściowej niedostępności klucza Keystore (np. przed pierwszym
-  odblokowaniem po restarcie). Kasowane są wyłącznie realnie uszkodzone dane.
-- Naprawione (macOS i Android): potwierdzony odcisk serwera (pin SPKI) przeżywa restart
-  aplikacji. Wcześniej część ścieżek startu zapisywała zaufanie tylko w pamięci, więc po
-  każdym zamknięciu i otwarciu aplikacji trzeba było ponownie klikać „Zaufaj temu
-  serwerowi", zanim synchronizacja i lista urządzeń zaczęły działać.
-- Bez zmian w bezpieczeństwie zaufania: brak potwierdzonego pinu nadal nigdy nie jest
-  przyjmowany po cichu, inny klucz serwera jest twardo blokowany, wygasły certyfikat
-  wymaga `renew-cert`. Format `server-trust.json` zgodny wstecz.
-- Maskowanie notatek na zablokowanym ekranie (widgety) bez zmian.
-- Warstwa danych i szyfrowania bez zmian: brak migracji, brak ponownego logowania.
+## English
+
+- Fixed: appearance settings could not be changed at all while a vault belonged to an account
+  but the app had no owner session (logged out, expired session or a different account). The
+  compact-mode switch — and every other appearance preference: folder colour, note colour,
+  default note/folder colour and folder order — failed with
+  `Bad state: Connect the vault owner's account.` The change is now kept locally as a pending
+  edit and is pushed by the next sync after you sign in, instead of being rejected.
+- Unchanged where it matters: a vault that is *not* offline-tolerant (renaming a synced vault)
+  still refuses the write without the owner session and restores the previous metadata.
+- Normal (signed-in) behaviour is untouched: the same requests, the same version compare-and-swap.
+- No data-layer or crypto changes: no migration, no re-login, no vault re-unlock needed.
+- Android: same signing key, installing over the previous version works normally.
+- macOS: manual installation from the DMG is still required (self-signed build).
+- Evidence: full client test suite green (1141 tests), new regression test proved red on the
+  pre-fix commit (adapter RED gate) and green after the fix; `flutter analyze` clean.
+
+## Polski
+
+- Naprawione: nie dało się zmienić ustawień wyglądu, gdy vault należał do konta, ale aplikacja
+  nie miała sesji właściciela (wylogowanie, wygasła sesja albo inne konto). Przełącznik trybu
+  kompaktowego — i każda inna preferencja wyglądu: kolor folderu, kolor notatki, domyślne kolory
+  notatki/folderu oraz kolejność folderów — kończył się komunikatem
+  `Bad state: Połącz konto właściciela vaulta.` Zmiana zostaje teraz lokalnie jako oczekująca
+  i wchodzi na serwer przy najbliższej synchronizacji po zalogowaniu, zamiast być odrzucona.
+- Bez zmian tam, gdzie to istotne: vault, który *nie* toleruje pracy offline (zmiana nazwy
+  zsynchronizowanego vaulta), nadal odmawia zapisu bez sesji właściciela i przywraca poprzednie
+  metadane.
+- Zwykłe zachowanie (zalogowany właściciel) bez zmian: te same żądania, ten sam warunek wersji.
+- Brak zmian w warstwie danych i szyfrowania: żadnej migracji, ponownego logowania ani
+  odblokowywania vaulta.
 - Android: ten sam klucz podpisu, instalacja nad poprzednią wersją działa normalnie.
-- macOS: nadal wymagana jednorazowa ręczna instalacja z DMG.
-- Uwaga o dowodach: to wydanie powstało bez testu na fizycznym urządzeniu właściciela
-  (świadoma decyzja); poprawność potwierdzają bramki automatyczne — pełny zestaw testów
-  klienta, testy Kotlin/Robolectric widgetów oraz kontrole negatywne nowych testów.</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.50/Silique-0.2.50-macOS.dmg" sparkle:version="59" sparkle:shortVersionString="0.2.50" sparkle:edSignature="uLyQf+L1jWw5Ef7p0a6eZGjN2koA3H8wqIz+G3CX4R4AUOcBnSmb9dXOzy1I/EL+ddgPMBRK+NFg+HZ50dNAAA==" length="28440089" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
-edSignature: lsAq9JkH/lv3bTg/Ui+YOASTIZc2hkX6rfAINeln64km9K8SOreFsNdffUqPNDoh4EthKgPPuHXIOSfeZJk/Ag==
-length: 2814
+- macOS: nadal wymagana ręczna instalacja z DMG (build self-signed).
+- Dowody: pełny zestaw testów klienta zielony (1141 testów), nowy test regresyjny był czerwony
+  na commicie sprzed poprawki (bramka RED adaptera) i zielony po niej; `flutter analyze` czysty.
+## English (evidence note)
+
+- Released without a test on the owner's physical device — an explicit owner decision. Correctness
+  is backed by the automated gates: full client suite (+1141 passed, 46 skipped), a regression test
+  that was red on the pre-fix commit and green after it, and a clean `flutter analyze`.
+
+## Polski (uwaga o dowodach)
+
+- Wydanie powstało bez testu na fizycznym urządzeniu właściciela — świadoma decyzja właściciela.
+  Poprawność potwierdzają bramki automatyczne: pełny zestaw testów klienta (+1141 przeszło,
+  46 pominiętych), test regresyjny czerwony na commicie sprzed poprawki i zielony po niej oraz
+  czysty `flutter analyze`.
+</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.51/Silique-0.2.51-macOS.dmg" sparkle:version="60" sparkle:shortVersionString="0.2.51" sparkle:edSignature="aeGSXebFmSOSYpikEDoAoDapUW6jsEKEpkSj8wHDjAFbO395luvsLNL6MiiSmtYUzUR9RYumvi5idn8lKJU0Aw==" length="28440433" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: AFMvZAh7aotyx3Lstbt4965L6URubpHdzwvpMWJ7zSJFNpsOq1X0g40xN9l0/PfGecQRn445Ev7EW8B9sqpCAg==
+length: 4315
 -->
