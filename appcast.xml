@@ -1,72 +1,73 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.52</title><pubDate>Sat, 14 Nov 2026 15:48:47 +0000</pubDate><description># Silique 0.2.52
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.53</title><pubDate>Sun, 15 Nov 2026 00:45:30 +0000</pubDate><description># Silique 0.2.53
 
 ## English
 
-- New: **export the whole vault to Markdown files**. Open *Manage vaults*, press the export
-  icon next to a vault, choose a destination folder and every note is written as one `.md`
-  file. Android/iOS share a ZIP archive instead of writing a folder.
-- File names follow note titles: a duplicate title gets ` (1)` before the extension, the next
-  one ` (2)`, and so on (`Ala.md`, `Ala (1).md`, `Ala (2).md`). Collisions are resolved
-  case-insensitively, so `Note` and `NOTE` cannot silently become two files on macOS/Windows.
-  Characters outside letters, digits, spaces, `_` and `-` become `_` (the same rule as the
-  existing single-note export), so a title containing `(1)` becomes `Ala _1_.md`.
-- The vault folder structure is mirrored, **including empty folders**. Images are written as
-  files into `_images/` and their links are rewritten to paths relative to each note, so the
-  export opens correctly at every folder depth. A referenced image whose bytes are unavailable
-  is skipped, keeps its original reference and is counted in the summary; the export completes.
-- Notes in the trash are not exported.
-- Hidden notes are **not** exported by default. Tick *Include hidden notes* and enter the hidden
-  notes password to include them; they land in a separate `_hidden/` folder so they never mix
-  with ordinary notes. A wrong password stops the export before any file is written.
-- No data-layer or crypto changes: no migration, no re-login, no vault re-unlock needed.
+- Fixed: **synchronization can no longer fail silently.** A vault that the sync pass
+  cannot handle — the account recorded for it does not match the signed-in account,
+  sync is switched off for it, its key is locked, or a deletion is pending — is now
+  reported with its reason in Settings instead of the pass quietly ending as a no-op.
+- Fixed: **a vault is identified by its own ID, not by the server it was last synced
+  with.** The recorded owner is provenance only ("last synced with this account") and no
+  longer acts as an access gate, so pointing the app at a different server does not take
+  your own notes away: the vault is re-bound to the signed-in account automatically (its
+  key is re-wrapped with the account key and the server copy is created or updated
+  against the server's live version). The sync switch stays usable in that state instead
+  of turning grey and dead.
+- Fixed: **moving a vault to a server that does not know it yet** now re-uploads the
+  whole local revision chain, parent before child, in server-sized batches and
+  idempotently (`409 Parent revision missing` triggers a full ordered re-upload instead
+  of a permanent error, `Revision ID collision` is treated as "already sent").
+- Safety: a vault **deleted on the server** is never recreated silently. It is reported,
+  local notes and keys are left untouched, and bringing it back requires an explicit
+  action from you — a device that sat in a drawer for weeks must not resurrect data you
+  deleted on purpose.
+- Historical owner values of the form `https://server|account` are read as the account
+  they carry; the server part is ignored when deciding what may sync.
+- No crypto, AAD or data-migration changes: existing vaults, notes and images open as
+  before, and no re-login or vault re-unlock is needed.
+- Evidence: `flutter analyze` clean; the new and updated sync tests pass (13 tests across
+  five files); the full client suite and the release preflight run green on the release
+  commit. Not yet exercised on a physical device — the owner confirms that after
+  installing, so treat on-device behaviour as unverified rather than tested.
 - Android: same signing key, installing over the previous version works normally.
 - macOS: manual installation from the DMG is still required (self-signed build).
-- Evidence: full client suite green (1175 passed, 46 skipped), `flutter analyze` clean, 34 new
-  export tests covering naming/deduplication, folder mirroring, empty folders, images, ZIP,
-  path-traversal rejection, the service path (trash, hidden gating, missing image) and the
-  dialog (PL/EN, fail-fast without a destination, picker seam); independent code review
-  accepted all nine requirements before the release.
 
 ## Polski
 
-- Nowość: **eksport całego vaulta do plików Markdown**. Otwórz *Zarządzaj vaultami*, naciśnij
-  ikonę eksportu przy vaulcie, wybierz katalog docelowy — każda notatka trafia do osobnego pliku
-  `.md`. Android/iOS udostępniają archiwum ZIP zamiast zapisywać katalog.
-- Nazwy plików wynikają z tytułów notatek: duplikat dostaje ` (1)` przed rozszerzeniem, kolejny
-  ` (2)` itd. (`Ala.md`, `Ala (1).md`, `Ala (2).md`). Kolizje są rozstrzygane bez rozróżniania
-  wielkości liter, więc `Note` i `NOTE` nie staną się po cichu dwoma plikami na macOS/Windows.
-  Znaki spoza liter, cyfr, spacji, `_` i `-` stają się `_` (ta sama reguła co w dotychczasowym
-  eksporcie pojedynczej notatki), dlatego tytuł z `(1)` daje `Ala _1_.md`.
-- Struktura folderów vaulta jest odtwarzana, **łącznie z pustymi folderami**. Obrazki trafiają
-  jako pliki do `_images/`, a odwołania są przepisywane na ścieżki relatywne do każdej notatki,
-  więc eksport otwiera się poprawnie na każdej głębokości folderów. Obrazek, którego bajtów nie
-  da się pobrać, jest pomijany, zachowuje oryginalne odwołanie i jest liczony w podsumowaniu;
-  eksport kończy się poprawnie.
-- Notatki z kosza nie są eksportowane.
-- Ukryte notatki **nie** są eksportowane domyślnie. Zaznacz *Dołącz ukryte notatki* i podaj hasło
-  do ukrytych notatek, aby je dołączyć; trafiają do osobnego katalogu `_hidden/`, więc nie mieszają
-  się ze zwykłymi notatkami. Błędne hasło zatrzymuje eksport przed zapisaniem jakiegokolwiek pliku.
-- Brak zmian w warstwie danych i szyfrowania: żadnej migracji, ponownego logowania ani
-  odblokowywania vaulta.
-- Android: ten sam klucz podpisu, instalacja nad poprzednią wersją działa normalnie.
-- macOS: nadal wymagana ręczna instalacja z DMG (build self-signed).
-- Dowody: pełny zestaw testów klienta zielony (1175 przeszło, 46 pominiętych), `flutter analyze`
-  czysty, 34 nowe testy eksportu pokrywają nazwy/dedup, lustro folderów, puste foldery, obrazki,
-  ZIP, odrzucanie path traversal, ścieżkę serwisu (kosz, bramka ukrytych, brak obrazka) oraz dialog
-  (PL/EN, błąd bez katalogu, seam pickera); niezależny review kodu zaakceptował wszystkie
-  dziewięć wymagań przed wydaniem.
-
-## English (evidence note)
-
-- Released without a test on the owner's physical device — an explicit owner decision given for
-  this release. Correctness is backed by the automated gates listed above.
-
-## Polski (uwaga o dowodach)
-
-- Wydanie powstało bez testu na fizycznym urządzeniu właściciela — jawna decyzja właściciela dla
-  tego wydania. Poprawność potwierdzają bramki automatyczne wymienione wyżej.</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.52/Silique-0.2.52-macOS.dmg" sparkle:version="61" sparkle:shortVersionString="0.2.52" sparkle:edSignature="yCTSgfmnabsdr30k1UsiQtB+P0/IP4ao/ClFp7QD71hgfmNKpX61yeR3pLtLStgLRUREh801nGl25tQuWRhlDA==" length="28487462" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
-edSignature: WGBGbo8rjqDvFa48NpaRY69CRQb5jwndBxhMD0jDwH6hvfmnh7av2o9i4Cb5uDJE6o6krnepxjN9l7KYaWC0Ag==
-length: 5791
+- Naprawione: **synchronizacja nie może już kończyć się ciszą.** Vault, którego przebieg
+  synchronizacji nie może obsłużyć — zapisane konto nie zgadza się z zalogowanym, sync
+  jest dla niego wyłączony, klucz jest zablokowany albo czeka usunięcie — jest teraz
+  raportowany z powodem w Ustawieniach, zamiast kończyć przebieg jako ciche „nic się nie
+  stało".
+- Naprawione: **vault jest identyfikowany własnym ID, a nie serwerem, z którym był
+  ostatnio synchronizowany.** Zapisany właściciel jest wyłącznie pochodzeniem („ostatnio
+  zsynchronizowany z tym kontem") i nie działa już jak brama dostępu, więc wskazanie
+  innego serwera nie odbiera dostępu do własnych notatek: vault jest automatycznie
+  przepinany na zalogowane konto (klucz jest opakowywany kluczem konta, a kopia na
+  serwerze tworzona lub aktualizowana względem wersji z serwera). Przełącznik
+  synchronizacji pozostaje wtedy używalny, zamiast być szary i martwy.
+- Naprawione: **przeniesienie vaulta na serwer, który go nie zna**, wysyła teraz cały
+  lokalny łańcuch rewizji — rodzic przed dzieckiem, w partiach mieszczących się w limicie
+  serwera i idempotentnie (`409 Parent revision missing` wywołuje pełny ponowny upload w
+  kolejności, zamiast trwałego błędu; `Revision ID collision` jest traktowane jako „już
+  wysłane").
+- Bezpieczeństwo: vault **usunięty na serwerze** nigdy nie jest odtwarzany po cichu. Jest
+  raportowany, lokalne notatki i klucze zostają nietknięte, a przywrócenie wymaga Twojej
+  jawnej akcji — urządzenie, które leżało tygodniami w szufladzie, nie może wskrzesić
+  danych usuniętych świadomie.
+- Historyczne wartości właściciela w formacie `https://serwer|konto` są czytane jako
+  konto, które niosą; część serwerowa jest ignorowana przy decyzji o synchronizacji.
+- Bez zmian w kryptografii, AAD i bez migracji danych: istniejące vaulty, notatki i obrazy
+  otwierają się jak dotąd, bez ponownego logowania i bez odblokowywania vaulta.
+- Dowody: `flutter analyze` czysto; nowe i zaktualizowane testy synchronizacji przechodzą
+  (13 testów w pięciu plikach); pełny zestaw klienta i preflight wydania są zielone na
+  commicie wydania. **Nie sprawdzone na fizycznym urządzeniu** — potwierdza właściciel po
+  instalacji, więc zachowanie na urządzeniu traktuj jako niezweryfikowane, nie jako
+  przetestowane.
+- Android: ten sam klucz podpisu, instalacja na poprzednią wersję działa normalnie.
+- macOS: nadal wymagana ręczna instalacja z DMG (build self-signed).</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.53/Silique-0.2.53-macOS.dmg" sparkle:version="62" sparkle:shortVersionString="0.2.53" sparkle:edSignature="89hsxM/9PsfgE3w+oFTxcN9IlUdKL0upwUcipVdnJdCh+Wdl1nj398pdCMt1SVTfncWL3UMTKEsCerSJFF+CDw==" length="28518785" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: PNJoi7up56ovu+3kO8exHfdMXOLaYHdqIQy+883s3xcm86aaDe5CrDWoEIyu3sYjdcpajkIuikVV/aTrgNFsDw==
+length: 5937
 -->
