@@ -33,9 +33,26 @@ jobs:
           ref: ${{ inputs.source_ref }}
           persist-credentials: false
           path: source
+      - name: Restore the GTK4 build cache
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          # Only the two inputs that are expensive to rebuild are cached: the
+          # patched GTK4 engine SDK and the Fedora 44 rootfs with its build
+          # dependencies. Both carry a marker file, so a stale entry is rebuilt
+          # instead of trusted. A change to the engine patch, its bootstrap or
+          # this builder script invalidates the key.
+          path: |
+            ${{ runner.temp }}/silique-linux-cache/flutter-gtk4
+            ${{ runner.temp }}/silique-linux-cache/fedora-unpacked
+          key: linux-gtk4-${{ hashFiles('source/tool/gtk4/flutter-*-gtk4.patch', 'source/tool/bootstrap_linux_gtk4.sh', 'source/tool/ci_linux_gtk4.sh') }}
+          restore-keys: |
+            linux-gtk4-
       - name: Build GTK4 engine and verify Linux installers privately
         id: build
         continue-on-error: true
+        env:
+          SILIQUE_LINUX_CACHE: ${{ runner.temp }}/silique-linux-cache
+          SILIQUE_CACHE_KEY: linux-gtk4-${{ hashFiles('source/tool/gtk4/flutter-*-gtk4.patch', 'source/tool/bootstrap_linux_gtk4.sh', 'source/tool/ci_linux_gtk4.sh') }}
         run: |
           bash source/tool/ci_linux_gtk4.sh > "$RUNNER_TEMP/private-linux-build.log" 2>&1
       - name: Encrypt diagnostic output for the owner
