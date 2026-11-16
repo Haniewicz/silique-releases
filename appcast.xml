@@ -1,85 +1,98 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.57</title><pubDate>Sun, 15 Nov 2026 21:22:30 +0000</pubDate><description># Silique 0.2.57
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.58</title><pubDate>Mon, 16 Nov 2026 21:02:00 +0000</pubDate><description># Silique 0.2.58
 
 ## English
 
-- Setting a device as the source of truth now finishes with a real upload: the reset drains the
-  outgoing queue until it is actually empty, pulls once more, and verifies both invariants — zero
-  diverged notes and zero pending revisions. When either one fails, the result says the reset is
-  incomplete instead of reporting success, and it shows how many revisions are still waiting.
-- Other devices now learn about it. The reset writes a small internal marker into the vault's own
-  encrypted history (invisible: it is not a note, it never shows in the list, search, vault export or
-  the Android widgets). Any device that pulls a newer marker holds that vault: revisions are stored
-  and the read position advances, but nothing is applied — no note, folder or metadata changes, and
-  nothing is uploaded while it waits.
-- The waiting vault says so in the app itself, not only in a dialog: a banner above the notes names
-  the device and states that the new server version has not been downloaded. Opening it offers
-  exactly three decisions — "Zapisz kopię i pobierz" (a full vault export first, then the download),
-  "Pobierz wersję z serwera", or "Później". Nothing is adopted without that decision, "later" keeps
-  the vault held, and the hold survives a restart. Adoption replaces only the local versions the
-  server actually superseded; notes that exist only on this device and hidden notes keep syncing
-  normally, and a second adoption changes nothing.
-- Every long action now shows progress on the button that is pressed (a small spinner inside that one
-  button, the other actions disabled until it settles), so a slow reset or download no longer looks
-  like a dead click.
-- Android: a long operation continues when the app is backgrounded. A local operation journal records
-  the running operation before it starts and settles it afterwards; if the system kills the process,
-  the next launch resumes an interrupted full pull, flush or reset automatically once the vault is
-  unlocked (adoption is never resumed automatically, because it always needs your decision). While
-  the operation runs, a foreground notification keeps the process alive.
-- No protocol, crypto, DAG or data-migration changes and no server change: the server is still a dumb
-  immutable store, and the new marker travels as ordinary encrypted vault history.
-- Android: same signing key, installing over the previous version works normally.
-- macOS: manual installation from the DMG is still required (self-signed build).
-- Evidence: `flutter analyze` clean, full suite green (1238 passed, 46 skipped), 20 new tests covering
-  the incomplete-drain report, per-action spinners, the marker round-trip and its invisibility in the
-  note list, export plan, search and widget snapshot, the hold changing no document/folder/metadata
-  row, the hold across a restart, an unaffected second vault, adoption requiring the decision, the
-  preserved local-only and hidden revisions, and the operation journal across a restart with its
-  resume rules. Two independent review rounds returned blocking findings that were fixed and
-  re-reviewed; the final reviews returned no blocking findings. The native Android service is
-  verified by the release APK build. Design and non-goals: `docs/sync-recovery.md`.
+- Desktop reading width: a note's title, tags and body now live in a centred column
+  capped at 820 px, so long lines no longer stretch across a wide monitor. Toolbars, tabs,
+  breadcrumbs and the status bar keep the full window width, and nothing changes below
+  1000 px, so phones and tablets look exactly as before. Images wider than the column
+  scale down inside it.
+- The notes list is grouped: Pinned, Today, Yesterday, Older. Grouping follows each
+  note's last change in the device's own time zone and appears on phones too, where the
+  headers used to be missing. The list stays flat when you sort by title or creation date,
+  or while a search query is active, because date groups make no sense there. Compact
+  mode (folders and notes merged into one tree) is untouched.
+- Templates: notes stored in the folder `Szablony` become reusable templates. "New note
+  from template…" appears in the note, folder and note-options menus, and "Journal entry
+  from template…" in the journal menu. Templates are ordinary encrypted notes, so they
+  sync with the existing protocol; no server change is involved. Placeholders are
+  `{{date}}`, `{{time}}`, `{{title}}`, `{{weekday}}` and `{{vault}}`; unknown placeholders
+  are left as typed. Settings → General gains a default journal template, applied silently
+  to every new journal entry. Deleting the template simply returns to an empty entry.
+- Editable keyboard shortcuts: Settings → Shortcuts lists nine actions (new note, quick
+  switcher, find in note, save, next tab, close tab, reopen closed tab, Markdown/live
+  toggle, full screen). Each chord can be captured, conflicts are refused with the name
+  of the action already using it, and "Restore defaults" brings back the platform set.
+  The choice is stored per device, applied immediately, and defaults stay conventional:
+  Ctrl/Cmd+N, Ctrl/Cmd+K, Ctrl/Cmd+F, Ctrl/Cmd+S, Ctrl+Tab, Ctrl/Cmd+W,
+  Ctrl/Cmd+Shift+T, Ctrl/Cmd+E, F11. Modifiers are matched literally, so on macOS an
+  explicit Ctrl+Tab stays Ctrl+Tab and Cmd+Tab keeps belonging to the system.
+- Quick switcher: Ctrl+K opens a floating panel over the editor instead of moving focus
+  into the list search. It lists recently changed notes when empty, matches on title and
+  folder with diacritics folded ("zolta" finds "Żółta notatka"), highlights the matched
+  letters, and opens the highlighted note with Enter (arrows to move, Esc to close). It
+  never acts on the document underneath: while it is open, other shortcuts are ignored.
+- Fixed: on macOS Ctrl+Tab would have been stored as Cmd+Tab and could never fire after
+  a restart; closing the last tab no longer leaves a stale find bar over an empty editor;
+  the quick switcher field now has the app's standard text-selection menu.
+- No protocol, crypto, database-migration or server changes. No new dependencies. Same
+  Android signing key, so installing over the previous version works normally. macOS
+  still requires manual installation from the DMG (self-signed build).
+- Evidence: `flutter analyze` clean, full suite green (1304 passed, 46 skipped), plus new
+  tests for the column width, wide images inside it, section grouping (including the
+  midnight boundary and future timestamps), editable shortcuts and their conflicts,
+  the quick-switcher guard and macOS modifier split, template rendering and journal
+  defaults. Two independent review rounds returned blocking findings (shortcuts acting
+  under the overlay, the macOS Ctrl+Tab regression); both were fixed, re-tested and
+  re-reviewed. Design notes: `docs/HANDOFF.md`.
 
 ## Polski
 
-- Ustawienie urządzenia jako źródła prawdy kończy się teraz faktycznym wysłaniem: reset opróżnia kolejkę
-  wychodzącą do zera, pobiera jeszcze raz i weryfikuje oba warunki — zero notatek rozbieżnych i zero
-  oczekujących rewizji. Jeśli którykolwiek nie jest spełniony, wynik mówi, że reset jest nieukończony,
-  zamiast ogłaszać sukces, i pokazuje, ile rewizji jeszcze czeka.
-- Inne urządzenia dowiadują się o tym. Reset zapisuje mały wewnętrzny znacznik w zaszyfrowanej
-  historii samego vaulta (niewidoczny: nie jest notatką, nie pojawia się na liście, w wyszukiwaniu,
-  w eksporcie vaulta ani w widżetach Androida). Urządzenie, które pobierze nowszy znacznik, wstrzymuje
-  ten vault: rewizje są zapisywane, pozycja odczytu przesuwa się, ale nic nie jest stosowane — żadna
-  notatka, folder ani metadana się nie zmienia, a wstrzymany vault nic nie wysyła.
-- Wstrzymany vault mówi o tym w samej aplikacji, nie tylko w dialogu: baner nad notatkami podaje
-  nazwę urządzenia i informuje, że nowa wersja z serwera nie została pobrana. Otwarcie go daje trzy
-  decyzje — „Zapisz kopię i pobierz” (najpierw pełny eksport vaulta, potem pobranie), „Pobierz wersję
-  z serwera” albo „Później”. Nic nie jest przejmowane bez tej decyzji, „później” zostawia vault
-  wstrzymany, a wstrzymanie przeżywa restart. Przejęcie zastępuje tylko te lokalne wersje, które
-  serwer faktycznie zastąpił; notatki istniejące wyłącznie na tym urządzeniu oraz notatki ukryte
-  synchronizują się dalej normalnie, a drugie przejęcie nic nie zmienia.
-- Każda długa akcja pokazuje teraz postęp na wciśniętym przycisku (małe kółko w tym jednym przycisku,
-  pozostałe nieaktywne do zakończenia), więc wolny reset czy pobieranie nie wyglądają już jak martwy
-  klik.
-- Android: długa operacja trwa, gdy aplikacja jest w tle. Lokalny dziennik operacji zapisuje działanie
-  przed startem i rozlicza je po zakończeniu; jeśli system zabije proces, następne uruchomienie
-  wznowi przerwane pełne pobranie, wysyłkę lub reset automatycznie po odblokowaniu vaulta (przejęcie
-  nigdy nie jest wznawiane automatycznie, bo zawsze wymaga Twojej decyzji). Na czas operacji
-  powiadomienie w pasku statusu trzyma proces przy życiu.
-- Brak zmian protokołu, szyfrowania, DAG i migracji danych oraz brak zmian po stronie serwera — serwer
-  pozostaje niemym, niezmiennym magazynem, a nowy znacznik jedzie jako zwykła zaszyfrowana historia.
-- Android: ten sam klucz podpisu, instalacja nad poprzednią wersją działa normalnie.
-- macOS: nadal wymagana ręczna instalacja z DMG (build self-signed).
-- Dowody: `flutter analyze` czysto, pełny zestaw zielony (1238 przeszło, 46 pominiętych), 20 nowych
-  testów obejmujących raport o nieukończonym resecie, kółka postępu per akcja, round-trip znacznika
-  i jego niewidoczność na liście notatek, w planie eksportu, w wyszukiwaniu i w snapshocie widżetów,
-  wstrzymanie niezmieniające żadnego dokumentu, folderu ani metadanej, wstrzymanie przeżywające
-  restart, brak wpływu na drugi vault, przejęcie wymagające decyzji, zachowanie notatek istniejących
-  tylko lokalnie i notatek ukrytych oraz dziennik operacji po restarcie z jego regułami wznawiania.
-  Dwa niezależne roundy review zwróciły blokujące uwagi, które naprawiono i sprawdzono ponownie;
-  końcowe review nie zgłosiły blokerów. Natywna usługa Androida jest weryfikowana przez build APK
-  wydania. Projekt i nie-cele: `docs/sync-recovery.md`.</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.57/Silique-0.2.57-macOS.dmg" sparkle:version="66" sparkle:shortVersionString="0.2.57" sparkle:edSignature="nNET06kFvAcpJejnHLHfZ/mgZp16V4T4ugFu53iQqF/2CW9EvWkwYoLIr0XU4V+odGhyWoA81ywXg2FiZYH1DA==" length="28618089" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
-edSignature: sIHU8tY6z0svABnW8NswjbeoAI7k9pKh7WV4krlkQ5FvGVHyPaI1Ym+wHX7Scp4cVtt+BOli2Kh3SKkKwDIcDQ==
-length: 7890
+- Szerokość czytania na desktopie: tytuł, tagi i treść notatki są teraz w wyśrodkowanej
+  kolumnie o maksymalnej szerokości 820 px, więc długie linie nie rozciągają się już na
+  cały monitor. Paski narzędzi, karty, breadcrumb i stopka zachowują pełną szerokość
+  okna, a poniżej 1000 px nic się nie zmienia — telefony i tablety wyglądają jak dotąd.
+  Obrazy szersze niż kolumna skalują się do niej.
+- Lista notatek jest grupowana: Przypięte, Dziś, Wczoraj, Starsze. Grupy liczą się według
+  ostatniej zmiany notatki w lokalnej strefie czasowej urządzenia i są widoczne także na
+  telefonie, gdzie wcześniej nagłówków nie było. Lista pozostaje płaska przy sortowaniu po
+  tytule lub dacie utworzenia oraz podczas aktywnego wyszukiwania — tam grupy dat nie mają
+  sensu. Tryb kompaktowy (foldery i notatki w jednym drzewie) pozostaje bez zmian.
+- Szablony: notatki w folderze `Szablony` stają się szablonami. „Nowa notatka z szablonu…"
+  jest w menu notatki, folderu i opcji notatki, a „Wpis dziennika z szablonu…" w menu
+  dziennika. Szablony to zwykłe zaszyfrowane notatki, więc synchronizują się istniejącym
+  protokołem; nie ma tu żadnej zmiany serwera. Placeholdery: `{{date}}`, `{{time}}`,
+  `{{title}}`, `{{weekday}}`, `{{vault}}`; nieznane zostają w postaci wpisanej. Ustawienia
+  → Ogólne zyskują domyślny szablon wpisu dziennika, stosowany po cichu do każdego nowego
+  wpisu. Usunięcie szablonu wraca po prostu do pustego wpisu.
+- Edytowalne skróty klawiszowe: Ustawienia → Skróty pokazuje dziewięć akcji (nowa notatka,
+  quick switcher, szukaj w notatce, zapisz, następna karta, zamknij kartę, otwórz ponownie
+  zamkniętą, przełącz Markdown/live, pełny ekran). Każdą kombinację można przechwycić,
+  konflikt jest odrzucany z nazwą akcji, która już jej używa, a „Przywróć domyślne" wraca do
+  zestawu platformy. Wybór jest zapisywany na urządzeniu, działa natychmiast, a domyślne
+  skróty pozostają standardowe: Ctrl/Cmd+N, Ctrl/Cmd+K, Ctrl/Cmd+F, Ctrl/Cmd+S, Ctrl+Tab,
+  Ctrl/Cmd+W, Ctrl/Cmd+Shift+T, Ctrl/Cmd+E, F11. Modyfikatory są dopasowywane dosłownie,
+  więc na macOS jawne Ctrl+Tab zostaje Ctrl+Tab, a Cmd+Tab nadal należy do systemu.
+- Quick switcher: Ctrl+K otwiera pływający panel nad edytorem zamiast przenosić fokus do
+  wyszukiwania listy. Przy pustym polu pokazuje ostatnio zmienione notatki, dopasowuje tytuł
+  i folder z pominięciem znaków diakrytycznych („zolta" znajduje „Żółta notatka"), podświetla
+  trafione litery i otwiera zaznaczoną notatkę Enterem (strzałki — ruch, Esc — zamknięcie).
+  Nie działa na dokumencie pod spodem: gdy jest otwarty, pozostałe skróty są ignorowane.
+- Poprawki: na macOS Ctrl+Tab był zapisywany jako Cmd+Tab i po restarcie nie mógł zadziałać;
+  zamknięcie ostatniej karty nie zostawia już martwego paska szukania nad pustym edytorem;
+  pole quick switchera ma standardowe menu zaznaczania tekstu.
+- Bez zmian protokołu, kryptografii, migracji bazy i serwera. Bez nowych zależności. Ten sam
+  klucz podpisu Androida, więc instalacja na poprzednią wersję działa normalnie. macOS nadal
+  wymaga ręcznej instalacji z DMG (build self-signed).
+- Dowody: `flutter analyze` czysty, pełna suita zielona (1304 zaliczone, 46 pominiętych) plus
+  nowe testy szerokości kolumny, szerokich obrazów w niej, grupowania sekcji (z granicą
+  północy i datami z przyszłości), edytowalnych skrótów i ich konfliktów, guardu quick
+  switchera i rozdzielenia modyfikatorów na macOS, renderowania szablonów i domyślnych
+  wpisów dziennika. Dwa niezależne przeglądy zwróciły blokujące uwagi (skróty działające pod
+  nakładką, regresja Ctrl+Tab na macOS); oba naprawione, przetestowane i ponownie
+  zrecenzowane. Notatki projektowe: `docs/HANDOFF.md`.</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.58/Silique-0.2.58-macOS.dmg" sparkle:version="67" sparkle:shortVersionString="0.2.58" sparkle:edSignature="VuYdygeMYM4ssNATarQFPL6ayl4n2iErBrtCm0iBjjZ6tzmG1ksPa8AW0Ie/dEkLWFslMTMeXcckVB+C8z1xDQ==" length="28710162" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: +vic3neEBm7OP2iaeM5bJE88uUqJMvs6f5pHYtSYuR5YuLQaBxfgGOjDNV+4/GDS8FT9HizO5P9mKFV0nmjTDg==
+length: 8500
 -->
