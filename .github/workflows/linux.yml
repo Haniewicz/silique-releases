@@ -13,8 +13,12 @@ on:
         type: string
 permissions:
   contents: read
+# The shared group serialised Linux builds, but a workflow_dispatch run from
+# 2026-11-16 stayed "queued" forever and blocked every later run. Scope the
+# group per run so the candidate can always start; the release path only ever
+# runs one Linux build at a time anyway.
 concurrency:
-  group: linux-gtk4-installer
+  group: linux-gtk4-installer-${{ github.run_id }}
   cancel-in-progress: false
 jobs:
   linux:
