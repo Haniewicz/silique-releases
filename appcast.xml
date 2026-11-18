@@ -1,73 +1,65 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.59</title><pubDate>Tue, 17 Nov 2026 18:34:24 +0000</pubDate><description># Silique 0.2.59
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.60</title><pubDate>Wed, 18 Nov 2026 19:56:09 +0000</pubDate><description># Silique 0.2.60
 
 ## English
 
-- Notes list grouping fixed: Pinned / Today / Yesterday / Older now show **one
-  header per group**. Previously the group name was repeated above every note in
-  the group, which made a grouped list look like a pile of one-note groups.
-- The `Szablony` folder is created by default. A new vault already contains it;
-  an existing vault gets it the first time it is opened and unlocked. The folder
-  is built in: it cannot be deleted or renamed, and Settings → General can hide
-  it from the folder tree (templates keep working, the notes stay reachable
-  through "All notes" and search).
-- Creating notes from a template was removed: the "New note from template…"
-  entries are gone from the note, folder and note-options menus, and so is
-  "Journal entry from template…" from the drawer. Templates are now used in two
-  ways instead: a default template for new notes (Settings) and applying one to
-  an existing note.
-- Settings → General gains a **default note template** for ordinary notes
-  (default: None), next to the existing default journal template. The chosen
-  template is filled in silently when a new ordinary note is created; the note
-  keeps the current folder, so filling it never turns the note into a template.
-- New "Apply template…" action on an existing note, in the note context menu
-  (right-click / long-press) and in the note-options menu. An empty note gets the
-  template title and rendered body; a note that already has content keeps its
-  title and gets the rendered template appended at the end, separated by a blank
-  line. Unsaved editor changes are flushed first, and the write goes through the
-  normal note path, so revisions, encryption and sync behave as usual.
-- Ctrl+K quick switcher: the search field is focused immediately when the panel
-  opens, so typing goes straight into the query instead of the editor.
-- No protocol, crypto, database-migration or server changes. No new dependencies.
-  Same Android signing key, so installing over the previous version works
-  normally. macOS still requires manual installation from the DMG (self-signed
-  build).
+- Sidebar footer reworked: at the very bottom there is now a single row of four
+  actions — Deleted, Hidden, Import and **Settings**. The vault badge that used
+  to sit below them (vault name, note count and `E2EE`/`local`) is gone; the
+  Settings action uses the same footer-button styling as its neighbours and is
+  placed in the same line, and it closes the drawer first on phones.
+- Template pickers in Settings now look like every other dropdown: the label is
+  carried by the input field, its closed state stays one line, and the expanded
+  menu shows the full entry.
+- Templates stored in a **subfolder** of the templates folder are now listed and
+  selectable (previously only notes directly in the templates root were
+  offered). The picker and the Settings lists show the path relative to the
+  templates folder, so same-named templates from different subfolders can be
+  told apart.
+- Built-in folder names now follow the application language: the templates and
+  journal folders are shown as `Szablony`/`Dziennik` in Polish and
+  `Templates`/`Journal` in English, new vaults seed the folder in the current
+  language, and existing notes keep their stored paths. Both spellings are
+  recognised as the same built-in folder (case-insensitively) for detection,
+  rename/delete guards and hiding, so switching the UI language never creates a
+  duplicate folder and never rewrites existing data. The localized name is also
+  used in the folder tree, breadcrumbs, the quick switcher and the folder
+  pickers.
+- No protocol, crypto, database-migration or server changes. No new
+  dependencies. Same Android signing key, so installing over the previous
+  version works normally. macOS still requires manual installation from the DMG
+  (self-signed build).
 
 ## Polski
 
-- Naprawione grupowanie listy notatek: Przypięte / Dziś / Wczoraj / Starsze mają
-  teraz **jeden nagłówek na grupę**. Wcześniej nazwa grupy powtarzała się nad
-  każdą notatką w grupie, przez co pogrupowana lista wyglądała jak stos
-  jednoelementowych grup.
-- Folder `Szablony` jest tworzony domyślnie. Nowy vault zawiera go od razu;
-  istniejący vault dostaje go przy pierwszym otwarciu i odblokowaniu. Folder jest
-  wbudowany: nie można go usunąć ani przemianować, a Ustawienia → Ogólne mogą go
-  ukryć w drzewie folderów (szablony działają dalej, notatki pozostają dostępne
-  przez „Wszystkie” i wyszukiwanie).
-- Usunięte tworzenie notatek z szablonu: zniknęły pozycje „Nowa notatka
-  z szablonu…” z menu notatki, folderu i opcji notatki oraz „Wpis dziennika
-  z szablonu…” z szuflady. Zamiast tego szablony są używane na dwa sposoby:
-  domyślny szablon nowych notatek (Ustawienia) i zastosowanie szablonu do
-  istniejącej notatki.
-- Ustawienia → Ogólne mają nowy **domyślny szablon notatki** dla zwykłych
-  notatek (domyślnie: Brak), obok dotychczasowego domyślnego szablonu wpisu
-  dziennika. Wybrany szablon jest cicho wypełniany przy tworzeniu nowej zwykłej
-  notatki; notatka zachowuje bieżący folder, więc wypełnienie nie zamienia jej
-  w szablon.
-- Nowa akcja „Zastosuj szablon…” dla istniejącej notatki — w menu kontekstowym
-  notatki (prawy przycisk / długie przytrzymanie) i w menu opcji notatki. Pusta
-  notatka dostaje tytuł i wyrenderowaną treść szablonu; notatka z treścią
-  zachowuje tytuł, a wyrenderowany szablon jest dopisywany na końcu po pustej
-  linii. Niezapisane zmiany edytora są najpierw utrwalane, a zapis idzie zwykłą
-  ścieżką notatki, więc rewizje, szyfrowanie i synchronizacja działają jak dotąd.
-- Quick switcher (Ctrl+K): pole wyszukiwania jest od razu zfokusowane po
-  otwarciu panelu, więc pisanie trafia do zapytania, a nie do edytora.
+- Przebudowana stopka sidebara: na samym dole jest teraz jedna linia czterech
+  akcji — Usunięte, Ukryte, Importuj i **Ustawienia**. Plakietka vaulta, która
+  była pod nimi (nazwa vaulta, liczba notatek i `E2EE`/`lokalnie`), została
+  usunięta; akcja Ustawienia ma ten sam styl przycisku stopki co sąsiednie
+  i stoi w tej samej linii, a na telefonie najpierw zamyka szufladę.
+- Listy wyboru szablonu w Ustawieniach wyglądają teraz jak każda inna rozwijana
+  lista: etykieta jest w polu, zamknięta lista ma jedną linię, a rozwinięte menu
+  pokazuje pełny wpis.
+- Szablony leżące w **podfolderze** folderu szablonów są teraz widoczne
+  i wybieralne (wcześniej oferowane były tylko notatki bezpośrednio w katalogu
+  głównym szablonów). Picker i listy w Ustawieniach pokazują ścieżkę względną
+  wobec folderu szablonów, więc szablony o tej samej nazwie z różnych
+  podfolderów da się rozróżnić.
+- Nazwy wbudowanych folderów zależą teraz od języka aplikacji: foldery szablonów
+  i dziennika pokazują się jako `Szablony`/`Dziennik` po polsku oraz
+  `Templates`/`Journal` po angielsku, nowe vaulty zakładają folder w bieżącym
+  języku, a istniejące notatki zachowują zapisane ścieżki. Obie pisownie są
+  rozpoznawane jako ten sam wbudowany folder (bez względu na wielkość liter)
+  przy detekcji, guardach zmiany nazwy i usuwania oraz ukrywaniu — przełączenie
+  języka UI nie tworzy duplikatu folderu i nie przepisuje istniejących danych.
+  Zlokalizowana nazwa jest używana także w drzewie folderów, breadcrumbach,
+  quick switcherze i pickerach folderu.
 - Bez zmian protokołu, kryptografii, migracji bazy i serwera. Bez nowych
-  zależności. Ten sam klucz podpisu Androida, więc instalacja na poprzednią
-  wersję działa normalnie. macOS nadal wymaga ręcznej instalacji z DMG (build
-  self-signed).
-</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.59/Silique-0.2.59-macOS.dmg" sparkle:version="68" sparkle:shortVersionString="0.2.59" sparkle:edSignature="PzmRhMfC/SHxlQvHYhdBOpZmGqopTfg505iw9fpkrUVFhVb16uNp/fCuMC3K89gn01zugkQ2krY8YPcfFSUdAw==" length="28714896" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
-edSignature: 5lu0NYBalO9yEm4rjp4AdN8E0T7LKX/yvKULKkPzBGqveCD7OxGeLlVMZIaOmc7nvB/7QaR2QqepaLwVTXfxDQ==
-length: 5387
+  zależności. Ten sam klucz podpisu Androida, więc instalacja nad poprzednią
+  wersją działa normalnie. macOS nadal wymaga ręcznej instalacji z DMG
+  (build self-signed).
+</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.60/Silique-0.2.60-macOS.dmg" sparkle:version="69" sparkle:shortVersionString="0.2.60" sparkle:edSignature="eBbxErHc1FKyzrt3i7ynjKme8g4dyzgH5XEH+H2beooGcJZkceTSZrW2S+rDgSKMPanE1Zi87fhSxR/uk3UcCg==" length="28716494" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: YrhpxWI5YeyJOeh0RjaS2tlUZM6C4DU/KTEGG9imczPDacHg3IhrbIONVE71Z41/NJgRAcd2sg5PyPJguzqSBA==
+length: 4695
 -->
