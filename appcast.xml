@@ -1,75 +1,45 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.61</title><pubDate>Thu, 19 Nov 2026 00:10:02 +0000</pubDate><description># Silique 0.2.61
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.62</title><pubDate>Thu, 19 Nov 2026 16:04:43 +0000</pubDate><description># Silique 0.2.62
 
 ## English
 
-- The Deleted / Hidden / Import / Settings footer is now pinned to the bottom of
-  the sidebar in both sidebar variants and no longer scrolls away with the
-  folder tree. The four buttons are icon-only (no visible captions): hovering
-  one shows a small floating label with its name, and the name stays available
-  to screen readers. Hover and selection surfaces keep the same rounded
-  folder-row styling.
-- Settings rows, tiles, switches and buttons now use one hover surface, the same
-  colour and corner radius the folder rows use, with the ripple splash removed
-  so hovering reads identically everywhere.
-- The Settings dialog is wider on desktop and its sections moved from a tab
-  strip into a left sidebar (General, Appearance, Shortcuts, Account, Storage,
-  Updates) next to the content. On a phone the dialog shows the section list and
-  a section only opens after tapping it, with a back header returning to that
-  list. Section state (fields, scroll offset) is preserved as before.
-- Windows in-app update now completes without walking through the installer:
-  Setup runs silently (`/SILENT /SUPPRESSMSGBOXES`), the UAC consent prompt
-  remains, and after a successful install the updated app starts again
-  automatically with the normal user's token (never an elevated one). Relay is
-  limited to a successful in-app install; a cancelled UAC prompt or a failed
-  install launches nothing and the app is opened from the shortcut as before.
-  Vaults, keys, preferences and the install identity are preserved; no protocol
-  or crypto changes.
-- In the Ctrl+K quick switcher, starting the query with `#` searches the tags
-  available in the vault's notes: suggestions are narrowed as you type (case-
-  insensitive), show how many notes use each tag, and Enter on a suggestion
-  filters the switcher to the notes carrying that tag. Escape clears the tag
-  filter and then the `#` query before closing the switcher.
-- No protocol, crypto, database-migration or server changes. No new
-  dependencies. Same Android signing key, so installing over the previous
-  version works normally. macOS still requires manual installation from the DMG
-  (self-signed build).
+- The floating label that appears over a sidebar footer action (Deleted,
+  Hidden, Import, Settings) now uses the app's own UI font in its intended size
+  and weight instead of a fallback typeface, and it is no longer underlined.
+  The label existed before, but it picked up a diagnostic text style because it
+  is drawn in the window overlay rather than inside the sidebar's `Material`;
+  the label now carries its own explicit style.
+- The label pill is exactly as wide as its text and always stays completely
+  inside the window: the rounded ends of the edge actions' labels are no longer
+  cut off by the window edge, and the pill follows its action when the window
+  is resized while hovering.
+- Rows in Settings (switches and tappable colour rows) now show the same
+  rounded hover surface the folder rows and section tiles use, instead of a
+  square rectangle.
+- No protocol, crypto, database-migration, dependency or server changes. Same
+  Android signing key, so installing over the previous version works normally.
+  macOS still requires manual installation from the DMG (self-signed build).
 
 ## Polski
 
-- Stopka Usunięte / Ukryte / Importuj / Ustawienia jest teraz przyklejona do
-  dołu sidebara w obu wariantach i nie odjeżdża już przy przewijaniu drzewa
-  folderów. Cztery przyciski są ikonami bez widocznych podpisów: najechanie
-  myszą pokazuje małą pływającą etykietę z nazwą akcji, a nazwa pozostaje
-  dostępna dla czytników ekranu. Hover i zaznaczenie zachowują zaokrąglony styl
-  wierszy folderów.
-- Rzeczy w Ustawieniach (wiersze, kafle, przełączniki, przyciski) mają teraz
-  jednolite tło hovera — ten sam kolor i promień zaokrąglenia co wiersze
-  folderów, bez splashu, więc hover wygląda wszędzie tak samo.
-- Modal Ustawień jest szerszy na desktopie, a sekcje przeniesły się z paska
-  zakładek do lewego sidebara (Ogólne, Wygląd, Skróty, Konto, Pamięć,
-  Aktualizacje) obok treści. Na telefonie modal pokazuje listę sekcji i dopiero
-  kliknięcie w sekcję ją otwiera, a nagłówek z powrotem wraca do listy. Stan
-  sekcji (pola, pozycja przewinięcia) jest zachowany jak dotąd.
-- Aktualizacja z aplikacji na Windowsie przechodzi teraz bez kreatora
-  instalatora: Setup uruchamia się cicho (`/SILENT /SUPPRESSMSGBOXES`), zgoda
-  UAC nadal się pojawia, a po udanej instalacji zaktualizowana aplikacja
-  uruchamia się ponownie automatycznie z tokenem zwykłego użytkownika (nigdy
-  podniesionym). Restart dotyczy wyłącznie udanej instalacji z aplikacji;
-  anulowana zgoda UAC lub nieudana instalacja niczego nie uruchamiają i aplikację
-  otwiera się ze skrótu, jak dotychczas. Vaulty, klucze, preferencje i tożsamość
-  instalacji są zachowane; bez zmian protokołu i kryptografii.
-- W quick switcherze pod Ctrl+K wpisanie na początku `#` szuka po tagach
-  dostępnych w notatkach vaulta: podpowiedzi zwężają się w miarę pisania (bez
-  względu na wielkość liter), pokazują liczbę notatek z danym tagiem, a Enter na
-  podpowiedzi filtruje listę do notatek z tym tagiem. Escape najpierw czyści
-  filtr tagu, potem zapytanie `#`, a dopiero potem zamyka switcher.
-- Bez zmian protokołu, kryptografii, migracji bazy i serwera. Bez nowych
-  zależności. Ten sam klucz podpisu Androida, więc instalacja nad poprzednią
-  wersją działa normalnie. macOS nadal wymaga ręcznej instalacji z DMG
-  (build self-signed).
-</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.61/Silique-0.2.61-macOS.dmg" sparkle:version="70" sparkle:shortVersionString="0.2.61" sparkle:edSignature="TRTDNX/Is0/HSf7wvdWkyhTLForUl5ucpJB162iB1EicCEXha1z5ixmy7qUedtNoykaAxZydMKCrlZoaqoC1Bg==" length="28612581" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
-edSignature: EFDK21sYX3mYiNeLaLPmSztuCWOgr/dg3zYDFb1VM1I/GbFtzBiFJ8Nmukq6RETosg2xj3kvUQ4x0gUJm/DKAQ==
-length: 5522
+- Pływająca etykieta nad akcją stopki sidebara (Usunięte, Ukryte, Importuj,
+  Ustawienia) używa teraz własnego kroju UI aplikacji w zamierzonym rozmiarze i
+  wadze zamiast kroju zapasowego i nie jest już podkreślona. Etykieta istniała
+  wcześniej, ale przejmowała diagnostyczny styl tekstu, bo jest rysowana w
+  nakładce okna, a nie wewnątrz `Material` sidebara; teraz ma jawny styl.
+- Tło etykiety jest dokładnie tak szerokie jak jej tekst i zawsze mieści się w
+  całości w oknie: zaokrąglone końce etykiet skrajnych akcji nie są już
+  obcinane krawędzią okna, a przy zmianie rozmiaru okna pill podąża za swoją
+  akcją.
+- Wiersze w Ustawieniach (przełączniki i klikalne wiersze kolorów) mają teraz
+  tę samą zaokrągloną powierzchnię hover, którą używają wiersze folderów i kafle
+  sekcji, zamiast prostokąta z ostrymi rogami.
+- Brak zmian protokołu, kryptografii, migracji bazy, zależności i serwera. Ten
+  sam klucz podpisu Androida, więc instalacja na poprzednią wersję działa
+  normalnie. macOS nadal wymaga ręcznej instalacji z DMG (build z podpisem
+  własnym).
+</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.62/Silique-0.2.62-macOS.dmg" sparkle:version="71" sparkle:shortVersionString="0.2.62" sparkle:edSignature="BzIyPzPt4rSxKTKUxGgzTqbDM5XXefrcAaKCY/brLjfmEKl085kdrzNw5gG8ljZCnyLKomLZaT2ep3AXG7xoDw==" length="28620373" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: 1L9QIjxyM42x2dtqnfEjIyCNw+KnEsoqXQODNVUMheZtE20OM8S4vYH3svUvGlfvFYkPeoQPWM2a8/LZoaK+Cg==
+length: 3284
 -->
