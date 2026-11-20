@@ -1,27 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.65</title><pubDate>Fri, 20 Nov 2026 10:56:06 +0000</pubDate><description># Silique 0.2.65
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.66</title><pubDate>Fri, 20 Nov 2026 14:56:03 +0000</pubDate><description># Silique 0.2.66
 
 ## English
 
-- Follow-up to the 0.2.64 launcher-widget work, based on the device logs from
-  the owner.
-- The retry after a masked or unreadable widget render no longer expires after
-  30 one-minute ticks. The first 30 checks run every 60 s, then checks continue
-  every 10 minutes for up to 48 hours; a pending check only inspects the state
-  (it does not decrypt anything and does not repaint), and only the check that
-  finds the state settled performs the render. A phone locked overnight therefore
-  repaints its notes shortly after the morning unlock instead of keeping the
-  locked placeholder until the app is opened.
-- The masked state is now read live from the system on every render (screen
-  interactive plus keyguard lock) instead of being remembered from a screen-off
-  broadcast. A process frozen in the background can miss the unlock broadcast,
-  and the remembered flag then kept the launcher masked for the rest of that
-  process lifetime — that is what showed a permanently locked widget while the
-  phone was in use.
-- Widget diagnostics now record which live signal masked each render
-  (lock=keyguard / lock=screen_off / lock=none) and whether a retry check was
-  still pending, settled or exhausted, so a future report names the cause.
+- The Android launcher note list no longer clips the top of the first card. Row
+  spacing moved from a layout margin on the row itself to the list (transparent
+  divider plus list padding); a margin on a RemoteViews collection row is wrapped
+  by the launcher, which pushed the first card onto the clip edge even with the
+  list scrolled fully to the top.
+- The native widget search is now a small floating dialog over the launcher that
+  opened the widget instead of a full-screen window: a transparent window with a
+  dimmed background and a fully opaque card, so the screen behind stays visible
+  while no note text can be read through it. A tap outside closes it.
+- The search window no longer covers the status bar: it is placed by the system
+  inside the safe area, is narrower than the screen, and its results list is
+  capped to half the display height so the query stays visible when the keyboard
+  appears; the keyboard now pans instead of resizing the card.
+- Privacy is unchanged: FLAG_SECURE stays, the card is opaque, and no Flutter
+  engine is started until a search result is selected.
 - No protocol, crypto, snapshot-format, database-migration, dependency or server
   changes. The same Android signing key is used, so installing over the previous
   version works normally; macOS still requires manual installation from the DMG
@@ -29,29 +26,27 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
 
 ## Polski
 
-- Kontynuacja pracy nad widżetami Androida z 0.2.64, na podstawie logów z telefonu
-  właściciela.
-- Ponowienie po zamaskowanym lub nieczytelnym renderze widżetu nie wygasa już po
-  30 tickach po minucie. Pierwsze 30 kontroli odbywa się co 60 s, potem kontrole
-  trwają co 10 minut przez maksymalnie 48 godzin; oczekująca kontrola tylko
-  sprawdza stan (nic nie odszyfrowuje i nic nie rysuje), a render wykonuje dopiero
-  ta kontrola, która zastanie stan rozstrzygnięty. Telefon zablokowany na noc
-  odmalowuje notatki krótko po porannym odblokowaniu, zamiast trzymać komunikat
-  o blokadzie do otwarcia aplikacji.
-- Stan zamaskowania jest teraz czytany na żywo z systemu przy każdym renderze
-  (interaktywność ekranu + blokada keyguardu), a nie pamiętany z broadcastu
-  o zgaszeniu ekranu. Proces zamrożony w tle potrafi przegapić broadcast
-  o odblokowaniu, a pamiętana flaga trzymała wtedy maskę do końca życia procesu —
-  to właśnie pokazywało trwale zablokowany widżet przy telefonie w użyciu.
-- Diagnostyka widżetu zapisuje teraz, który żywy sygnał zamaskował render
-  (lock=keyguard / lock=screen_off / lock=none) oraz czy kontrola ponowienia
-  czekała, rozstrzygnęła się czy wyczerpała, więc kolejne zgłoszenie wskaże
-  przyczynę.
+- Lista notatek w widżecie Androida nie ucina już góry pierwszej karty. Odstępy
+  między wierszami przeniosły się z marginesu wiersza do samej listy
+  (przezroczysty divider + padding listy); margines na wierszu RemoteViews jest
+  owijany przez launcher i wypychał pierwszą kartę na krawędź przycięcia, nawet
+  przy liście przewiniętej do samej góry.
+- Natywna wyszukiwarka widżetu jest teraz małym floating okienkiem nad pulpitem,
+  z którego otwarto widżet, a nie pełnoekranowym oknem: przezroczyste okno z
+  przyciemnionym tłem i całkowicie nieprzezroczystą kartą, więc ekran z tyłu
+  pozostaje widoczny, ale nie da się przez kartę odczytać treści notatek. Tap
+  poza kartą zamyka okno.
+- Okno wyszukiwania nie zakrywa już paska statusu: system umieszcza je w
+  bezpiecznym obszarze, jest węższe od ekranu, a lista wyników ma maksymalnie
+  połowę wysokości ekranu, więc pole wyszukiwania zostaje widoczne przy
+  klawiaturze; klawiatura przesuwa kartę, zamiast ją rozciągać.
+- Prywatność bez zmian: FLAG_SECURE zostaje, karta jest nieprzezroczysta, a
+  silnik Fluttera nie startuje do momentu wyboru wyniku wyszukiwania.
 - Bez zmian protokołu, kryptografii, formatu snapshotu, bazy, zależności i
   serwera. Ten sam klucz podpisu Androida, więc instalacja na poprzednią wersję
   działa normalnie; macOS nadal wymaga ręcznej instalacji z DMG (build
   self-signed).
-</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.65/Silique-0.2.65-macOS.dmg" sparkle:version="74" sparkle:shortVersionString="0.2.65" sparkle:edSignature="GpH6f/XAmcmy0YndaaNlBHfsaZpjAC0OoSAugc+aMmHn4ae+Y3IybL1AsIHmw4FxF+nJ+I/aQLULEQkr1aNPDg==" length="28636893" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
-edSignature: Rxh7rB7Bi8SWxXNwFdar3JD5Hlw1iKYEzDC3zYukZ0klQZ3s/XsCVwBcsLTkXe9Z5Zf1aJRd0fRU4AfvEffjBg==
-length: 4109
+</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.66/Silique-0.2.66-macOS.dmg" sparkle:version="75" sparkle:shortVersionString="0.2.66" sparkle:edSignature="HPSnRv+JmnwNfl8467w4XMrBvBsCDKAqAkBxIzQZoUegCfmQmwjycLDd7H+ZurzsMlqAtjx61dWHwSJzJkDFAA==" length="28636897" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: LR3woVYS0zFLJugkk5I/9cblvBljf02ENcK/noOm5zjwlAiMF84xNSUZdgXLzsVFED+P7xnDgb/795A5+8vADg==
+length: 3848
 -->
