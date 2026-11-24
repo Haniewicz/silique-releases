@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.66</title><pubDate>Fri, 20 Nov 2026 14:56:03 +0000</pubDate><description># Silique 0.2.66
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0"><channel><title>Silique</title><link>https://github.com/Haniewicz/silique-releases/releases</link><item><title>Silique 0.2.67</title><pubDate>Tue, 24 Nov 2026 00:12:35 +0000</pubDate><description># Silique 0.2.67
 
 ## English
 
-- The Android launcher note list no longer clips the top of the first card. Row
-  spacing moved from a layout margin on the row itself to the list (transparent
-  divider plus list padding); a margin on a RemoteViews collection row is wrapped
-  by the launcher, which pushed the first card onto the clip edge even with the
-  list scrolled fully to the top.
-- The native widget search is now a small floating dialog over the launcher that
-  opened the widget instead of a full-screen window: a transparent window with a
-  dimmed background and a fully opaque card, so the screen behind stays visible
-  while no note text can be read through it. A tap outside closes it.
-- The search window no longer covers the status bar: it is placed by the system
-  inside the safe area, is narrower than the screen, and its results list is
-  capped to half the display height so the query stays visible when the keyboard
-  appears; the keyboard now pans instead of resizing the card.
-- Privacy is unchanged: FLAG_SECURE stays, the card is opaque, and no Flutter
-  engine is started until a search result is selected.
+- The three Android launcher action widgets (**New note**, **Search**, **Journal
+  entry**) no longer wrap and clip their label when the launcher squeezes them to
+  one cell (it used to show "+ No…"). A widget that narrow now collapses to its
+  single glyph — `+`, `⌕`, `✎` — while the default two-slot form keeps the full
+  label unchanged.
+- The switch is driven by `AppWidgetManager.OPTION_APPWIDGET_MIN_WIDTH`: a
+  positive width below 100 dp selects the compact layout, zero or absent options
+  keep the former full label. The three providers repaint from the fresh options
+  bundle on `onAppWidgetOptionsChanged`, so resizing in either direction is
+  immediate without reopening the app.
+- The full label stays the widget's content description in both forms, so
+  screen readers still announce "New Silique note" / "Search Silique" / "Silique
+  journal entry" on the compact glyph.
+- The interface-language refresh keeps the compact form and its glyph, and still
+  never reads the encrypted widget snapshot (no Keystore access).
 - No protocol, crypto, snapshot-format, database-migration, dependency or server
   changes. The same Android signing key is used, so installing over the previous
   version works normally; macOS still requires manual installation from the DMG
@@ -26,27 +26,26 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
 
 ## Polski
 
-- Lista notatek w widżecie Androida nie ucina już góry pierwszej karty. Odstępy
-  między wierszami przeniosły się z marginesu wiersza do samej listy
-  (przezroczysty divider + padding listy); margines na wierszu RemoteViews jest
-  owijany przez launcher i wypychał pierwszą kartę na krawędź przycięcia, nawet
-  przy liście przewiniętej do samej góry.
-- Natywna wyszukiwarka widżetu jest teraz małym floating okienkiem nad pulpitem,
-  z którego otwarto widżet, a nie pełnoekranowym oknem: przezroczyste okno z
-  przyciemnionym tłem i całkowicie nieprzezroczystą kartą, więc ekran z tyłu
-  pozostaje widoczny, ale nie da się przez kartę odczytać treści notatek. Tap
-  poza kartą zamyka okno.
-- Okno wyszukiwania nie zakrywa już paska statusu: system umieszcza je w
-  bezpiecznym obszarze, jest węższe od ekranu, a lista wyników ma maksymalnie
-  połowę wysokości ekranu, więc pole wyszukiwania zostaje widoczne przy
-  klawiaturze; klawiatura przesuwa kartę, zamiast ją rozciągać.
-- Prywatność bez zmian: FLAG_SECURE zostaje, karta jest nieprzezroczysta, a
-  silnik Fluttera nie startuje do momentu wyboru wyniku wyszukiwania.
-- Bez zmian protokołu, kryptografii, formatu snapshotu, bazy, zależności i
-  serwera. Ten sam klucz podpisu Androida, więc instalacja na poprzednią wersję
-  działa normalnie; macOS nadal wymaga ręcznej instalacji z DMG (build
-  self-signed).
-</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.66/Silique-0.2.66-macOS.dmg" sparkle:version="75" sparkle:shortVersionString="0.2.66" sparkle:edSignature="HPSnRv+JmnwNfl8467w4XMrBvBsCDKAqAkBxIzQZoUegCfmQmwjycLDd7H+ZurzsMlqAtjx61dWHwSJzJkDFAA==" length="28636897" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
-edSignature: LR3woVYS0zFLJugkk5I/9cblvBljf02ENcK/noOm5zjwlAiMF84xNSUZdgXLzsVFED+P7xnDgb/795A5+8vADg==
-length: 3848
+- Trzy akcyjne widżety Androida na pulpicie (**Nowa notatka**, **Szukaj**,
+  **Wpis do dziennika**) nie zawijają już i nie ucinają etykiety, gdy launcher
+  ściska je do jednej komórki (wcześniej widać było „+ No…”). Tak wąski widget
+  pokazuje teraz sam glif — `+`, `⌕`, `✎` — a domyślna forma na dwa sloty
+  zachowuje pełną etykietę bez zmian.
+- O wyborze wariantu decyduje `AppWidgetManager.OPTION_APPWIDGET_MIN_WIDTH`:
+  dodatnia szerokość poniżej 100 dp wybiera układ kompaktowy, zero lub brak
+  opcji zachowuje dotychczasową pełną etykietę. Trzy providery przemalowują
+  widget ze świeżego pakietu opcji w `onAppWidgetOptionsChanged`, więc zmiana
+  rozmiaru w obie strony działa od razu, bez otwierania aplikacji.
+- Pełna etykieta pozostaje opisem treści widgetu w obu formach, więc czytnik
+  ekranu nadal zapowiada „Nowa notatka Silique” / „Szukaj w Silique” / „Wpis do
+  dziennika Silique” przy kompaktowym glifie.
+- Odświeżenie języka interfejsu zachowuje formę kompaktową i jej glif, nadal też
+  nie czyta zaszyfrowanej migawki widżetu (brak dostępu do Keystore).
+- Brak zmian protokołu, kryptografii, formatu migawki, migracji bazy, zależności
+  i serwera. Ten sam klucz podpisu Androida, więc instalacja na poprzednią
+  wersję działa normalnie; macOS nadal wymaga ręcznej instalacji z DMG
+  (kompilacja self-signed).
+</description><sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion><enclosure url="https://github.com/Haniewicz/silique-releases/releases/download/v0.2.67/Silique-0.2.67-macOS.dmg" sparkle:version="76" sparkle:shortVersionString="0.2.67" sparkle:edSignature="b63R6XUct+o/Fzig4kt2nZwI2m1+jFPmZdiGzcVChNNIavKJIayY7v6GZe4CylaWiux5amMErBOFw/fPESRYCg==" length="28636905" type="application/octet-stream"></enclosure></item></channel></rss><!-- sparkle-signatures:
+edSignature: bgOYvkkoxF0Evv5xtKxUKneU955S2s8T2OMrWyU4LLP04JCNul+X1r9jCA2HLhQcCFoWzPkeAxtvwcxn9MqMAQ==
+length: 3772
 -->
